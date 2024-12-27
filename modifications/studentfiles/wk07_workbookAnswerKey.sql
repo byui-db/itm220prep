@@ -1,4 +1,21 @@
+-- *********************************
+-- W07 STUDENT SQL WORKBOOK
 -- Chapter 3 questions
+-- *********************************
+
+/*
+    SELECT     column_name AS 'Alias1'
+    ,          column_name_2 AS 'Alias2'
+    FROM       table1 t1   -- t1 and t2 are table aliases
+    INNER JOIN table2 t2   
+    ON         t1.table1_id = t2.table1_id -- PK and FK might not always be the same name
+    WHERE      column_name = condition
+    ORDER BY   column_name (DESC)
+    LIMIT      # of rows;
+    To remember this: Stay Firm (JOINED) With Our Lord
+*/
+
+
 USE sakila;
 -- ------------------------------------------------------------------------
 -- 1. Write the SQL statement that retrieves the 
