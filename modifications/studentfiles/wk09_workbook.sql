@@ -1,4 +1,50 @@
+-- *********************************
+-- W09 STUDENT SQL WORKBOOK
 -- Chapter 11 questions
+-- *********************************
+
+/*
+    SELECT     column_name AS 'Alias1'
+    ,          Function(column_name_2) AS 'Alias2'
+    ,          CASE column_name_3
+                WHEN condition THEN # ELSE # (Condition is usually a number or string value. Can also contain calculations)
+               END AS 'Alias 3' -- ALWAYS use an alias with CASE contitions
+    FROM       table1 t1   -- t1 and t2 are table aliases
+    INNER JOIN table2 t2   
+    ON         t1.table1_id = t2.table1_id -- PK and FK might not always be the same name
+    WHERE      column_name = condition
+    ORDER BY   column_name (DESC)
+    LIMIT      # of rows;
+    To remember this: Stay Firm (JOINED) With Our Lord
+*/
+
+/*
+    The CASE clause is the "IF" statement of SQL. 
+    It allows us to match conditions and set results based on the condition met.
+    This is useful for the following reasons:
+        * In one column we can have a different result returned based on the condition
+        * We can manipulate the output from the data to display relevant information
+
+        Example: A boolean field in SQL is stored as a TINYINT. This causes it to be
+        stored as a 1 or a 0. Using a case statement we can have the query state the
+        words 'TRUE' or 'FALSE' based on if the result is 1 or 0.
+
+        Example Query:
+        --
+        This query checks to see if the customer is active or not,
+        then it orders by their active state, then last name
+        --
+        SELECT  c.customer_id
+        ,       CONCAT(c.first_name, ' ', c.last_name) AS customer_name
+        ,       CASE 
+                WHEN c.active = 1 THEN 'Active'
+                ELSE 'Inactive'
+                END AS status
+        FROM    customer c
+        ORDER BY c.active DESC, c.last_name;
+
+*/
+
 USE sakila;
 
 -- ---------------------------------------------------------------------------

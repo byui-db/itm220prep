@@ -1,4 +1,59 @@
+-- *********************************
+-- W12 STUDENT SQL WORKBOOK
 -- Chapter 9 questions
+-- *********************************
+
+/*
+    SELECT     column_name AS 'Alias1'
+    ,          Function(column_name_2) AS 'Alias2'
+    ,          CASE column_name_3
+                WHEN condition THEN # ELSE # (Condition is usually a number or string value. Can also contain calculations)
+               END AS 'Alias 3' -- ALWAYS use an alias with CASE contitions
+    FROM       table1 t1   -- t1 and t2 are table aliases
+    JOIN       table2 t2   -- join types: INNER, LEFT, RIGHT
+    ON         t1.table1_id = t2.table1_id -- PK and FK might not always be the same name
+    WHERE      column_name = (SELECT column_name
+                                FROM table_name ...) -- Sub Query
+    ORDER BY   column_name (DESC)
+    LIMIT      # of rows;
+    To remember this: Stay Firm (JOINED) With Our Lord
+*/
+
+/*
+    Subqueries can appear in multiple different parts of a normal query
+    Subqueries are mainly found in the WHERE clause but can be used in 
+    the SELECT and FROM clauses too. 
+    
+    You can also write a Subquery before the normal query using a WITH statement
+    This is useful for doing aggregations before the main query
+    Example Template:
+    WITH subquery_alias AS (
+        Aggregate SELECT statement
+    )
+    Normal SELECT statement
+
+    Practical Example:
+    --
+    This query finds the number of films each actor has been in
+    and limits them to the first 5 actors returned
+    --
+    WITH actor_film_count AS (
+    SELECT a.actor_id
+    ,      CONCAT(a.first_name, ' ', a.last_name) AS actor_name
+    ,      COUNT(fa.film_id) AS film_count
+    FROM   actor a
+    INNER JOIN film_actor fa 
+    ON a.actor_id = fa.actor_id
+    GROUP BY a.actor_id
+    )
+    SELECT actor_name
+    ,      film_count
+    FROM   actor_film_count
+    ORDER BY film_count DESC
+    LIMIT 5;
+
+*/
+
 USE sakila;
 
 -- --------------------------------------------------------------------------
