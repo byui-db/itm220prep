@@ -79,7 +79,13 @@ USE sakila;
 -- +-------------------------+
 -- 64 rows in set (0.03 sec)
 -- --------------------------------------------------------------------------
-
+SELECT title
+FROM film
+WHERE film_id IN( SELECT fc.film_id
+			   FROM film_category fc 
+                  INNER JOIN category c
+                  ON fc.category_id = c.category_id
+                  WHERE c.name = 'Action' );
 
 -- --------------------------------------------------------------------------
 -- 2. Rework the query from Exercise 9-1 using a CORRELATED subquery 
@@ -105,7 +111,14 @@ USE sakila;
 -- +-------------------------+
 -- 64 rows in set (0.00 sec)
 -- --------------------------------------------------------------------------
-
+SELECT f.title
+FROM film f
+WHERE EXISTS
+	(SELECT 1
+     FROM film_category fc INNER JOIN category c
+     ON fc.category_id = c.category_id
+     WHERE c.name = 'Action'
+     AND fc.film_id = f.film_id);
 
 -- Chapter 14 Questions
 
@@ -114,6 +127,17 @@ USE sakila;
 -- that can be used by the following query to generate 
 -- the given results from this query:
 -- Write the view below this line vvvv
+CREATE OR REPLACE VIEW film_ctgry_actor AS
+SELECT f.title, c.name AS category_name, a.first_name, a.last_name
+FROM film f 
+INNER JOIN film_category fc
+ON f.film_id = fc.film_id
+INNER JOIN category c 
+ON fc.category_id = c.category_id
+INNER JOIN film_actor fa
+ON f.film_id = fa.film_id
+INNER JOIN actor a
+ON fa.actor_id = a.actor_id;
 
 -- Write the view above this line ^^^^
 SELECT title
@@ -516,3 +540,13 @@ VALUES
 -- --------------------------------------------------
 
 -- ---------------------------------------------------------------------------
+SELECT f.title AS film,
+	   IFNULL(
+			CASE
+            WHEN NOT f.film_id = fp.film_id
+            AND      f.prequel_id = fp.film_id THEN fp.title
+            END, 'None') AS prequel
+FROM film f LEFT JOIN film fp
+ON   f.prequel_id = fp.film_id
+WHERE f.series_name = 'Harry Potter'
+ORDER BY f.series_number;

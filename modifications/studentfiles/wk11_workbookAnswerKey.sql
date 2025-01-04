@@ -5,17 +5,20 @@
 
 /*
   ORDER OF OPERATION (The way we write our queries):
-     SELECT     column_name AS 'Alias1'
-     ,          Function(column_name_2) AS 'Alias2'
-     FROM       table1 t1   -- t1 and t2 are table aliases
-       JOIN       table2 t2   -- join types: INNER, LEFT, RIGHT
-       ON         t1.table1_id = t2.table1_id -- PK and FK might not always be the same name
-     WHERE      column_name = condition (Cannot contain an aggregate function)
-     GROUP BY   column_name (Must be a column in the SELECT clause that is NOT in an aggregate function)
-     HAVING     aggregate_function(column_name) = group condition
-     ORDER BY   column_name (DESC)
-     LIMIT      # of rows;
-     To remember this: Stay Firm (JOINED) With God, Honoring Our Lord
+    SELECT     column_name AS 'Alias1'
+    ,          Function(column_name_2) AS 'Alias2'
+    ,          CASE column_name_3
+                WHEN condition THEN # ELSE # (Condition is usually a number or string value. Can also contain calculations)
+              END AS 'Alias 3' -- ALWAYS use an alias with CASE contitions
+    FROM       table1 t1   -- t1 and t2 are table aliases
+      JOIN       table2 t2   -- join types: INNER, LEFT, RIGHT
+      ON         t1.table1_id = t2.table1_id -- PK and FK might not always be the same name
+    WHERE      column_name = condition (Cannot contain an aggregate function)
+    GROUP BY   column_name (Must be a column in the SELECT clause that is NOT in an aggregate function)
+    HAVING     aggregate_function(column_name) = group condition
+    ORDER BY   column_name (DESC)
+    LIMIT      # of rows;
+    To remember this: Stay Firm (JOINED) With God, Honoring Our Lord
 */
 
 /*
@@ -41,7 +44,6 @@
   MAX()
   MIN()
 */
-
 
 USE sakila;
 
@@ -81,10 +83,10 @@ FROM   payment;
 -- +-------------+----------+-------------+
 -- 599 rows in set (0.02 sec)
 -- --------------------------------------------------------------------------
-SELECT customer_id, COUNT(*) AS '# of Customer Payments',  SUM(amount) AS 'Total amount paid'
-FROM payment
+SELECT customer_id, COUNT(*) AS '# of Customer Payments'
+,      SUM(amount) AS 'Total amount paid'
+FROM   payment
 GROUP BY customer_id;
-
 
 -- --------------------------------------------------------------------------
 -- 3. Modify your query from Exercise 11-2 to include 
@@ -102,11 +104,12 @@ GROUP BY customer_id;
 -- +-------------+----------+-------------+
 -- 7 rows in set (0.04 sec)
 -- --------------------------------------------------------------------------
-SELECT customer_id, COUNT(*) AS '# of Customer Payments',  SUM(amount) AS 'Total amount paid'
-FROM payment
+SELECT customer_id
+,      COUNT(*) AS '# of Customer Payments'
+,      SUM(amount) AS 'Total amount paid'
+FROM   payment
 GROUP BY customer_id
-HAVING COUNT(*) >= 40;
-
+HAVING   COUNT(*) >= 40;
 
 -- --------------------------------------------------------------------------
 -- 4. Construct a query that displays the following results 
@@ -137,14 +140,18 @@ HAVING COUNT(*) >= 40;
 -- +------------------------+--------+----------+
 -- 61 rows in set (0.03 sec)
 -- --------------------------------------------------------------------------
-SELECT title, rating, COUNT(*) AS 'row count'
-FROM film f INNER JOIN film_actor fa
-ON f.film_id = fa.film_id
+SELECT title
+,      rating
+,      COUNT(*) AS 'row count'
+FROM   film f 
+INNER JOIN film_actor fa
+ON         f.film_id = fa.film_id
 INNER JOIN actor a
-ON fa.actor_id = a.actor_id
+ON         fa.actor_id = a.actor_id
 WHERE rating IN('G','PG','PG-13')
-GROUP BY title, rating
-HAVING COUNT(*) BETWEEN 9 AND 12
+GROUP BY title
+,        rating
+HAVING   COUNT(*) BETWEEN 9 AND 12
 ORDER BY title;
 
 -- --------------------------------------------------------------------------
@@ -168,14 +175,18 @@ ORDER BY title;
 -- +------------------------+--------+----------+
 -- 85 rows in set (0.04 sec)
 -- --------------------------------------------------------------------------
-SELECT title, rating, COUNT(*) AS 'row count'
-FROM film f INNER JOIN inventory i
-ON f.film_id = i.film_id
+SELECT title
+,      rating
+,      COUNT(*) AS 'row count'
+FROM   film f 
+INNER JOIN inventory i
+ON         f.film_id = i.film_id
 INNER JOIN rental r
-ON i.inventory_id = r.inventory_id
+ON         i.inventory_id = r.inventory_id
 INNER JOIN customer c
-ON r.customer_id = c.customer_id
+ON         r.customer_id = c.customer_id
 WHERE title LIKE 'C%'
-GROUP BY title, rating
-HAVING COUNT(return_date) >= 2
+GROUP BY title
+,        rating
+HAVING   COUNT(return_date) >= 2
 ORDER by title;

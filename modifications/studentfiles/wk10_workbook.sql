@@ -47,7 +47,16 @@ USE sakila;
 -- | RENE       | MCALISTER | 1895 Zhezqazghan Drive | Garden Grove   |
 -- +------------+-----------+------------------------+----------------+
 -- --------------------------------------------------------------------------
-
+SELECT   c.first_name
+,        c.last_name
+,        a.address
+,        ct.city
+FROM     customer c 
+INNER JOIN address a
+ON       c.address_id = a.address_id 
+INNER JOIN city ct
+ON       a.city_id = ct.city_id
+WHERE    a.district = 'California';
 
 -- --------------------------------------------------------------------------
 -- 2. Construct a query that returns all addresses from the address table 
@@ -84,7 +93,15 @@ USE sakila;
 -- | 43 Vilnius Manor     | 587 Benguela Manor   | Aurora     |
 -- +----------------------+----------------------+------------+
 -- --------------------------------------------------------------------------
-
+SELECT a1.address AS addr1
+,      a2.address AS addr2
+,      c.city
+FROM   address a1
+INNER JOIN address a2
+ON     a1.city_id = a2.city_id
+INNER JOIN city c
+ON     a1.city_id = c.city_id
+WHERE NOT a1.address = a2.address;
 
 -- --------------------------------------------------------------------------
 -- 3. Write a query that shows all the films starring Joe Swank 
@@ -104,7 +121,15 @@ USE sakila;
 -- | UNTOUCHABLES SUNRISE |    120 |
 -- +----------------------+--------+
 -- --------------------------------------------------------------------------
-
+SELECT f.title
+,      f.length
+FROM   film f
+INNER JOIN film_actor fa
+ON     f.film_id = fa.film_id
+INNER JOIN actor a
+ON     fa.actor_id = a.actor_id
+WHERE  f.length BETWEEN 90 AND 120
+AND    CONCAT(a.first_name, ' ', a.last_name) = 'Joe Swank';
 
 -- Week 6 questions
 
@@ -142,7 +167,16 @@ USE sakila;
 -- | JACKIE     | LYNCH        |
 -- +------------+--------------+
 -- --------------------------------------------------------------------------
-
+SELECT * FROM
+(SELECT a.first_name
+,       a.last_name
+FROM    actor a
+UNION
+SELECT  c.first_name
+,       c.last_name
+FROM    customer c) A
+WHERE last_name LIKE 'L%'
+ORDER BY last_name;
 
 -- --------------------------------------------------------------------------
 -- 5. Write a compound query that finds the id and name of all cities 
@@ -165,7 +199,16 @@ USE sakila;
 -- |  86 | South Korea                |
 -- +-----+----------------------------+
 -- --------------------------------------------------------------------------
-
+SELECT ct.city_id AS id
+,      ct.city AS name
+FROM   city ct
+WHERE  ct.city LIKE 'S%o%a'
+UNION ALL
+SELECT c.country_id AS id
+,      c.country AS name
+FROM   country c
+WHERE  c.country LIKE 'S%o%a'
+ORDER BY name DESC;
 
 -- --------------------------------------------------------------------------
 -- 6. Write a compound query that finds the distinct last_name and title 
@@ -187,7 +230,22 @@ USE sakila;
 -- | UMA         | WOOD      | LIFE TWISTED     |
 -- +-------------+-----------+------------------+
 -- --------------------------------------------------------------------------
-
+SELECT a.last_name
+,      f.title
+FROM   actor a INNER JOIN film_actor fa
+ON     a.actor_id = fa.actor_id INNER JOIN film f
+ON     fa.film_id = f.film_id
+WHERE  a.first_name LIKE 'M%'
+AND    f.title LIKE 'LOVE%'
+UNION
+SELECT a.last_name
+,      f.title
+FROM   actor a INNER JOIN film_actor fa
+ON     a.actor_id = fa.actor_id INNER JOIN film f
+ON     fa.film_id = f.film_id
+WHERE  a.last_name LIKE 'W%'
+AND    f.title LIKE 'LIFE%'
+ORDER BY last_name;
 
 -- Chapter 10 questions
 
@@ -271,7 +329,13 @@ WHERE customer_id = (SELECT customer_id
 -- 3 rows in set (0.00 sec)
 
 -- --------------------------------------------------------------------------
-
+SELECT CONCAT(c.first_name, ' ', c.last_name) AS name
+,      SUM(p.amount) AS 'Total Payment'
+FROM   customer c LEFT JOIN payment p
+ON     c.customer_id = p.customer_id
+WHERE  c.customer_id IN (1,4,210)
+GROUP BY name
+ORDER BY name;
 
 -- --------------------------------------------------------------------------
 -- 8. Reformulate your query from Exercise 10-1 to exclude Ella Oliver
@@ -284,7 +348,14 @@ WHERE customer_id = (SELECT customer_id
 -- | MARY SMITH    |        118.68 |
 -- +---------------+---------------+
 -- --------------------------------------------------------------------------
-
+SELECT CONCAT(c.first_name, ' ', c.last_name) AS name
+,      SUM(p.amount) AS 'Total Payment'
+FROM   payment p RIGHT JOIN customer c
+ON     c.customer_id = p.customer_id
+WHERE  c.customer_id IN (1,4,210)
+GROUP BY name
+HAVING   SUM(p.amount) IS NOT NULL
+ORDER BY name;
 
 -- --------------------------------------------------------------------------
 -- After writing your script to generate the foregoing result sets (derived table), 

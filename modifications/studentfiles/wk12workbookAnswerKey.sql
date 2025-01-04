@@ -4,16 +4,19 @@
 -- *********************************
 
 /*
-     SELECT     column_name AS 'Alias1'
-     ,          Function(column_name_2) AS 'Alias2'
-     FROM       table1 t1   -- t1 and t2 are table aliases
-     JOIN       table2 t2   -- join types: INNER, LEFT, RIGHT
-     ON         t1.table1_id = t2.table1_id -- PK and FK might not always be the same name
-     WHERE      column_name = (SELECT column_name
-                                   FROM table_name ...) -- Sub Query
-     ORDER BY   column_name (DESC)
-     LIMIT      # of rows;
-     To remember this: Stay Firm (JOINED) With Our Lord
+    SELECT     column_name AS 'Alias1'
+    ,          Function(column_name_2) AS 'Alias2'
+    ,          CASE column_name_3
+                WHEN condition THEN # ELSE # (Condition is usually a number or string value. Can also contain calculations)
+               END AS 'Alias 3' -- ALWAYS use an alias with CASE contitions
+    FROM       table1 t1   -- t1 and t2 are table aliases
+    JOIN       table2 t2   -- join types: INNER, LEFT, RIGHT
+    ON         t1.table1_id = t2.table1_id -- PK and FK might not always be the same name
+    WHERE      column_name = (SELECT column_name
+                                FROM table_name ...) -- Sub Query
+    ORDER BY   column_name (DESC)
+    LIMIT      # of rows;
+    To remember this: Stay Firm (JOINED) With Our Lord
 */
 
 /*
@@ -83,7 +86,6 @@ WHERE film_id IN( SELECT fc.film_id
                   INNER JOIN category c
                   ON fc.category_id = c.category_id
                   WHERE c.name = 'Action' );
-
 
 -- --------------------------------------------------------------------------
 -- 2. Rework the query from Exercise 9-1 using a CORRELATED subquery 
@@ -225,7 +227,7 @@ ORDER BY f.series_number;
 
 -- You will need to add three new columns to the film table and 
 -- the following rows to the film table with the following set of INSERT statements. 
--- Copy the following (lines 153 - 458) into a seed.sql preparation script 
+-- Copy the following (lines 236 - 541) into a seed.sql preparation script 
 -- and run it before you begin working on the recursive query. 
 -- Convert your query to a view when it works as noted above.
 
@@ -538,8 +540,8 @@ VALUES
 -- --------------------------------------------------
 
 -- ---------------------------------------------------------------------------
-SELECT f.title AS film,
-	   IFNULL(
+SELECT f.title AS film
+,	   IFNULL(
 			CASE
             WHEN NOT f.film_id = fp.film_id
             AND      f.prequel_id = fp.film_id THEN fp.title

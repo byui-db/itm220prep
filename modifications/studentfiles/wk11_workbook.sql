@@ -45,7 +45,6 @@
   MIN()
 */
 
-
 USE sakila;
 
 -- --------------------------------------------------------------------------
@@ -57,7 +56,8 @@ USE sakila;
 -- +----------------+
 -- 1 row in set (0.00 sec)
 -- --------------------------------------------------------------------------
-
+SELECT COUNT(*) AS 'Number of Rows'
+FROM   payment;
 
 -- --------------------------------------------------------------------------
 -- 2. Modify your query from Exercise 11-1 
@@ -83,7 +83,10 @@ USE sakila;
 -- +-------------+----------+-------------+
 -- 599 rows in set (0.02 sec)
 -- --------------------------------------------------------------------------
-
+SELECT customer_id, COUNT(*) AS '# of Customer Payments'
+,      SUM(amount) AS 'Total amount paid'
+FROM   payment
+GROUP BY customer_id;
 
 -- --------------------------------------------------------------------------
 -- 3. Modify your query from Exercise 11-2 to include 
@@ -101,7 +104,12 @@ USE sakila;
 -- +-------------+----------+-------------+
 -- 7 rows in set (0.04 sec)
 -- --------------------------------------------------------------------------
-
+SELECT customer_id
+,      COUNT(*) AS '# of Customer Payments'
+,      SUM(amount) AS 'Total amount paid'
+FROM   payment
+GROUP BY customer_id
+HAVING   COUNT(*) >= 40;
 
 -- --------------------------------------------------------------------------
 -- 4. Construct a query that displays the following results 
@@ -132,7 +140,19 @@ USE sakila;
 -- +------------------------+--------+----------+
 -- 61 rows in set (0.03 sec)
 -- --------------------------------------------------------------------------
-
+SELECT title
+,      rating
+,      COUNT(*) AS 'row count'
+FROM   film f 
+INNER JOIN film_actor fa
+ON         f.film_id = fa.film_id
+INNER JOIN actor a
+ON         fa.actor_id = a.actor_id
+WHERE rating IN('G','PG','PG-13')
+GROUP BY title
+,        rating
+HAVING   COUNT(*) BETWEEN 9 AND 12
+ORDER BY title;
 
 -- --------------------------------------------------------------------------
 -- 5. Construct a query that displays the following results 
@@ -155,3 +175,18 @@ USE sakila;
 -- +------------------------+--------+----------+
 -- 85 rows in set (0.04 sec)
 -- --------------------------------------------------------------------------
+SELECT title
+,      rating
+,      COUNT(*) AS 'row count'
+FROM   film f 
+INNER JOIN inventory i
+ON         f.film_id = i.film_id
+INNER JOIN rental r
+ON         i.inventory_id = r.inventory_id
+INNER JOIN customer c
+ON         r.customer_id = c.customer_id
+WHERE title LIKE 'C%'
+GROUP BY title
+,        rating
+HAVING   COUNT(return_date) >= 2
+ORDER by title;

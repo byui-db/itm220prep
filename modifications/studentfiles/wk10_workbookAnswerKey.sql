@@ -8,6 +8,9 @@
 /*
     SELECT     column_name AS 'Alias1'
     ,          Function(column_name_2) AS 'Alias2'
+    ,          CASE column_name_3
+                WHEN condition THEN # ELSE # (Condition is usually a number or string value. Can also contain calculations)
+              END AS 'Alias 3' -- ALWAYS use an alias with CASE contitions
     FROM       table1 t1   -- t1 and t2 are table aliases
     JOIN       table2 t2   -- join types: INNER, LEFT, RIGHT
     ON         t1.table1_id = t2.table1_id -- PK and FK might not always be the same name
@@ -328,7 +331,8 @@ WHERE customer_id = (SELECT customer_id
 -- 3 rows in set (0.00 sec)
 
 -- --------------------------------------------------------------------------
-SELECT CONCAT(c.first_name, ' ', c.last_name) AS name, SUM(p.amount) AS 'Total Payment'
+SELECT CONCAT(c.first_name, ' ', c.last_name) AS name
+,      SUM(p.amount) AS 'Total Payment'
 FROM   customer c LEFT JOIN payment p
 ON     c.customer_id = p.customer_id
 WHERE  c.customer_id IN (1,4,210)
@@ -346,11 +350,13 @@ ORDER BY name;
 -- | MARY SMITH    |        118.68 |
 -- +---------------+---------------+
 -- --------------------------------------------------------------------------
-SELECT CONCAT(c.first_name, ' ', c.last_name) AS name, SUM(p.amount) AS 'Total Payment'
+SELECT CONCAT(c.first_name, ' ', c.last_name) AS name
+,      SUM(p.amount) AS 'Total Payment'
 FROM   payment p RIGHT JOIN customer c
 ON     c.customer_id = p.customer_id
 WHERE  c.customer_id IN (1,4,210)
 GROUP BY name
+HAVING   SUM(p.amount) IS NOT NULL
 ORDER BY name;
 
 -- --------------------------------------------------------------------------
