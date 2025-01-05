@@ -155,3 +155,49 @@ SELECT c.first_name
 ,      c.last_name
 FROM   customer c
 WHERE  c.last_name LIKE '_A%W%';
+
+-- --------------------------------------------------------------------------
+-- 9. Construct a query that shows the films we have in stock at store 2.
+-- --------------------------------------------------------------------------
+SELECT f.title
+FROM   film f
+INNER JOIN inventory i
+ON     f.film_id = i.film_id
+WHERE  i.store_id = 2;
+
+-- ----------------------------------
+-- PRACTICE
+-- ----------------------------------
+
+-- --------------------------------------------------------------------------
+-- 1. Retrieve all data from a table named category.
+-- --------------------------------------------------------------------------
+
+
+-- --------------------------------------------------------------------------
+-- 2. Retrieve all columns from a table named actor. 
+--    Filter those employees by the last name of 'Smith'.
+-- --------------------------------------------------------------------------
+
+
+-- --------------------------------------------------------------------------
+-- 3. Retrieve the title and release year from the film table.
+--    We want all films where the rating is PG-13.
+-- --------------------------------------------------------------------------
+
+
+-- --------------------------------------------------------------------------
+-- 4. Find the first 10 unique film titles of our Adventure films that exist
+--    in the inventory of store 1.  
+--    Columns will look like the following:
+--    | Film Title | 
+-- --------------------------------------------------------------------------
+
+
+-- --------------------------------------------------------------------------
+-- 5. We would like to know the actors of films that were released
+--    between 2000 and 2005 that have a last name that begins with
+--    either an 'A' or 'B'.
+--    Columns will look like the following:
+--    | Actor ID | First Name | Last Name |
+-- --------------------------------------------------------------------------

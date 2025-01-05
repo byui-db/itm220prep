@@ -155,3 +155,79 @@ SELECT c.first_name
 ,      c.last_name
 FROM   customer c
 WHERE  c.last_name LIKE '_A%W%';
+
+-- --------------------------------------------------------------------------
+-- 9. Construct a query that shows the films we have in stock at store 2.
+-- --------------------------------------------------------------------------
+SELECT f.title
+FROM   film f
+INNER JOIN inventory i
+ON     f.film_id = i.film_id
+WHERE  i.store_id = 2;
+
+-- ----------------------------------
+-- PRACTICE
+-- ----------------------------------
+
+-- --------------------------------------------------------------------------
+-- 1. Retrieve all data from a table named category.
+-- --------------------------------------------------------------------------
+SELECT *
+FROM   category;
+
+-- --------------------------------------------------------------------------
+-- 2. Retrieve all columns from a table named actor. 
+--    Filter those employees by the last name of 'Smith'.
+-- --------------------------------------------------------------------------
+SELECT  *
+FROM    actor
+WHERE   last_name = 'Smith';
+
+
+-- --------------------------------------------------------------------------
+-- 3. Retrieve the title and release year from the film table.
+--    We want all films where the rating is PG-13.
+--    Columns should look like the following:
+--    | Title | Release Year |
+-- --------------------------------------------------------------------------
+SELECT  title AS 'Title'
+,       release_year AS 'Release Year'
+FROM    film
+WHERE   rating = 'PG-13';
+
+
+-- --------------------------------------------------------------------------
+-- 4. Find the first 10 unique film titles of our Adventure films that exist
+--    in the inventory of store 1.  
+--    Columns will look like the following:
+--    | Film Title | 
+-- --------------------------------------------------------------------------
+SELECT  DISTINCT f.title AS 'Film Title'
+FROM    film f
+INNER JOIN inventory i
+ON      f.film_id = i.film_id
+WHERE   f.title LIKE '%Adventure%'
+AND     i.store_id = 1
+ORDER BY f.title
+LIMIT   10;
+
+
+-- --------------------------------------------------------------------------
+-- 5. We would like to know the actors of films that were released
+--    between 2000 and 2005 that have a last name that begins with
+--    either an 'A' or 'B'.
+--    Columns will look like the following:
+--    | Actor ID | First Name | Last Name |
+-- --------------------------------------------------------------------------
+SELECT  a.actor_id AS 'Actor ID'
+,       a.first_name AS 'First Name'
+,       a.last_name AS 'Last Name'
+FROM    actor a
+INNER JOIN film_actor fa
+ON      a.actor_id = fa.actor_id
+INNER JOIN film f
+ON      fa.film_id = f.film_id
+WHERE   a.last_name LIKE 'A%'
+OR      a.last_name LIKE 'B%'
+AND     f.release_year BETWEEN 2000 AND 2005
+ORDER BY a.last_name DESC;
