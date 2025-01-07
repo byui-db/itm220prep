@@ -328,3 +328,58 @@ FROM   customer
 GROUP BY SUBSTR(last_name,1,1)
 HAVING SUM(CASE WHEN active = 1 THEN 1 ELSE 0 END) > 30
 ORDER BY 1;
+
+
+-- ----------------------------------
+-- PRACTICE
+-- ----------------------------------
+
+-- ------------------------------------------------------------------------------------------
+-- 1. List the titles of all films and classify them according to the following rules:
+--    * If the length is less than 60 minutes, label them as 'Short'
+--    * If the length is between 60 and 120 minutes, label them as 'Medium'
+--    * If the length is greater than 120 minutes, label them as 'Long'
+--    Sort by shortest film first.
+--    Columns should look like the following:
+--    | Title | Film_Length_Category |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 2. Create a list of customers and note indicating an 'Active' or 'Inactive' status.
+--    Columns should look like the following:
+--    | Customer Name | Status |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 3. Show the titles of all films. Include the rental_duration column too.
+--    Add an additional column to classify the rental duration 
+--    according to the following rules:
+--    * If the rental_duration is less than 4 days, label it as 'Short Term'
+--    * If the rental_duration is less than 7 days, label it as 'Standard Term'
+--    * If the rental_duration is greater than 7 days, label it as 'Long Term'
+--    Sort by longest duration first.
+--    Columns should look like the following:
+--    | Title | Rental Duration | Rental_Duration_Category |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 4. For each customer, calculate their total rental payment and classify them
+--    according to the following rules:
+--    * If the total payment is less than $50, label them as a 'Low Spender'
+--    * If the total payment is between $50 and $100, label them as a 'Medium Spender'
+--    * If the total payment is any higher, label them as a 'High Spender'
+--    Note: This query requires a GROUP BY clause. This clause will be covered more in depth
+--          in week 11. Here is the basic rule: Any column NOT in the SUM function goes
+--          in the GROUP BY clause. For this question, the GROUP BY clause is formatted
+--          like this:
+--    GROUP BY c.customer_id
+--    ,        CONCAT(first_name, ' ', last_name)
+--    Sort by low spenders first. Format the total payment with a $ in front.
+--    Columns will look like the following:
+--    | Customer Name | Total Payment | Spending_Category |
+-- ------------------------------------------------------------------------------------------
+
+
