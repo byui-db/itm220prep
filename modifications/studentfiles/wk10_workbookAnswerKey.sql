@@ -251,6 +251,8 @@ ORDER BY last_name;
 
 -- Chapter 10 questions
 
+-- NOTE: This section uses subqueries. We will touch on these in week 12.
+
 -- --------------------------------------------------------------------------
 -- 7. Using the following table definitions and data, write a query 
 -- that returns each customer name along with their total payments 
