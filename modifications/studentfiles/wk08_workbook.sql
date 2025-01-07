@@ -143,3 +143,70 @@ SELECT @string;
 -- +-------------+
 -- -----------------------------------------------------------------------------------------
 SELECT DATE_FORMAT(@string, '%d-%b-%Y') AS 'date';
+
+
+-- ----------------------------------
+-- PRACTICE
+-- ----------------------------------
+
+-- ------------------------------------------------------------------------------------------
+-- 1. Write a query to concatenate the first and last name of the first 10 actors.
+--    The column should look like the following:
+--    | Actor Name |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 2. Extract the first 3 characters from the title column in the film table.
+--    The column should look like the following:
+--    | Title Prefix |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 3. Find the starting position of the work 'BALL' in the title column of the film table.
+--    The column should look like the following:
+--    | Ball Position |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 4. Use the ball position found in the previous problem and return everything to the
+--    left of it. Do not include the B in Ball.
+--    The column should look like the following:
+--    | Before Ball | Title |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 5. Round the amount column in the payment table to 2 decimal places, 
+--    add a column to floor it as well. Add one final column to format the amount to the
+--    nearest whole number.
+--    Columns should look like the following:
+--    | Rounded Amount | Floored Amount | Formatted Amount |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 6. Calculate the number of days between the rental_date and return_date.
+--    Exclude any NULL values and sort them from highest to lowest.
+--    The column should look like the following:
+--    | Days Rented |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 7. Calculate your age based on your birthdate.
+--    Use the TIMESTAMPDIFF function.
+--    Dates are formatted like this: 'yyyy-mm-dd'
+--    The column should look like the following:
+--    | My Age |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 8. Calcualte the expected return date of rentals by adding 7 days to the rental_date.
+--    Format all dates to look like: January 15th, 2025 2:00:00 PM
+--    The column should look like the following:
+--    | Rental Date| Expected Return Date |
+-- ------------------------------------------------------------------------------------------
