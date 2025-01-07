@@ -189,13 +189,13 @@ WHERE  LOCATE('BALL', title);
 -- ------------------------------------------------------------------------------------------
 -- 5. Round the amount column in the payment table to 2 decimal places, 
 --    add a column to floor it as well. Add one final column to format the amount to the
---    nearest whole number.
+--    nearest whole number. Add a $ to each price.
 --    Columns should look like the following:
 --    | Rounded Amount | Floored Amount | Formatted Amount |
 -- ------------------------------------------------------------------------------------------
-SELECT ROUND(amount, 2) AS 'Rounded Amount'
-,      FLOOR(amount) AS 'Floored Amount'
-,      FORMAT(amount, 0) AS 'Formatted Amount'
+SELECT CONCAT('$',ROUND(amount, 2)) AS 'Rounded Amount'
+,      CONCAT('$',FLOOR(amount)) AS 'Floored Amount'
+,      CONCAT('$',FORMAT(amount, 0)) AS 'Formatted Amount'
 FROM   payment;
 
 -- ------------------------------------------------------------------------------------------

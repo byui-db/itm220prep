@@ -181,7 +181,7 @@ SELECT DATE_FORMAT(@string, '%d-%b-%Y') AS 'date';
 -- ------------------------------------------------------------------------------------------
 -- 5. Round the amount column in the payment table to 2 decimal places, 
 --    add a column to floor it as well. Add one final column to format the amount to the
---    nearest whole number.
+--    nearest whole number. Add a $ to each price.
 --    Columns should look like the following:
 --    | Rounded Amount | Floored Amount | Formatted Amount |
 -- ------------------------------------------------------------------------------------------
