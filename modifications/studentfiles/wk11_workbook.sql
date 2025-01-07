@@ -190,3 +190,45 @@ GROUP BY title
 ,        rating
 HAVING   COUNT(return_date) >= 2
 ORDER by title;
+
+-- ----------------------------------
+-- PRACTICE
+-- ----------------------------------
+
+-- ------------------------------------------------------------------------------------------
+-- 1. Find the total number of films in the film table.
+--    The column will look like the following:
+--    | Total Films |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 2. Calculate the average rental duration for all films.
+--    The column will look like the following:
+--    | Average Rental Duration |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 3. Find the total number of films for each rating.
+--    Columns will look like the following:
+--    | Rating | Total Films |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 4. List the total number of films by category that has more than 50 films.
+--    Column names will look like the following:
+--    | Category Name | Total Films |
+-- ------------------------------------------------------------------------------------------
+
+
+-- ------------------------------------------------------------------------------------------
+-- 5. For each store, calculate the total rental revenue (amount) grouped by the store's ID.
+--    Only include stores that have generated more than $15,000 in revenue.
+--    Sort the results by total revenue in descending order. 
+--    Format the revenue to 2 decimal places and add a $.
+--    Columns will look like the following:
+--    | Store ID | Total Revenue |
+-- ------------------------------------------------------------------------------------------
+

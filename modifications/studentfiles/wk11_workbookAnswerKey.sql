@@ -190,3 +190,70 @@ GROUP BY title
 ,        rating
 HAVING   COUNT(return_date) >= 2
 ORDER by title;
+
+-- ----------------------------------
+-- PRACTICE
+-- ----------------------------------
+
+-- ------------------------------------------------------------------------------------------
+-- 1. Find the total number of films in the film table.
+--    The column will look like the following:
+--    | Total Films |
+-- ------------------------------------------------------------------------------------------
+SELECT COUNT(*) AS 'Total Films'
+FROM   film;
+
+-- ------------------------------------------------------------------------------------------
+-- 2. Calculate the average rental duration for all films.
+--    The column will look like the following:
+--    | Average Rental Duration |
+-- ------------------------------------------------------------------------------------------
+SELECT AVG(rental_duration) AS 'Average Rental Duration'
+FROM   film;
+
+-- ------------------------------------------------------------------------------------------
+-- 3. Find the total number of films for each rating.
+--    Columns will look like the following:
+--    | Rating | Total Films |
+-- ------------------------------------------------------------------------------------------
+SELECT rating AS 'Rating'
+,      COUNT(*) AS 'Total Films'
+FROM   film
+GROUP BY rating;
+
+-- ------------------------------------------------------------------------------------------
+-- 4. List the total number of films by category that has more than 50 films.
+--    Column names will look like the following:
+--    | Category Name | Total Films |
+-- ------------------------------------------------------------------------------------------
+SELECT c.name AS 'Category Name'
+,      COUNT(*) AS 'Total Films'
+FROM   film f
+INNER JOIN film_category fc
+ON     f.film_id = fc.film_id
+INNER JOIN category c
+ON     fc.category_id = c.category_id
+GROUP BY c.name
+HAVING COUNT(*) > 50
+ORDER BY COUNT(*) DESC;
+
+-- ------------------------------------------------------------------------------------------
+-- 5. For each store, calculate the total rental revenue (amount) grouped by the store's ID.
+--    Only include stores that have generated more than $15,000 in revenue.
+--    Sort the results by total revenue in descending order. 
+--    Format the revenue to 2 decimal places and add a $.
+--    Columns will look like the following:
+--    | Store ID | Total Revenue |
+-- ------------------------------------------------------------------------------------------
+SELECT s.store_id AS 'Store ID'
+,      CONCAT('$', FORMAT(SUM(p.amount),2)) AS 'Total Revenue'
+FROM   rental r
+INNER JOIN inventory i
+ON     r.inventory_id = i.inventory_id
+INNER JOIN store s 
+ON     i.store_id = s.store_id
+INNER JOIN payment p
+ON     r.rental_id = p.rental_id
+GROUP BY s.store_id
+HAVING SUM(p.amount) > 15000
+ORDER BY SUM(p.amount) DESC;
