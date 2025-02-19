@@ -177,11 +177,11 @@ FROM   category;
 
 -- --------------------------------------------------------------------------
 -- 2. Retrieve all columns from a table named actor. 
---    Filter those employees by the last name of 'Smith'.
+--    Filter those employees by the last name of 'Silverstone'.
 -- --------------------------------------------------------------------------
 SELECT  *
 FROM    actor
-WHERE   last_name = 'Smith';
+WHERE   last_name = 'Silverstone';
 
 
 -- --------------------------------------------------------------------------
@@ -197,8 +197,8 @@ WHERE   rating = 'PG-13';
 
 
 -- --------------------------------------------------------------------------
--- 4. Find the first 10 unique film titles of our Adventure films that exist
---    in the inventory of store 1.  
+-- 4. Find the first 10 unique film titles of our Action films that exist
+--    in the inventory of store 1. (This uses 3 joins!)
 --    Columns will look like the following:
 --    | Film Title | 
 -- --------------------------------------------------------------------------
@@ -206,7 +206,11 @@ SELECT  DISTINCT f.title AS 'Film Title'
 FROM    film f
 INNER JOIN inventory i
 ON      f.film_id = i.film_id
-WHERE   f.title LIKE '%Adventure%'
+INNER JOIN film_category fc
+ON      f.film_id = fc.film_id
+INNER JOIN category c
+ON      fc.category_id = c.category_id
+WHERE   c.name LIKE '%Action%'
 AND     i.store_id = 1
 ORDER BY f.title
 LIMIT   10;
