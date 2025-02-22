@@ -223,6 +223,7 @@ GROUP BY rating;
 
 -- ------------------------------------------------------------------------------------------
 -- 4. List the total number of films by category that has more than 50 films.
+--    Sort from greatest to lowest.
 --    Column names will look like the following:
 --    | Category Name | Total Films |
 -- ------------------------------------------------------------------------------------------
