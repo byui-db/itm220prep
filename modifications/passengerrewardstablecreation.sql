@@ -1,1 +1,0 @@
-CREATE TABLE IF NOT EXISTS passengerrewards AS SELECT * FROM passenger_rewards;
