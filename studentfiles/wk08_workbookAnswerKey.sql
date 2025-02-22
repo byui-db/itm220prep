@@ -216,7 +216,7 @@ ORDER BY DATEDIFF(return_date, rental_date) DESC;
 --    The column should look like the following:
 --    | My Age |
 -- ------------------------------------------------------------------------------------------
-SELECT TIMESTAMPDIFF(YEAR, [ENTER BIRTHDATE HERE], NOW());
+SELECT TIMESTAMPDIFF(YEAR, [ENTER BIRTHDATE HERE], NOW()) AS 'My Age';
 
 -- ------------------------------------------------------------------------------------------
 -- 8. Calcualte the expected return date of rentals by adding 7 days to the rental_date.
