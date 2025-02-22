@@ -370,7 +370,7 @@ FROM   customer;
 --    Add an additional column to classify the rental duration 
 --    according to the following rules:
 --    * If the rental_duration is less than 4 days, label it as 'Short Term'
---    * If the rental_duration is less than 7 days, label it as 'Standard Term'
+--    * If the rental_duration is beween 4 and 7 days, label it as 'Standard Term'
 --    * If the rental_duration is greater than 7 days, label it as 'Long Term'
 --    Sort by longest duration first.
 --    Columns should look like the following:
