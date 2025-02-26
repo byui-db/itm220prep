@@ -13,15 +13,14 @@ WHERE    LENGTH(p.lastname) = 1
 ORDER BY p.lastname;
 
 -- -------------------------------------------------------------------------
--- 2. Locate all passenger names with the letter X in their last name that
---    end in XX. Can use LIKE or REGEXP.
+-- 2. Locate all passenger names with their last name ending in XX.
+--    Can use LIKE or REGEXP.
 --    Your columns will look like the following:
 --    | Passenger Name |
 -- -------------------------------------------------------------------------
 SELECT CONCAT(p.firstname, ' ', p.lastname) AS 'Passenger Name'
 FROM   passenger p
-WHERE  LOCATE('X', lastname)
-AND    lastname LIKE '%XX';
+WHERE  lastname LIKE '%XX';
 
 -- -------------------------------------------------------------------------
 -- 3. Find the airplane type that contains '747' in the identifier.
