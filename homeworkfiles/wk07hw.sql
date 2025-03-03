@@ -41,6 +41,7 @@ USE airportdb;
 
 -- --------------------------------------------------------------------------
 -- 5. What are the flights that depart between 10:00 and 10:15 on Monday?
+--    Check the flightschedule table for the column Monday.
 --    Sort the results by departure time.
 --    List the following columns:
 --    | Flight Number | Departure Time | Arrival Time | Airline | Monday |
