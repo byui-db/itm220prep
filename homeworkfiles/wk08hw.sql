@@ -45,7 +45,8 @@ USE airportdb;
 
 -- -------------------------------------------------------------------------------------------------
 -- 5. Find all flights that have a duration greater than 20 hours. 
---    Show hours, how many days and how many years since the flight (Use FLOOR on the year column).
+--    Show hours, how many days (Use DATEDIFF) 
+--    and how many years since the flight (Use FLOOR on the year column).
 --    Sort them by longest flight first.
 --    Format the dates to look like: Feb 28, 2015 3:00:00 PM
 --    Limit to 10 results.
