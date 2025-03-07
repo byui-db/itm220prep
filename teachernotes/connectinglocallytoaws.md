@@ -32,7 +32,7 @@ Please be careful with this process as it will allow access to the database from
     - Click on `Instances` in the left-hand menu.
     - Select your instance.
     - Click on the `Security` tab.
-    - Click on the security group that is associated with the database.
+    - Click on the security group that is associated with the instance.
     - Click on the `Inbound Rules` tab.
     - Click on the `Edit inbound rules` button.
     - Click on the `Add rule` button.
