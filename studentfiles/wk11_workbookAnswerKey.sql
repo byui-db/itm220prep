@@ -197,6 +197,13 @@ ORDER by title;
 
 -- ------------------------------------------------------------------------------------------
 -- 1. Find the total number of films in the film table.
+--    Example Output:
+--    +-------------+
+--    | Total Films |
+--    +-------------+
+--    |        1000 |
+--    +-------------+
+--    1 row in set (0.06 sec)
 --    The column will look like the following:
 --    | Total Films |
 -- ------------------------------------------------------------------------------------------
@@ -205,6 +212,13 @@ FROM   film;
 
 -- ------------------------------------------------------------------------------------------
 -- 2. Calculate the average rental duration for all films.
+--    Example Output:
+--    +-------------------------+
+--    | Average Rental Duration |
+--    +-------------------------+
+--    |                  4.9850 |
+--    +-------------------------+
+--    1 row in set (0.00 sec)
 --    The column will look like the following:
 --    | Average Rental Duration |
 -- ------------------------------------------------------------------------------------------
@@ -213,6 +227,17 @@ FROM   film;
 
 -- ------------------------------------------------------------------------------------------
 -- 3. Find the total number of films for each rating.
+--    Example Output:
+--    +--------+-------------+
+--    | Rating | Total Films |
+--    +--------+-------------+
+--    | PG     |         194 |
+--    | G      |         178 |
+--    | NC-17  |         210 |
+--    | PG-13  |         223 |
+--    | R      |         195 |
+--    +--------+-------------+
+--    5 rows in set (0.00 sec)
 --    Columns will look like the following:
 --    | Rating | Total Films |
 -- ------------------------------------------------------------------------------------------
@@ -224,6 +249,28 @@ GROUP BY rating;
 -- ------------------------------------------------------------------------------------------
 -- 4. List the total number of films by category that has more than 50 films.
 --    Sort from greatest to lowest.
+--    Example Output:
+--    +---------------+-------------+
+--    | Category Name | Total Films |
+--    +---------------+-------------+
+--    | Sports        |          74 |
+--    | Foreign       |          73 |
+--    | Family        |          69 |
+--    | Documentary   |          68 |
+--    | Animation     |          66 |
+--    | Action        |          64 |
+--    | New           |          63 |
+--    | Drama         |          62 |
+--    | Games         |          61 |
+--    | Sci-Fi        |          61 |
+--    | Children      |          60 |
+--    | Comedy        |          58 |
+--    | Classics      |          57 |
+--    | Travel        |          57 |
+--    | Horror        |          56 |
+--    | Music         |          51 |
+--    +---------------+-------------+
+--    16 rows in set (0.02 sec)
 --    Column names will look like the following:
 --    | Category Name | Total Films |
 -- ------------------------------------------------------------------------------------------
@@ -243,6 +290,14 @@ ORDER BY COUNT(*) DESC;
 --    Only include stores that have generated more than $15,000 in revenue.
 --    Sort the results by total revenue in descending order. 
 --    Format the revenue to 2 decimal places and add a $.
+--    Example Output:
+--    +----------+---------------+
+--    | Store ID | Total Revenue |
+--    +----------+---------------+
+--    |        2 | $33,726.77    |
+--    |        1 | $33,679.79    |
+--    +----------+---------------+
+--    2 rows in set (0.19 sec)
 --    Columns will look like the following:
 --    | Store ID | Total Revenue |
 -- ------------------------------------------------------------------------------------------
