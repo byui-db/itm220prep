@@ -340,6 +340,45 @@ ORDER BY 1;
 --    * If the length is between 60 and 120 minutes, label them as 'Medium'
 --    * If the length is greater than 120 minutes, label them as 'Long'
 --    Sort by shortest film first.
+--    Example Output:
+--    +-----------------------------+----------------------+
+--    | title                       | film_length_category |
+--    +-----------------------------+----------------------+
+--    | ACE GOLDFINGER              | Short                |
+--    | ADAPTATION HOLES            | Short                |
+--    | AIRPORT POLLOCK             | Short                |
+--    | ALIEN CENTER                | Short                |
+--    | ALTER VICTORY               | Short                |
+--    | ...                         | ...                  |
+--    | VISION TORQUE               | Short                |
+--    | WESTWARD SEABISCUIT         | Short                |
+--    | WHISPERER GIANT             | Short                |
+--    | WOLVES DESIRE               | Short                |
+--    | ZORRO ARK                   | Short                |
+--    | ACADEMY DINOSAUR            | Medium               |
+--    | AFFAIR PREJUDICE            | Medium               |
+--    | AIRPLANE SIERRA             | Medium               |
+--    | ALABAMA DEVIL               | Medium               |
+--    | ALADDIN CALENDAR            | Medium               |
+--    | ...                         | ...                  |
+--    | WORKING MICROCOSMOS         | Medium               |
+--    | WYOMING STORM               | Medium               |
+--    | YENTL IDAHO                 | Medium               |
+--    | ZHIVAGO CORE                | Medium               |
+--    | ZOOLANDER FICTION           | Medium               |
+--    | AFRICAN EGG                 | Long                 |
+--    | AGENT TRUMAN                | Long                 |
+--    | ALAMO VIDEOTAPE             | Long                 |
+--    | ALASKA PHANTOM              | Long                 |
+--    | ALI FOREVER                 | Long                 |
+--    | ...                         | ...                  |
+--    | WORST BANGER                | Long                 |
+--    | WRATH MILE                  | Long                 |
+--    | WRONG BEHAVIOR              | Long                 |
+--    | YOUNG LANGUAGE              | Long                 |
+--    | YOUTH KICK                  | Long                 |
+--    +-----------------------------+----------------------+
+--    1000 rows in set (0.00 sec)
 --    Columns should look like the following:
 --    | Title | Film_Length_Category |
 -- ------------------------------------------------------------------------------------------
@@ -349,11 +388,43 @@ SELECT title
            WHEN length BETWEEN 60 AND 120 THEN 'Medium' 
            ELSE 'Long' 
        END AS film_length_category
-FROM   film;
+FROM   film
+ORDER BY film_length_category;
 
 
 -- ------------------------------------------------------------------------------------------
 -- 2. Create a list of customers and note indicating an 'Active' or 'Inactive' status.
+--    Example Output:
+--    +-----------------------+----------+
+--    | Customer Name         | Status   |
+--    +-----------------------+----------+
+--    | MARY SMITH            | Active   |
+--    | PATRICIA JOHNSON      | Active   |
+--    | LINDA WILLIAMS        | Active   |
+--    | BARBARA JONES         | Active   |
+--    | ELIZABETH BROWN       | Active   |
+--    | JENNIFER DAVIS        | Active   |
+--    | MARIA MILLER          | Active   |
+--    | SUSAN WILSON          | Active   |
+--    | MARGARET MOORE        | Active   |
+--    | DOROTHY TAYLOR        | Active   |
+--    | LISA ANDERSON         | Active   |
+--    | NANCY THOMAS          | Active   |
+--    | KAREN JACKSON         | Active   |
+--    | BETTY WHITE           | Active   |
+--    | HELEN HARRIS          | Active   |
+--    | SANDRA MARTIN         | Inactive |
+--    | ...                   | ...      |
+--    | TERRANCE ROUSH        | Inactive |
+--    | RENE MCALISTER        | Active   |
+--    | EDUARDO HIATT         | Active   |
+--    | TERRENCE GUNDERSON    | Active   |
+--    | ENRIQUE FORSYTHE      | Active   |
+--    | FREDDIE DUGGAN        | Active   |
+--    | WADE DELVALLE         | Active   |
+--    | AUSTIN CINTRON        | Active   |
+--    +-----------------------+----------+
+--    599 rows in set (0.00 sec)
 --    Columns should look like the following:
 --    | Customer Name | Status |
 -- ------------------------------------------------------------------------------------------
@@ -373,6 +444,27 @@ FROM   customer;
 --    * If the rental_duration is beween 4 and 7 days, label it as 'Standard Term'
 --    * If the rental_duration is greater than 7 days, label it as 'Long Term'
 --    Sort by longest duration first.
+--    Example Output:
+--    +-----------------------------+-----------------+--------------------------+
+--    | Title                       | Rental Duration | Rental_Duration_Category |
+--    +-----------------------------+-----------------+--------------------------+
+--    | ACADEMY DINOSAUR            |               6 | Standard Term            |
+--    | ADAPTATION HOLES            |               7 | Standard Term            |
+--    | AFFAIR PREJUDICE            |               5 | Standard Term            |
+--    | AFRICAN EGG                 |               6 | Standard Term            |
+--    | ...                         |             ... | ...                      |
+--    | YOUTH KICK                  |               4 | Standard Term            |
+--    | ZHIVAGO CORE                |               6 | Standard Term            |
+--    | ZOOLANDER FICTION           |               5 | Standard Term            |
+--    | ACE GOLDFINGER              |               3 | Short Term               |
+--    | AGENT TRUMAN                |               3 | Short Term               |
+--    | ALABAMA DEVIL               |               3 | Short Term               |
+--    | ...                         |            ...  | ...                      |
+--    | WORDS HUNTER                |               3 | Short Term               |
+--    | WORLD LEATHERNECKS          |               3 | Short Term               |
+--    | ZORRO ARK                   |               3 | Short Term               |
+--    +-----------------------------+-----------------+--------------------------+
+--    1000 rows in set (0.00 sec)
 --    Columns should look like the following:
 --    | Title | Rental Duration | Rental_Duration_Category |
 -- ------------------------------------------------------------------------------------------
@@ -400,6 +492,34 @@ ORDER BY Rental_Duration_Category DESC;
 --    GROUP BY c.customer_id
 --    ,        CONCAT(first_name, ' ', last_name)
 --    Sort by low spenders first. Format the total payment with a $ in front.
+--    Example Output:
+--    +-----------------------+---------------+-------------------+
+--    | Customer Name         | Total Payment | Spending_Category |
+--    +-----------------------+---------------+-------------------+
+--    | BARBARA JONES         | $81.78        | Medium Spender    |
+--    | JENNIFER DAVIS        | $93.72        | Medium Spender    |
+--    | SUSAN WILSON          | $92.76        | Medium Spender    |
+--    | MARGARET MOORE        | $89.77        | Medium Spender    |
+--    | DOROTHY TAYLOR        | $99.75        | Medium Spender    |
+--    | DONNA THOMPSON        | $98.79        | Medium Spender    |
+--    | ...                   | ...           | ...               |
+--    | ENRIQUE FORSYTHE      | $96.72        | Medium Spender    |
+--    | FREDDIE DUGGAN        | $99.75        | Medium Spender    |
+--    | WADE DELVALLE         | $83.78        | Medium Spender    |
+--    | AUSTIN CINTRON        | $83.81        | Medium Spender    |
+--    | MARY SMITH            | $118.68       | High Spender      |
+--    | PATRICIA JOHNSON      | $128.73       | High Spender      |
+--    | LINDA WILLIAMS        | $135.74       | High Spender      |
+--    | ELIZABETH BROWN       | $144.62       | High Spender      |
+--    | JIMMIE EGGLESTON      | $135.72       | High Spender      |
+--    | ...                   | ...           | ...               |
+--    | KENT ARSENAULT        | $134.73       | High Spender      |
+--    | TERRANCE ROUSH        | $111.71       | High Spender      |
+--    | RENE MCALISTER        | $113.74       | High Spender      |
+--    | EDUARDO HIATT         | $130.73       | High Spender      |
+--    | TERRENCE GUNDERSON    | $117.70       | High Spender      |
+--    +-----------------------+---------------+-------------------+
+--    599 rows in set (0.03 sec)
 --    Columns will look like the following:
 --    | Customer Name | Total Payment | Spending_Category |
 -- ------------------------------------------------------------------------------------------
