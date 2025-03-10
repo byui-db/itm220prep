@@ -41,6 +41,8 @@ USE airportdb;
 
 
 -- ---------------------------------------------------------------------------------------------------------
+-- THIS QUERY MAY TAKE UP TO 1 MINUTE 30 SECONDS TO LOAD 
+-- AND MAY REQUIRE YOU TO RESTART WORKBENCH
 -- 5. List the number of passengers each flight serviced within the U.S.
 --    Sort by total number of passengers from greatest to least
 --    The activity column consists of a case statement with the
