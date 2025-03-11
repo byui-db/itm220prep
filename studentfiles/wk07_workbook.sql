@@ -171,33 +171,122 @@ WHERE  i.store_id = 2;
 
 -- --------------------------------------------------------------------------
 -- 1. Retrieve all data from a table named category.
+--    Example Output:
+--    +-------------+-------------+---------------------+
+--    | category_id | name        | last_update         |
+--    +-------------+-------------+---------------------+
+--    |           1 | Action      | 2006-02-15 04:46:27 |
+--    |           2 | Animation   | 2006-02-15 04:46:27 |
+--    |           3 | Children    | 2006-02-15 04:46:27 |
+--    |           4 | Classics    | 2006-02-15 04:46:27 |
+--    |           5 | Comedy      | 2006-02-15 04:46:27 |
+--    |           6 | Documentary | 2006-02-15 04:46:27 |
+--    |           7 | Drama       | 2006-02-15 04:46:27 |
+--    |           8 | Family      | 2006-02-15 04:46:27 |
+--    |           9 | Foreign     | 2006-02-15 04:46:27 |
+--    |          10 | Games       | 2006-02-15 04:46:27 |
+--    |          11 | Horror      | 2006-02-15 04:46:27 |
+--    |          12 | Music       | 2006-02-15 04:46:27 |
+--    |          13 | New         | 2006-02-15 04:46:27 |
+--    |          14 | Sci-Fi      | 2006-02-15 04:46:27 |
+--    |          15 | Sports      | 2006-02-15 04:46:27 |
+--    |          16 | Travel      | 2006-02-15 04:46:27 |
+--    +-------------+-------------+---------------------+
+--    16 rows in set (0.00 sec)
 -- --------------------------------------------------------------------------
 
 
 -- --------------------------------------------------------------------------
 -- 2. Retrieve all columns from a table named actor. 
 --    Filter those employees by the last name of 'Silverstone'.
+--    Example Output:
+--    +----------+------------+-------------+---------------------+
+--    | actor_id | first_name | last_name   | last_update         |
+--    +----------+------------+-------------+---------------------+
+--    |      180 | JEFF       | SILVERSTONE | 2006-02-15 04:34:33 |
+--    |      195 | JAYNE      | SILVERSTONE | 2006-02-15 04:34:33 |
+--    +----------+------------+-------------+---------------------+
+--    2 rows in set (0.00 sec)
 -- --------------------------------------------------------------------------
 
 
 -- --------------------------------------------------------------------------
 -- 3. Retrieve the title and release year from the film table.
 --    We want all films where the rating is PG-13.
+--    Example Output:
+--    +-----------------------------+--------------+
+--    | Title                       | Release Year |
+--    +-----------------------------+--------------+
+--    | AIRPLANE SIERRA             |         2006 |
+--    | ALABAMA DEVIL               |         2006 |
+--    | ALTER VICTORY               |         2006 |
+--    | ANTHEM LUKE                 |         2006 |
+--    | APOLLO TEEN                 |         2006 |
+--    | ARACHNOPHOBIA ROLLERCOASTER |         2006 |
+--    | ARGONAUTS TOWN              |         2006 |
+--    | ATTACKS HATE                |         2006 |
+--    | ATTRACTION NEWTON           |         2006 |
+--    | BACKLASH UNDEFEATED         |         2006 |
+--    | ...                         |          ... |
+--    | UNDEFEATED DALMATIONS       |         2006 |
+--    | USUAL UNTOUCHABLES          |         2006 |
+--    | VALENTINE VANISHING         |         2006 |
+--    | VICTORY ACADEMY             |         2006 |
+--    | VIETNAM SMOOCHY             |         2006 |
+--    | VILLAIN DESPERATE           |         2006 |
+--    | VIRGIN DAISY                |         2006 |
+--    | VISION TORQUE               |         2006 |
+--    | VOICE PEACH                 |         2006 |
+--    | VOYAGE LEGALLY              |         2006 |
+--    | WAIT CIDER                  |         2006 |
+--    | WANDA CHAMBER               |         2006 |
+--    | WHALE BIKINI                |         2006 |
+--    | WHISPERER GIANT             |         2006 |
+--    | WORLD LEATHERNECKS          |         2006 |
+--    | WRONG BEHAVIOR              |         2006 |
+--    | WYOMING STORM               |         2006 |
+--    +-----------------------------+--------------+
+--    223 rows in set (0.00 sec)
 -- --------------------------------------------------------------------------
 
 
 -- --------------------------------------------------------------------------
 -- 4. Find the first 10 unique film titles of our Action films that exist
 --    in the inventory of store 1. (This uses 3 joins!)
---    Columns will look like the following:
---    | Film Title | 
+--    Example Output:
+--    +---------------------+
+--    | Film Title          |
+--    +---------------------+
+--    | AMADEUS HOLY        |
+--    | AMERICAN CIRCUS     |
+--    | ANTITRUST TOMATOES  |
+--    | BAREFOOT MANCHURIAN |
+--    | BERETS AGENT        |
+--    | BRIDE INTRIGUE      |
+--    | BULL SHAWSHANK      |
+--    | CAMPUS REMEMBER     |
+--    | CELEBRITY HORN      |
+--    | CLUELESS BUCKET     |
+--    +---------------------+
+--    10 rows in set (0.01 sec)
 -- --------------------------------------------------------------------------
 
 
 -- --------------------------------------------------------------------------
 -- 5. We would like to know the actors of films that were released
 --    between 2000 and 2005 that have a last name that begins with
---    either an 'A' or 'B'.
---    Columns will look like the following:
+--    either an 'A' or 'B'. Make sure there are no duplicates.
+--    Example Output:
+--    +----------+------------+-----------+
 --    | Actor ID | First Name | Last Name |
+--    +----------+------------+-----------+
+--    |       76 | ANGELINA   | ASTAIRE   |
+--    |      194 | MERYL      | ALLEN     |
+--    |      145 | KIM        | ALLEN     |
+--    |      118 | CUBA       | ALLEN     |
+--    |      182 | DEBBIE     | AKROYD    |
+--    |       92 | KIRSTEN    | AKROYD    |
+--    |       58 | CHRISTIAN  | AKROYD    |
+--    +----------+------------+-----------+
+--    7 rows in set (0.00 sec)
 -- --------------------------------------------------------------------------
