@@ -25,7 +25,7 @@ SELECT CASE
         WHEN COUNT(b.passenger_id) >= 10 THEN 'Silver'
         ELSE 'No Status'
 		END AS 'Status'
-,      SUM(CASE WHEN b.passenger_id IS NULL THEN 0 ELSE 1 END) AS 'Number of Flights'
+,      COUNT(b.passenger_id) AS 'Number of Flights'
 ,      p.firstname AS 'First Name'
 ,      p.lastname AS 'Last Name'
 FROM   passenger p
@@ -60,7 +60,7 @@ SELECT CASE
         WHEN COUNT(b.passenger_id) >= 10 THEN 'Silver'
         ELSE 'No Status'
 		END AS 'Status'
-,      SUM(CASE WHEN b.passenger_id IS NULL THEN 0 ELSE 1 END) AS 'Number of Flights'
+,      COUNT(b.passenger_id) AS 'Number of Flights'
 ,      p.firstname AS 'First Name'
 ,      p.lastname AS 'Last Name'
 FROM   passenger p
@@ -80,7 +80,7 @@ OR      (b.passenger_id IS NULL AND pd.country = 'United Kingdom')
 GROUP BY p.firstname
 ,        p.lastname
 ,        MONTH(f.departure)
-HAVING   SUM(CASE WHEN b.passenger_id IS NULL THEN 0 END) = 0
+HAVING   COUNT(b.passenger_id) = 0
 ORDER BY COUNT(b.passenger_id) DESC;
 
 
@@ -95,7 +95,7 @@ SELECT CASE
         WHEN COUNT(b.passenger_id) >= 10 THEN 'Silver'
         ELSE 'No Status'
 		END AS 'Status'
-,      SUM(CASE WHEN b.passenger_id IS NULL THEN 0 ELSE 1 END) AS 'Number of Flights'
+,      COUNT(b.passenger_id) AS 'Number of Flights'
 ,      p.firstname AS 'First Name'
 ,      p.lastname AS 'Last Name'
 ,      pd.country AS 'Passenger Country'
@@ -115,5 +115,5 @@ GROUP BY p.firstname
 ,        p.lastname
 ,        pd.country
 ,        MONTH(f.departure)
-HAVING   SUM(CASE WHEN b.passenger_id IS NULL THEN 0 END) = 0
+HAVING   COUNT(b.passenger_id) = 0
 ORDER BY COUNT(b.passenger_id) DESC;
