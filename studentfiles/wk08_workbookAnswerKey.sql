@@ -149,8 +149,22 @@ SELECT DATE_FORMAT(@string, '%d-%b-%Y') AS 'date';
 
 -- ------------------------------------------------------------------------------------------
 -- 1. Write a query to concatenate the first and last name of the first 10 actors.
---    The column should look like the following:
---    | Actor Name |
+--    Example Output:
+--    +---------------------+
+--    | Actor Name          |
+--    +---------------------+
+--    | PENELOPE GUINESS    |
+--    | NICK WAHLBERG       |
+--    | ED CHASE            |
+--    | JENNIFER DAVIS      |
+--    | JOHNNY LOLLOBRIGIDA |
+--    | BETTE NICHOLSON     |
+--    | GRACE MOSTEL        |
+--    | MATTHEW JOHANSSON   |
+--    | JOE SWANK           |
+--    | CHRISTIAN GABLE     |
+--    +---------------------+
+--    10 rows in set (0.00 sec)
 -- ------------------------------------------------------------------------------------------
 SELECT CONCAT(first_name, ' ', last_name) AS 'Actor Name'
 FROM   actor
@@ -158,8 +172,28 @@ LIMIT 10;
 
 -- ------------------------------------------------------------------------------------------
 -- 2. Extract the first 3 characters from the title column in the film table.
---    The column should look like the following:
+--    Limit the output to 15 results
+--    Example Output:
+--    +--------------+
 --    | Title Prefix |
+--    +--------------+
+--    | ACA          |
+--    | ACE          |
+--    | ADA          |
+--    | AFF          |
+--    | AFR          |
+--    | AGE          |
+--    | AIR          |
+--    | AIR          |
+--    | ALA          |
+--    | ALA          |
+--    | ALA          |
+--    | ALA          |
+--    | ALI          |
+--    | ALI          |
+--    | ALI          |
+--    +--------------+
+--    15 rows in set (0.00 sec)
 -- ------------------------------------------------------------------------------------------
 SELECT SUBSTRING(title, 1, 3) AS 'Title Prefix'
 FROM   film;
@@ -168,8 +202,19 @@ FROM   film;
 -- 3. Find the starting position of the work 'BALL' in the title column of the film table.
 --    Only show the titles that have the word BALL in them.
 --    (Numbers greater than zero should show up)
---    The column should look like the following:
+--    Example Output:
+--    +---------------+
 --    | Ball Position |
+--    +---------------+
+--    |             1 |
+--    |             1 |
+--    |             9 |
+--    |            10 |
+--    |             5 |
+--    |             5 |
+--    |            15 |
+--    +---------------+
+--    7 rows in set (0.00 sec)
 -- ------------------------------------------------------------------------------------------
 SELECT LOCATE('BALL', title) AS 'Ball Position'
 FROM   film
@@ -178,8 +223,19 @@ WHERE  LOCATE('BALL', title);
 -- ------------------------------------------------------------------------------------------
 -- 4. Use the ball position found in the previous problem and return everything to the
 --    left of it. Do not include the B in Ball.
---    The column should look like the following:
---    | Before Ball | Title |
+--    Example Output:
+--    +----------------+-----------------------+
+--    | Before Ball    | Title                 |
+--    +----------------+-----------------------+
+--    |                | BALLOON HOMEWARD      |
+--    |                | BALLROOM MOCKINGBIRD  |
+--    | BED HIGH       | BED HIGHBALL          |
+--    | BOONDOCK       | BOONDOCK BALLROOM     |
+--    | FIRE           | FIREBALL PHILADELPHIA |
+--    | HIGH           | HIGHBALL POTTER       |
+--    | HOLOCAUST HIGH | HOLOCAUST HIGHBALL    |
+--    +----------------+-----------------------+
+--    7 rows in set (0.00 sec)
 -- ------------------------------------------------------------------------------------------
 SELECT LEFT(title, LOCATE('BALL', title) - 1) AS 'Before Ball'
 ,      title AS 'Title'
@@ -190,8 +246,23 @@ WHERE  LOCATE('BALL', title);
 -- 5. Round the amount column in the payment table to 2 decimal places, 
 --    add a column to floor it as well. Add one final column to format the amount to the
 --    nearest whole number. Add a $ to each price.
---    Columns should look like the following:
+--    Limit the output to the last 10 results
+--    Example Output:
+--    +----------------+----------------+------------------+
 --    | Rounded Amount | Floored Amount | Formatted Amount |
+--    +----------------+----------------+------------------+
+--    | $2.99          | $2             | $3               |
+--    | $2.99          | $2             | $3               |
+--    | $8.99          | $8             | $9               |
+--    | $1.99          | $1             | $2               |
+--    | $4.99          | $4             | $5               |
+--    | $1.99          | $1             | $2               |
+--    | $3.99          | $3             | $4               |
+--    | $2.99          | $2             | $3               |
+--    | $2.99          | $2             | $3               |
+--    | $6.99          | $6             | $7               |
+--    +----------------+----------------+------------------+
+--    10 rows in set (0.00 sec)
 -- ------------------------------------------------------------------------------------------
 SELECT CONCAT('$',ROUND(amount, 2)) AS 'Rounded Amount'
 ,      CONCAT('$',FLOOR(amount)) AS 'Floored Amount'
@@ -201,8 +272,18 @@ FROM   payment;
 -- ------------------------------------------------------------------------------------------
 -- 6. Calculate the number of days between the rental_date and return_date.
 --    Exclude any NULL values and sort them from highest to lowest.
---    The column should look like the following:
---    | Days Rented |
+--    Limit the output to the first 5 results
+--    Example Output:
+--    +-------------+--------------+
+--    | Days Rented | Inventory ID |
+--    +-------------+--------------+
+--    |          10 |         4154 |
+--    |          10 |          249 |
+--    |          10 |         3627 |
+--    |          10 |         2452 |
+--    |          10 |         4264 |
+--    +-------------+--------------+
+--    5 rows in set (0.01 sec)
 -- ------------------------------------------------------------------------------------------
 SELECT DATEDIFF(return_date, rental_date) AS 'Days Rented'
 FROM   rental
@@ -221,8 +302,33 @@ SELECT TIMESTAMPDIFF(YEAR, [ENTER BIRTHDATE HERE], NOW()) AS 'My Age';
 -- ------------------------------------------------------------------------------------------
 -- 8. Calcualte the expected return date of rentals by adding 7 days to the rental_date.
 --    Format all dates to look like: January 15th, 2025 2:00:00 PM
---    The column should look like the following:
---    | Rental Date| Expected Return Date |
+--    Limit the output to the first 20
+--    Example Output:
+--    +----------------------------+----------------------------+
+--    | Rental Date                | Expected Return Date       |
+--    +----------------------------+----------------------------+
+--    | May 24th, 2005 10:53:30 PM | May 31st, 2005 10:53:30 PM |
+--    | May 24th, 2005 10:54:33 PM | May 31st, 2005 10:54:33 PM |
+--    | May 24th, 2005 11:03:39 PM | May 31st, 2005 11:03:39 PM |
+--    | May 24th, 2005 11:04:41 PM | May 31st, 2005 11:04:41 PM |
+--    | May 24th, 2005 11:05:21 PM | May 31st, 2005 11:05:21 PM |
+--    | May 24th, 2005 11:08:07 PM | May 31st, 2005 11:08:07 PM |
+--    | May 24th, 2005 11:11:53 PM | May 31st, 2005 11:11:53 PM |
+--    | May 24th, 2005 11:31:46 PM | May 31st, 2005 11:31:46 PM |
+--    | May 25th, 2005 12:00:40 AM | June 1st, 2005 12:00:40 AM |
+--    | May 25th, 2005 12:02:21 AM | June 1st, 2005 12:02:21 AM |
+--    | May 25th, 2005 12:09:02 AM | June 1st, 2005 12:09:02 AM |
+--    | May 25th, 2005 12:19:27 AM | June 1st, 2005 12:19:27 AM |
+--    | May 25th, 2005 12:22:55 AM | June 1st, 2005 12:22:55 AM |
+--    | May 25th, 2005 12:31:15 AM | June 1st, 2005 12:31:15 AM |
+--    | May 25th, 2005 12:39:22 AM | June 1st, 2005 12:39:22 AM |
+--    | May 25th, 2005 12:43:11 AM | June 1st, 2005 12:43:11 AM |
+--    | May 25th, 2005 01:06:36 AM | June 1st, 2005 01:06:36 AM |
+--    | May 25th, 2005 01:10:47 AM | June 1st, 2005 01:10:47 AM |
+--    | May 25th, 2005 01:17:24 AM | June 1st, 2005 01:17:24 AM |
+--    | May 25th, 2005 01:48:41 AM | June 1st, 2005 01:48:41 AM |
+--    +----------------------------+----------------------------+
+--    20 rows in set (0.00 sec)
 -- ------------------------------------------------------------------------------------------
 SELECT DATE_FORMAT(rental_date, '%M %D, %Y %r') AS 'Rental Date'
 ,      DATE_FORMAT(DATE_ADD(rental_date, INTERVAL 7 DAY), '%M %D, %Y %r') AS 'Expected Return Date'
