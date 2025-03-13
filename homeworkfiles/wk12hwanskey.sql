@@ -8,8 +8,9 @@
 USE airportdb;
 
 -- ---------------------------------------------------------------------------------
--- 1. Create a view from week 10 question 1. Make a table based on that view
---    named `passengerrewards`. Provide a select statement that queries the table.
+-- 1. Create a view from week 10 question 1 named passengerrewards_view. 
+--    Make a table based on that view named `passengerrewards`. 
+--    Provide a select statement that queries the table.
 --    DO NOT use a select * statement.
 --    The columns should look like the following:
 --    | Status | Number of Flights | First Name | Last Name | Departure Month |
