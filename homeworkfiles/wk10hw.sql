@@ -32,8 +32,8 @@ USE airportdb;
  
 --    f. Sort by the number of flights from greatest to least
  
---    g. Group by the last 3 columns in your SELECT statement. 
---       The CASE statement can be referenced by its position in the SELECT statement. 
+--    g. Group by the last 3 columns in your select statement. 
+--       The CASE statement can be referenced by its position in the select statement. 
 --       In this case it would be 5.
 --    The columns should look like the following:
 --    | Status | Number of Flights | First Name | Last Name | Departure Month |
