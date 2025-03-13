@@ -12,7 +12,7 @@ USE airportdb;
 --    named `passengerrewards`. Provide a select statement that queries the table.
 --    DO NOT use a select * statement.
 --    The columns should look like the following:
---    | Status | Number of Flights | First Name | Last Name |
+--    | Status | Number of Flights | First Name | Last Name | Departure Month |
 -- ---------------------------------------------------------------------------------
 
 

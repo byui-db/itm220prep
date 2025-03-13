@@ -12,13 +12,14 @@ USE airportdb;
 --    named `passengerrewards`. Provide a select statement that queries the table.
 --    DO NOT use a select * statement.
 --    The columns should look like the following:
---    | Status | Number of Flights | First Name | Last Name |
+--    | Status | Number of Flights | First Name | Last Name | Departure Month |
 -- ---------------------------------------------------------------------------------
 
-SELECT pr.status
-,      pr.number_of_flights
-,      pr.first_name
-,      pr.last_name
+SELECT pr.status AS 'Status'
+,      pr.number_of_flights AS 'Number of Flights'
+,      pr.first_name AS 'First Name'
+,      pr.last_name AS 'Last Name'
+,      pr.departure_month AS 'Departure Month'
 FROM   passengerrewards pr;
 
 -- --------------------------------------------------------------------------------------------------------
