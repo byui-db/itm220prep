@@ -1,0 +1,170 @@
+---
+title: "Understanding Common Table Expressions (CTEs) and Subqueries in MySQL"
+author: "Instructor Name"
+date: "March 5, 2025"
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+---
+
+## Introduction
+
+In this lesson, we'll explore two fundamental SQL concepts: **Subqueries** and **Common Table Expressions (CTEs)**. Both are powerful tools in MySQL that allow you to structure complex queries more effectively. Understanding their differences, use cases, and performance implications is crucial for efficient database management.
+
+## Subqueries
+
+A **subquery** is a query nested within another SQL statement. It can reside in clauses like `SELECT`, `FROM`, or `WHERE` and is often used to perform operations that depend on the results of another query.
+
+### Types of Subqueries
+
+1. **Simple Subqueries**: Independent queries that can run separately from the outer query.
+2. **Correlated Subqueries**: These reference columns from the outer query, making them dependent on it for execution.
+
+### Example of a Simple Subquery
+
+```sql
+SELECT account_no, name
+FROM customers
+WHERE annual_purchases > (
+    SELECT AVG(annual_purchases)
+    FROM customers
+);
+```
+
+In this example, the subquery calculates the average annual purchases, and the outer query retrieves customers whose purchases exceed this average.
+
+### Example of a Correlated Subquery
+
+```sql
+SELECT employee_number, name
+FROM employees emp
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees
+    WHERE department = emp.department
+);
+```
+
+Here, the subquery depends on the `department` value from each row of the outer query, making it a correlated subquery. ([en.wikipedia.org](https://en.wikipedia.org/wiki/Correlated_subquery?utm_source=chatgpt.com))
+
+### Use Cases for Subqueries
+
+- Filtering results based on aggregated data.
+- Performing row-by-row evaluations, especially with correlated subqueries.
+
+## Common Table Expressions (CTEs)
+
+A **Common Table Expression (CTE)** is a temporary result set defined within the execution scope of a `SELECT`, `INSERT`, `UPDATE`, or `DELETE` statement. CTEs improve query readability and organization, especially for complex queries.
+
+### Syntax of a CTE
+
+```sql
+WITH cte_name AS (
+    -- CTE query
+)
+SELECT *
+FROM cte_name;
+```
+
+### Example of a CTE
+
+```sql
+WITH avg_salary AS (
+    SELECT role, AVG(salary) AS average
+    FROM employee
+    GROUP BY role
+)
+SELECT employee.role, name, salary, avg_salary.average
+FROM employee
+JOIN avg_salary ON avg_salary.role = employee.role
+ORDER BY role, name;
+```
+
+In this example, the CTE `avg_salary` calculates the average salary per role, which is then joined with the `employee` table to display each employee's salary alongside the average for their role. ([learnsql.com](https://learnsql.com/blog/cte-vs-subquery/?utm_source=chatgpt.com))
+
+### Recursive CTE Example
+
+A **recursive CTE** is a special type of CTE that references itself to process hierarchical or sequential data.
+
+#### Example: Finding Employee Hierarchy
+
+```sql
+WITH RECURSIVE EmployeeHierarchy AS (
+    -- Base case: Select the top-level employees
+    SELECT employee_id, name, manager_id, 1 AS level
+    FROM employees
+    WHERE manager_id IS NULL
+    
+    UNION ALL
+    
+    -- Recursive case: Join with the CTE to find subordinates
+    SELECT e.employee_id, e.name, e.manager_id, eh.level + 1
+    FROM employees e
+    INNER JOIN EmployeeHierarchy eh ON e.manager_id = eh.employee_id
+)
+SELECT * FROM EmployeeHierarchy;
+```
+
+In this example, the CTE `EmployeeHierarchy` starts with top-level employees (where `manager_id IS NULL`) and recursively joins employees to find their subordinates, adding levels to represent the hierarchy. This type of query is particularly useful for organizational charts, folder structures, and hierarchical relationships in databases.
+
+### Use Cases for CTEs
+
+- Simplifying complex queries by breaking them into modular components.
+- Enhancing readability and maintainability.
+- Performing recursive operations, such as traversing hierarchical data.
+
+## Key Differences Between CTEs and Subqueries
+
+1. **Definition Location**:
+   - **Subqueries**: Defined inline within the main query.
+   - **CTEs**: Defined at the beginning of the query using the `WITH` clause.
+
+2. **Naming and Reusability**:
+   - **Subqueries**: Typically unnamed and can be used only once.
+   - **CTEs**: Named expressions that can be referenced multiple times within the same query.
+
+3. **Recursion**:
+   - **Subqueries**: Do not support recursion.
+   - **CTEs**: Can be recursive, making them suitable for hierarchical data structures. ([stackoverflow.com](https://stackoverflow.com/questions/706972/difference-between-cte-and-subquery?utm_source=chatgpt.com))
+
+4. **Performance Considerations**:
+   - **Subqueries**: Correlated subqueries can lead to performance issues due to row-by-row processing.
+   - **CTEs**: Generally improve readability and can be optimized by the query planner, but performance depends on the specific use case.
+
+## Correlated Subqueries: Usage and Frequency
+
+**Correlated subqueries** are subqueries that reference columns from the outer query. They are executed once for each row processed by the outer query, which can impact performance.
+
+### Example of a Correlated Subquery
+
+```sql
+SELECT e1.employee_id, e1.first_name, e1.last_name
+FROM employees e1
+WHERE e1.salary > (
+    SELECT AVG(e2.salary)
+    FROM employees e2
+    WHERE e2.department_id = e1.department_id
+);
+```
+
+This query retrieves employees whose salary is above the average salary of their respective departments.
+
+### Frequency of Use
+
+Correlated subqueries are useful but can be inefficient for large datasets due to multiple executions. They are best used when:
+
+- The result depends on the row-by-row evaluation.
+- Alternative methods (like joins or CTEs) are less readable or impractical.
+
+## Conclusion
+
+Both **Subqueries** and **CTEs** are essential tools in SQL for structuring and simplifying complex queries. While subqueries are useful for nested operations and row-specific evaluations, CTEs offer improved readability and are better suited for recursive operations. Understanding their differences and appropriate use cases will enhance your SQL querying capabilities.
+
+## References
+
+- [Difference between CTE and SubQuery](https://stackoverflow.com/questions/706972/difference-between-cte-and-subquery)
+- [SQL Correlated Subqueries - GeeksforGeeks](https://www.geeksforgeeks.org/sql-correlated-subqueries/)
+- [CTE vs. Subquery in SQL: What's the Difference? | LearnSQL.com](https://learnsql.com/blog/cte-vs-subquery/)
+- [SQL Correlated Subqueries - Advanced SQL - bipp Analytics](https://bipp.io/sql-tutorial/advanced-sql/sql-correlated-subqueries/)
+- [Correlated subquery - Wikipedia](https://en.wikipedia.org/wiki/Correlated_subquery)
