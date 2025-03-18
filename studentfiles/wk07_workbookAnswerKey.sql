@@ -22,9 +22,9 @@ USE sakila;
 -- actor ID, first name, and last name for all actors. 
 -- Sort results by last name and then by first name.
 -- ------------------------------------------------------------------------
-SELECT a.actor_id
-,      a.first_name
-,      a.last_name
+SELECT a.actor_id AS 'Actor ID'
+,      a.first_name AS 'First Name'
+,      a.last_name AS 'Last Name'
 FROM   actor a
 ORDER BY a.last_name, a.first_name;
 
@@ -33,9 +33,9 @@ ORDER BY a.last_name, a.first_name;
 -- actor ID, first name, and last name for all actors 
 -- whose last name equals 'WILLIAMS' or 'DAVIS'.
 -- ------------------------------------------------------------------------
-SELECT a.actor_id
-,      a.first_name
-,      a.last_name
+SELECT a.actor_id AS 'Actor ID'
+,      a.first_name AS 'First Name'
+,      a.last_name AS 'Last Name'
 FROM   actor a
 WHERE  a.last_name IN ('WILLIAMS', 'DAVIS');
 
@@ -46,20 +46,21 @@ WHERE  a.last_name IN ('WILLIAMS', 'DAVIS');
 -- to ignore the time component). 
 -- Include a single row for each distinct customer ID.
 -- ------------------------------------------------------------------------
-SELECT DISTINCT r.customer_id
+SELECT DISTINCT r.customer_id AS 'Customer ID'
 FROM   rental r
 WHERE  DATE(r.rental_date) = '2005-07-05';
 
 -- ------------------------------------------------------------------------
 -- 4. Fill in the blanks in the following SQL statement
--- SELECT   c.email, r.return_date
+-- SELECT   c.email AS 'Email'
+-- ,        r.return_date AS 'Return Date'
 -- FROM     customer c INNER JOIN rental <1>
 -- ON       c.customer_id = <2>
 -- WHERE    date(r.rental_date) = '2005-06-14'
 -- ORDER BY <3> <4>;
 -- To achieve the following results:
 -- +---------------------------------------+---------------------+
--- | email                                 | return_date         |
+-- | Email                                 | Return Date         |
 -- +---------------------------------------+---------------------+
 -- | DANIEL.CABRAL@sakilacustomer.org      | 2005-06-23 22:00:38 |
 -- | TERRANCE.ROUSH@sakilacustomer.org     | 2005-06-23 21:53:46 |
@@ -80,8 +81,8 @@ WHERE  DATE(r.rental_date) = '2005-07-05';
 -- +---------------------------------------+---------------------+
 -- 16 rows in set (0.05 sec)
 -- ------------------------------------------------------------------------
-SELECT c.email
-,      r.return_date
+SELECT c.email AS 'Email'
+,      r.return_date AS 'Rental Date'
 FROM   customer C INNER JOIN rental r
 ON     c.customer_id = r.customer_id
 WHERE  DATE(r.rental_date) = '2005-06-14'
@@ -92,14 +93,14 @@ ORDER BY r.return_date DESC;
 -- actor last name values for all actors. 
 -- Sort results by last name.
 -- ------------------------------------------------------------------------
-SELECT DISTINCT a.last_name
+SELECT DISTINCT a.last_name AS 'Last Name'
 FROM   actor a
 ORDER BY last_name;
 
 -- Chapter 4 questions
 
 -- +------------+-------------+--------+--------------+
--- | payment_id | customer_id | amount | Payment Date |
+-- | Payment ID | Customer ID | Amount | Payment Date |
 -- +------------+-------------+--------+--------------+
 -- |        101 |           4 |   8.99 |   2005-08-18 |
 -- |        102 |           4 |   1.99 |   2005-08-19 |
@@ -128,10 +129,10 @@ ORDER BY last_name;
 -- payment ids with the following filter:
 -- customer_id <> 5 AND (amount > 8 OR date(payment_date) = '2005-08-23')
 -- --------------------------------------------------------------------------
-SELECT p.payment_id
-,      customer_id
-,      amount
-,      DATE(payment_date) AS 'Payment Date'
+SELECT p.payment_id AS 'Payment ID'
+,      p.customer_id AS 'Customer ID'
+,      p.amount AS 'Amount'
+,      DATE(p.payment_date) AS 'Payment Date'
 FROM   payment p
 WHERE  p.customer_id <> 5
 AND    (p.amount > 8 OR DATE(p.payment_date) = '2005-08-23');
@@ -140,9 +141,9 @@ AND    (p.amount > 8 OR DATE(p.payment_date) = '2005-08-23');
 -- 7. Construct a query that retrieves all rows from the payments table 
 -- where the amount is either 1.98, 7.98, or 9.98.
 -- --------------------------------------------------------------------------
-SELECT p.payment_id
-,      p.customer_id
-,      p.amount
+SELECT p.payment_id AS 'Payment ID'
+,      p.customer_id AS 'Customer ID'
+,      p.amount AS 'Amount'
 ,      DATE(p.payment_date) AS 'Payment Date'
 FROM   payment p
 WHERE  p.amount IN (1.98, 7.98, 9.98);
@@ -151,15 +152,15 @@ WHERE  p.amount IN (1.98, 7.98, 9.98);
 -- 8. Construct a query that finds all customers whose last name contains 
 -- an A in the second position and a W anywhere after the A.
 -- --------------------------------------------------------------------------
-SELECT c.first_name
-,      c.last_name
+SELECT c.first_name AS 'First Name'
+,      c.last_name AS 'Last Name'
 FROM   customer c
 WHERE  c.last_name LIKE '_A%W%';
 
 -- --------------------------------------------------------------------------
 -- 9. Construct a query that shows the films we have in stock at store 2.
 -- --------------------------------------------------------------------------
-SELECT f.title
+SELECT f.title AS 'Film Title'
 FROM   film f
 INNER JOIN inventory i
 ON     f.film_id = i.film_id
