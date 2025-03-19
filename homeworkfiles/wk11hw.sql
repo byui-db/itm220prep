@@ -8,9 +8,10 @@
 USE airportdb;
 
 -- ---------------------------------------------------------------------------
--- 1. What is the earliest and latest flight that departs from the U.K.?
+-- 1. What are the earliest and latest flights within the U.K.?
+--    How many months of data do we have for those flights?
 --    The columns should look like the following:
---    | Earliest Departure | Latest Departure | From | To |
+--    | Earliest Departure | Latest Departure | Number of Months | From | To |
 -- ---------------------------------------------------------------------------
 
 
