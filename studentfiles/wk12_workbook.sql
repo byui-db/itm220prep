@@ -79,16 +79,29 @@ USE sakila;
 -- +-------------------------+
 -- 64 rows in set (0.03 sec)
 -- --------------------------------------------------------------------------
-SELECT title
+SELECT title AS 'Title'
 FROM film
-WHERE film_id IN( SELECT fc.film_id
-			   FROM film_category fc 
-                  INNER JOIN category c
-                  ON fc.category_id = c.category_id
-                  WHERE c.name = 'Action' );
+WHERE film_id IN ( SELECT fc.film_id
+			       FROM film_category fc 
+                   INNER JOIN category c
+                   ON fc.category_id = c.category_id
+                   WHERE c.name = 'Action' );
+
+-- CTE (Common Table Expression) (Same as Above)
+WITH action_category AS (
+    SELECT fc.film_id
+    FROM film_category fc 
+    INNER JOIN category c
+    ON fc.category_id = c.category_id
+    WHERE c.name = 'Action'
+)
+SELECT title AS 'Title'
+FROM   film f
+INNER JOIN action_category ac
+ON     f.film_id = ac.film_id;
 
 -- --------------------------------------------------------------------------
--- 2. Rework the query from Exercise 9-1 using a CORRELATED subquery 
+-- 2. Rework the query from Exercise 9-1 using a CORRELATED (f.film_id) subquery 
 -- against the category and film_category tables 
 -- to achieve the same results.
 -- It should return 64 rows, like:
@@ -196,8 +209,34 @@ WHERE  last_name = 'FAWCETT';
 -- 40 rows in set (0.39 sec)
 -- ---------------------------------------------------------------------------
 
+
 -- ---------------------------------------------------------------------------
--- 4. Using the following query as a starting point, create a self-join film_franchise view that displays 'None' for the top-most element in a series of sequels because it has no prequel:
+-- 4. Rank actors based on the number of films they have appeared in, 
+--    ensuring that actors with the same number of films receive the same rank 
+--    (DENSE_RANK) without skipping numbers.
+--    Limit to the top 40 actors.
+-- ---------------------------------------------------------------------------
+WITH actor_film_count AS (
+    SELECT fa.actor_id
+    ,      a.first_name
+    ,      a.last_name
+    ,      COUNT(fa.film_id) AS film_count
+    FROM film_actor fa
+    INNER JOIN actor a
+        ON fa.actor_id = a.actor_id
+    GROUP BY fa.actor_id, a.first_name, a.last_name
+)
+SELECT actor_id AS 'Actor ID'
+,      first_name AS 'First Name'
+,      last_name AS 'Last Name'
+,      film_count AS 'Film Count'
+,      DENSE_RANK() OVER (ORDER BY film_count DESC) AS 'Rank'
+FROM actor_film_count
+LIMIT 40;
+
+
+-- ---------------------------------------------------------------------------
+-- 5. Using the following query as a starting point, create a self-join film_franchise view that displays 'None' for the top-most element in a series of sequels because it has no prequel:
 
 SELECT   f.title AS film
 ,        fp.title AS prequel
