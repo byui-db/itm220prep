@@ -24,7 +24,8 @@ ON     a2.airport_id = ag2.airport_id
 WHERE  ag.country = 'United Kingdom'
 AND    ag2.country = 'United Kingdom'
 GROUP BY CONCAT(ag.city, ' ', ag.country)
-,        CONCAT(ag2.city, ' ', ag2.country);
+,        CONCAT(ag2.city, ' ', ag2.country)
+ORDER BY CONCAT(ag2.city, ' ', ag2.country);
 
 -- ---------------------------------------------------------------------------------
 -- 2. What is the total number of passengers that are on a flight
@@ -53,7 +54,8 @@ AND    ag2.country = 'United Kingdom'
 GROUP BY CONCAT(ag.city, ' ', ag.country)
 ,        CONCAT(ag2.city, ' ', ag2.country)
 ,        f.departure
-,        f.flightno;
+,        f.flightno
+ORDER BY CONCAT(ag2.city, ' ', ag2.country), f.departure;
 
 -- ---------------------------------------------------------------------------------
 -- 3. What is the total revenue generated from flights that depart from the U.K.?
