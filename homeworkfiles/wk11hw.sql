@@ -10,6 +10,7 @@ USE airportdb;
 -- ---------------------------------------------------------------------------
 -- 1. What are the earliest and latest flights within the U.K.?
 --    How many months of data do we have for those flights?
+--    Order by the 'To' column.
 --    The columns should look like the following:
 --    | Earliest Departure | Latest Departure | Number of Months | From | To |
 -- ---------------------------------------------------------------------------
@@ -18,6 +19,7 @@ USE airportdb;
 -- ---------------------------------------------------------------------------------
 -- 2. What is the total number of passengers that are on a flight
 --    within the U.K.?
+--    Order by the 'To' column.
 --    The columns should look like the following:
 --    | Total Number of Passengers | From | To | Departure Date | Flight Number |
 -- --------------------------------------------------------------------------------
