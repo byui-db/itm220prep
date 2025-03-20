@@ -266,7 +266,7 @@ ORDER BY f.series_number;
 
 -- You will need to add three new columns to the film table and 
 -- the following rows to the film table with the following set of INSERT statements. 
--- Copy the following (lines 235 - 540) into a seed.sql preparation script 
+-- Copy the following (lines 274 - 579) into a seed.sql preparation script 
 -- and run it before you begin working on the recursive query. 
 -- Convert your query to a view when it works as noted above.
 
