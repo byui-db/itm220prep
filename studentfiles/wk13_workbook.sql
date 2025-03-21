@@ -92,7 +92,11 @@ USE sakila;
 --    +---------+----------+-----------+------------+
 --    24 rows in set (0.02 sec)
 -- -------------------------------------------------------------------------- 
-
+SELECT year_no AS 'Year Number'
+,      month_no AS 'Month Number'
+,      tot_sales AS 'Total Sales'
+,      RANK() OVER (ORDER BY tot_sales DESC) AS 'Sales Rank'
+FROM   sales_fact;
 
 -- -------------------------------------------------------------------------- 
 -- 2. Modify the query from the previous exercise to generate two sets
@@ -131,7 +135,12 @@ USE sakila;
 --    +---------+----------+-----------+------------+
 --    24 rows in set (0.00 sec)
 -- -------------------------------------------------------------------------- 
-
+SELECT year_no AS 'Year Number'
+,      month_no AS 'Month Number'
+,      tot_sales AS 'Total Sales'
+,      RANK() OVER (PARTITION BY year_no 
+                    ORDER BY tot_sales DESC) AS 'Sales Rank'
+FROM   sales_fact;
 
 -- -------------------------------------------------------------------------- 
 -- 3. Write a query that retrieves all 202 data and include a column 
@@ -156,3 +165,9 @@ USE sakila;
 --    +---------+----------+-----------+------------------+
 --    12 rows in set (0.00 sec)
 -- -------------------------------------------------------------------------- 
+SELECT year_no AS 'Year Number'
+,      month_no AS 'Month Number'
+,      tot_sales AS 'Total Sales'
+,      LAG(tot_sales) OVER (ORDER BY month_no) AS 'Previous Month Sales'
+FROM   sales_fact
+WHERE  year_no = 2020;
