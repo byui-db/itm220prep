@@ -2,7 +2,7 @@
 -- You have been hired by BYU-I Air to help sort through the airportdb database. 
 -- Each week you will receive a file from your manager with questions that 
 -- need answered by writing queries against the database. 
--- This week your manager wants you to understand what views and CTE expressions are. 
+-- This week your manager wants you to understand what windowing functions are. 
 -- One point for a CTE or Subquery version of the query, Two points for both. 
 -- Cannot use AI to convert one to the other for points.
 -- Cannot use AI for a complete solution.
