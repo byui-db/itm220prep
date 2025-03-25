@@ -100,6 +100,18 @@ FROM   film f
 INNER JOIN action_category ac
 ON     f.film_id = ac.film_id;
 
+-- OR this version of a CTE
+
+WITH action_films AS (
+  SELECT fc.film_id
+  FROM film_category fc
+  INNER JOIN category c ON fc.category_id = c.category_id
+  WHERE c.name = 'Action'
+)
+SELECT title
+FROM film
+WHERE film_id IN (SELECT film_id FROM action_films);
+
 -- --------------------------------------------------------------------------
 -- 2. Rework the query from Exercise 9-1 using a CORRELATED (f.film_id) subquery 
 -- against the category and film_category tables 
