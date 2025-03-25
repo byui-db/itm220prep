@@ -24,7 +24,7 @@ SELECT pr.status AS 'Status'
 FROM   passengerrewards pr;
 
 -- --------------------------------------------------------------------------------------------------------
--- 2. What are the top 10 airports that handled the highest number of flights in August?
+-- 2. What are the top 10 airports that handled the highest number of outbound flights in August?
 --    Write a CTE statement called `flight_counts` to find the answer.
 --    Columns will look like the following:
 --    | Airport | Flight Count |
