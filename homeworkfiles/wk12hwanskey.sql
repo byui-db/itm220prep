@@ -24,17 +24,17 @@ SELECT
      WHEN COUNT(b.passenger_id) >= 20 THEN 'Gold'
      WHEN COUNT(b.passenger_id) >= 10 THEN 'Silver'
 	ELSE 'No Status'
-    END AS 'Status'
-,   COUNT(b.passenger_id) AS 'Number of Flights'
-,   p.firstname AS 'First Name'
-,   p.lastname AS 'Last Name'
+    END AS 'status'
+,   COUNT(b.passenger_id) AS 'number_of_flights'
+,   p.firstname AS 'first_name'
+,   p.lastname AS 'last_name'
 ,   CASE
 	 WHEN MONTH(fl.departure) = 6 THEN 'June'
 	 WHEN MONTH(fl.departure) = 7 THEN 'July'
 	 WHEN MONTH(fl.departure) = 8 THEN 'August'
 	 WHEN MONTH(fl.departure) = 9 THEN 'September'
     ELSE 'N/A'
-    END AS 'Departure Month'
+    END AS 'departure_month'
 FROM passenger p
 LEFT JOIN passengerdetails pd
 ON   p.passenger_id = pd.passenger_id
