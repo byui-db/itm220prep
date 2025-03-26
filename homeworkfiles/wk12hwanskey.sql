@@ -15,7 +15,50 @@ USE airportdb;
 --    The columns should look like the following:
 --    | Status | Number of Flights | First Name | Last Name | Departure Month |
 -- ---------------------------------------------------------------------------------
+-- View:
+DROP VIEW IF EXISTS passengerrewards_view;
+CREATE OR REPLACE VIEW passengerrewards_view AS
+SELECT
+	CASE 
+     WHEN COUNT(b.passenger_id) >= 30 THEN 'Platinum'
+     WHEN COUNT(b.passenger_id) >= 20 THEN 'Gold'
+     WHEN COUNT(b.passenger_id) >= 10 THEN 'Silver'
+	ELSE 'No Status'
+    END AS 'Status'
+,   COUNT(b.passenger_id) AS 'Number of Flights'
+,   p.firstname AS 'First Name'
+,   p.lastname AS 'Last Name'
+,   CASE
+	 WHEN MONTH(fl.departure) = 6 THEN 'June'
+	 WHEN MONTH(fl.departure) = 7 THEN 'July'
+	 WHEN MONTH(fl.departure) = 8 THEN 'August'
+	 WHEN MONTH(fl.departure) = 9 THEN 'September'
+    ELSE 'N/A'
+    END AS 'Departure Month'
+FROM passenger p
+LEFT JOIN passengerdetails pd
+ON   p.passenger_id = pd.passenger_id
+LEFT JOIN booking b
+ON   p.passenger_id = b.passenger_id
+LEFT JOIN flight fl
+ON   b.flight_id = fl.flight_id
+LEFT JOIN airport ap
+ON   fl.from = ap.airport_id
+LEFT JOIN airport_geo apg
+ON   ap.airport_id = apg.airport_id
+WHERE (pd.country = 'United Kingdom' AND apg.country = 'United Kingdom')
+OR    (b.passenger_id IS NULL AND pd.country = 'United Kingdom')
+OR    (b.passenger_id IS NULL AND pd.country IS NULL)
+GROUP BY p.firstname
+,        p.lastname
+,        5
+ORDER BY COUNT(b.passenger_id) DESC;
 
+-- Table Creation:
+CREATE TABLE passengerrewards AS
+SELECT * FROM passengerrewards_view;
+
+-- Question Answer:
 SELECT pr.status AS 'Status'
 ,      pr.number_of_flights AS 'Number of Flights'
 ,      pr.first_name AS 'First Name'
