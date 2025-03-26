@@ -78,7 +78,7 @@ WITH flight_counts AS (
     FROM   airport a
 	INNER JOIN flight f
     ON     a.airport_id = f.from
-    WHERE  f.departure BETWEEN '2015-07-01' AND '2015-07-31'
+    WHERE  MONTH(f.departure) = 8
     GROUP BY a.name
 )
 SELECT fc.airport AS 'Airport'
