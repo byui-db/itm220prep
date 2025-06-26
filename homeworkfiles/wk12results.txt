@@ -1,0 +1,661 @@
+Query 1
+      Create a view from week 10 question 1 named `passengerrewards_view`.
+      Make a table based on that view named `passengerrewards`.
+      Provide a select statement that queries the table.
+      DO NOT use a select * statement.
+      The columns should look like the following:
+      | Status | Number of Flights | First Name | Last Name | Departure Month |
++-----------+-------------------+----------------------------------+-----------------+-----------------+
+| Status    | Number of Flights | First Name                       | Last Name       | Departure Month |
++-----------+-------------------+----------------------------------+-----------------+-----------------+
+| Platinum  |                37 | Johnny                           | Eaton           | August          |
+| Gold      |                27 | Kosuke                           | Fukudome        | July            |
+| Gold      |                26 | Mark                             | Prior           | August          |
+| Gold      |                24 | Stefanie                         | Powers          | August          |
+| Gold      |                24 | Lennie                           | Moore           | June            |
+| ...       |               ... | ...                              | ...             | ...             |
+| Gold      |                20 | Thomas                           | Parris          | July            |
+| Gold      |                20 | Mark                             | Calderon        | June            |
+| Gold      |                20 | Dan                              | Lucas           | June            |
+| Gold      |                20 | Vince Di                         | Meglio          | July            |
+| Gold      |                20 | Chris                            | Pronger         | August          |
+| Gold      |                20 | Shammond                         | Williams        | August          |
+| Gold      |                20 | Kevin                            | Johnson         | August          |
+| Gold      |                20 | Darrick                          | Vaughn          | August          |
+| Gold      |                20 | Andy                             | Pratt           | June            |
+| Gold      |                20 | Joel                             | Przybilla       | July            |
+| Gold      |                20 | Val                              | Majewski        | August          |
+| Gold      |                20 | Chris                            | Roberson        | June            |
+| Silver    |                19 | Don                              | Haskins         | July            |
+| Silver    |                19 | Robert                           | Morse           | July            |
+| Silver    |                19 | Johnny                           | Morris          | July            |
+| Silver    |                19 | Dick                             | LeBeau          | August          |
+| ...       |               ... | ...                              | ...             | ...             |
+| Silver    |                10 | Tyler                            | Seguin          | July            |
+| Silver    |                10 | Tyler                            | Seguin          | June            |
+| Silver    |                10 | Danny                            | Biega           | August          |
+| Silver    |                10 | Steven                           | Cavarno         | June            |
+| No Status |                 9 | John                             | Considine       | July            |
+| No Status |                 9 | Alice                            | Coltrane        | June            |
+| No Status |                 9 | Billy                            | Shaw            | August          |
+| ...       | ...               | ...                              | ...             | ...             |
+| No Status |                 1 | Karla                            | Garcia          | September       |
+| No Status |                 1 | Kyle                             | Wilson          | September       |
+| No Status |                 1 | William                          | Quist           | September       |
+| No Status |                 1 | Gunner                           | Sixx            | September       |
+| No Status |                 1 | Devon                            | Werkheiser      | September       |
+| No Status |                 1 | Danny                            | Biega           | September       |
+| No Status |                 0 | Emma                             | Wright          | N/A             |
+| No Status |                 0 | Liam                             | Carter          | N/A             |
+| No Status |                 0 | Sophie                           | Adams           | N/A             |
+| No Status |                 0 | James                            | Thompson        | N/A             |
+| No Status |                 0 | Olivia                           | Harris          | N/A             |
++-----------+-------------------+----------------------------------+-----------------+-----------------+
+1913 rows in set (0.00 sec)
+Query 2
+      What are the top 10 airports that handled the highest number of flights in August?
+      Write a CTE statement called `flight_counts` to find the answer.
+      Columns will look like the following:
+      | Airport | Flight Count |
++------------+--------------+
+| Airport    | Flight Count |
++------------+--------------+
+| AEROCLUB   |          144 |
+| NIAFUNKE   |          121 |
+| ES SENIA   |          117 |
+| SMITH      |          115 |
+| TABORA     |          107 |
+| NAPA CO    |          102 |
+| HAMEENKYRO |          101 |
+| ARMOR      |          101 |
+| STAUNING   |           98 |
+| ALBION MUN |           98 |
++------------+--------------+
+10 rows in set (0.33 sec)
+Query 3
+      What are the top 5 longest flights by duration for each airline?
+      Don't include any duplicates.
+      Sort the results by airline name and rank.
+      Write a CTE statement called `ranked_flights` to find the answer.
+      Columns will look like the following:
+      | Airline | Flight Number | Origin Airport | Destination Airport | Flight Duration (Minutes) |
++----------------------+---------------+--------------------------------+--------------------------------+---------------------------+
+| Airline              | Flight Number | Origin Airport                 | Destination Airport            | Flight Duration (Minutes) |
++----------------------+---------------+--------------------------------+--------------------------------+---------------------------+
+| Afghanistan Airlines | AF5175        | BERBERA                        | RANTOUL NATL AVIATION CENTER   |                      1307 |
+| Afghanistan Airlines | AF6043        | MORAFENOBE                     | PEACHTREE CITY-FALCON          |                      1299 |
+| Afghanistan Airlines | AF5847        | GHINNIR                        | PORTLAND MUN                   |                      1257 |
+| Afghanistan Airlines | AF3844        | ST MARY'S                      | QACHA'S NEK                    |                      1253 |
+| Afghanistan Airlines | AF7424        | FREEWAY                        | MOUE                           |                      1224 |
+| Albania Airlines     | AL3457        | SATARTACIK                     | VAERNES AB                     |                      1266 |
+| Albania Airlines     | AL2872        | KERIKERI                       | SHONGAMBA                      |                      1250 |
+| Albania Airlines     | AL2193        | MUFINDI                        | LAKEFIELD                      |                      1248 |
+| Albania Airlines     | AL3161        | BANYO                          | HIDDEN BAY                     |                      1224 |
+| Albania Airlines     | AL5028        | SATIPO                         | FYRESDAL                       |                      1046 |
+| American Samoa Airli | AM3872        | BUYANT-UKHAA                   | PENSACOLA REGL                 |                      1278 |
+| American Samoa Airli | AM9317        | BATTICALOA AB                  | DORES DO INDAIA                |                      1256 |
+| American Samoa Airli | AM2098        | BELTERRA                       | JINNAH INTL                    |                      1217 |
+| American Samoa Airli | AM8807        | SONOMA CO                      | KAMINA BASE                    |                      1217 |
+| American Samoa Airli | AM6427        | LUBERO                         | IROQUOIS FALLS                 |                      1172 |
+| American Samoa Airli | AM3587        | DELTA HERITAGE AIR PARK        | ORANJEMUND                     |                      1167 |
+| Angola Airlines      | AN9932        | MALDA                          | SIQUEIRA CAMPOS                |                      1306 |
+| Angola Airlines      | AN6131        | MAVINZA                        | YOKOTA AB                      |                      1296 |
+| Angola Airlines      | AN2320        | EL FASHER                      | LIGHTNING RIDGE                |                      1234 |
+| Angola Airlines      | AN4105        | REID-HILLVIEW                  | MEROWE                         |                      1203 |
+| Angola Airlines      | AN1080        | CARPIQUET                      | APATAKI                        |                      1122 |
+| Argentina Airlines   | AR2690        | LUBUDI                         | HAMILTON MUN                   |                      1257 |
+| Argentina Airlines   | AR2221        | COL JABARA                     | PRASLIN                        |                      1246 |
+| Argentina Airlines   | AR8541        | TEREEN                         | FRANKLIN CO                    |                      1244 |
+| Argentina Airlines   | AR2722        | ROSWELL INDUSTRIAL             | LICHTENBURG                    |                      1211 |
+| Argentina Airlines   | AR1679        | BUKHARA                        | NICHOLS                        |                      1173 |
+| Australia Airlines   | AU1273        | TATENHILL                      | CAMBRIDGE                      |                      1280 |
+| Australia Airlines   | AU1967        | NALCHIK                        | INVERCARGILL                   |                      1241 |
+| Australia Airlines   | AU1250        | MUTIARA                        | RERIK-ZWEEDORF                 |                      1182 |
+| Australia Airlines   | AU8830        | ROUYN-NORANDA                  | WEST NAMPONG                   |                      1164 |
+| Australia Airlines   | AU1151        | RUTSHURU                       | CHARLEVILLE                    |                      1163 |
+| Azerbaijan Airlines  | AZ8240        | LOS ANGELES INTL               | MUSOMA                         |                      1277 |
+| Azerbaijan Airlines  | AZ6373        | SELEBI-PHIKWE                  | WASHINGTON MUN                 |                      1242 |
+| Azerbaijan Airlines  | AZ7862        | CHATEAUNEUF SUR CHER           | PARAFIELD                      |                      1206 |
+| Azerbaijan Airlines  | AZ1667        | UYTASH                         | JOHN WAYNE-ORANGE CO           |                      1185 |
+| Azerbaijan Airlines  | AZ9528        | PONTA PORA INTL                | MEHAMN                         |                      1180 |
+| Bahamas Airlines     | BA9633        | GLADSTONE                      | FILIPPOS                       |                      1310 |
+| Bahamas Airlines     | BA3242        | BROOME INTL                    | DIERRE                         |                      1290 |
+| Bahamas Airlines     | BA9646        | GUARATINGUETA                  | PORT HEIDEN                    |                      1280 |
+| Bahamas Airlines     | BA3584        | DAVIDSON                       | JHANSI                         |                      1265 |
+| Bahamas Airlines     | BA4624        | KIFFA                          | LISHE                          |                      1246 |
+| Belarus Airlines     | BE8501        | SAYUN                          | MT VERNON                      |                      1306 |
+| Belarus Airlines     | BE2624        | BAKER LAKE                     | PORMPURAAW                     |                      1265 |
+| Belarus Airlines     | BE2861        | WYNDHAM                        | BEILNGRIES                     |                      1262 |
+| Belarus Airlines     | BE2875        | REUTBERG                       | GRAFTON                        |                      1188 |
+| Belarus Airlines     | BE7696        | WINKLER CO                     | TUME                           |                      1176 |
+| Bhutan Airlines      | BH2725        | DOGONDOUTCHI                   | FUKUSHIMA                      |                      1310 |
+| Bhutan Airlines      | BH5739        | MOSSENDJO                      | DILLON                         |                      1305 |
+| Bhutan Airlines      | BH1565        | WILMINGTON INTL                | NEPALGUNJ                      |                      1285 |
+| Bhutan Airlines      | BH1311        | VIARED                         | ARDMORE                        |                      1250 |
+| Bhutan Airlines      | BH1042        | MULOBEZI                       | PARK TOWNSHIP                  |                      1189 |
+| Bolivia Airlines     | BO1862        | SAN DIEGO INTL-LINDBERGH       | OSNOVA                         |                      1268 |
+| Bolivia Airlines     | BO6014        | LAURINBURG-MAXTON              | GAN                            |                      1267 |
+| Bolivia Airlines     | BO4970        | KANDI                          | BALGO HILL                     |                      1232 |
+| Bolivia Airlines     | BO9620        | SANGA SANGA                    | BRETIGNY-SUR-ORGE              |                      1215 |
+| Bolivia Airlines     | BO4268        | FT SMITH REGL                  | SERENJE                        |                      1096 |
+| Brazil Airlines      | BR1327        | PALMAS DEL ESPINO              | SVARTNES                       |                      1287 |
+| Brazil Airlines      | BR4510        | NAPIER                         | SHARM EL SHEIKH INTL           |                      1256 |
+| Brazil Airlines      | BR2464        | TALLARD                        | ORANGE                         |                      1250 |
+| Brazil Airlines      | BR1994        | SAN ANGELO REGL/ MATHIS        | GUMRAK                         |                      1216 |
+| Brazil Airlines      | BR5873        | UNALASKA                       | UIGE                           |                      1201 |
+| Bulgaria Airlines    | BU1439        | TERRA NOVA BAY SKIWAY          | MENDEN                         |                      1292 |
+| Bulgaria Airlines    | BU1528        | LALIBELLA                      | CUBA MUN                       |                      1268 |
+| Bulgaria Airlines    | BU4304        | FRONTEIRA                      | SLEETMUTE                      |                      1268 |
+| Bulgaria Airlines    | BU7822        | PERALES                        | SHAHID DASTGHAIB INTL          |                      1263 |
+| Bulgaria Airlines    | BU9993        | MONTAUBAN                      | MOTU MUTE                      |                      1223 |
+| Bulgaria Airlines    | BU9826        | KADUGLI                        | BLACKALL                       |                      1158 |
+| Caicos Is Airlines   | CA4657        | KING I                         | CORTE                          |                      1285 |
+| Caicos Is Airlines   | CA2607        | NELLIS AFB                     | TADJOURAH                      |                      1263 |
+| Caicos Is Airlines   | CA8751        | KARONGA                        | STENNIS INTL                   |                      1246 |
+| Caicos Is Airlines   | CA7564        | MALAMALA                       | SPRINGHILL                     |                      1239 |
+| Caicos Is Airlines   | CA3179        | WHETSTONE INTL                 | CHHATRAPATI SHIVAJI INTL       |                      1221 |
+| Central African Rep  | CE7254        | ALLEN AAF                      | VIRAC                          |                      1252 |
+| Central African Rep  | CE7445        | KARRATHA                       | SUNNE                          |                      1227 |
+| Central African Rep  | CE1100        | RUNDU                          | NARROMINE                      |                      1198 |
+| Central African Rep  | CE2962        | MARISCAL LAMAR                 | BALTI                          |                      1149 |
+| Central African Rep  | CE1393        | STROTHER                       | DAWADMI                        |                      1104 |
+| Chad Airlines        | CH9591        | POPLAR HILL                    | SELETAR                        |                      1283 |
+| Chad Airlines        | CH9385        | MINNA                          | HIGH LEVEL                     |                      1279 |
+| Chad Airlines        | CH3600        | VILSHOFEN                      | GRIFFITH                       |                      1175 |
+| Chad Airlines        | CH7487        | TABING                         | TERNHILL AB                    |                      1130 |
+| Chad Airlines        | CH1803        | ARLINGTON MUN                  | TUME                           |                      1118 |
+| Colombia Airlines    | CO1324        | BOKELA                         | NANISIVIK                      |                      1263 |
+| Colombia Airlines    | CO6961        | QARNAYN                        | TINOGASTA                      |                      1181 |
+| Colombia Airlines    | CO1205        | ST MICHAELISDONN               | MANGALORE                      |                      1178 |
+| Colombia Airlines    | CO3997        | HIERRO                         | VALDEZ PIONEER                 |                      1152 |
+| Colombia Airlines    | CO1323        | PARAPARAUMU                    | KAMEMBE                        |                      1138 |
+| Croatia Airlines     | CR9786        | COBIJA                         | VOSTOCHNY                      |                      1291 |
+| Croatia Airlines     | CR7802        | CLINTON MEML                   | FAIZABAD                       |                      1253 |
+| Croatia Airlines     | CR7980        | CORVALLIS MUN                  | MCHINJI                        |                      1224 |
+| Croatia Airlines     | CR3703        | MUTOTO                         | FORT WORTH NAS JRB             |                      1222 |
+| Croatia Airlines     | CR1574        | BISHO                          | EAKER                          |                      1202 |
+| Cuba Airlines        | CU1023        | NIUE INTL                      | BOM JESUS DA LAPA              |                      1165 |
+| Cuba Airlines        | CU3233        | SALMON ARM                     | EAST ONE                       |                      1101 |
+| Cuba Airlines        | CU5972        | SAFANE                         | FLAGSTAFF PULLIAM              |                      1056 |
+| Cuba Airlines        | CU4384        | EL PASO INTL                   | MALE BIELICE                   |                      1044 |
+| Cuba Airlines        | CU9016        | THE MONUMENT                   | KAMPENE                        |                      1038 |
+| Cyprus Airlines      | CY5067        | LAMERD                         | SOUTH ARKANSAS REGL AT GOODWIN |                      1263 |
+| Cyprus Airlines      | CY5953        | LICHTENBURG                    | MEIGS                          |                      1194 |
+| Cyprus Airlines      | CY3832        | LOUBETSI                       | LENORA MUN                     |                      1168 |
+| Cyprus Airlines      | CY8396        | KITALE                         | QUIRINDI                       |                      1168 |
+| Cyprus Airlines      | CY6939        | AKHISAR AB                     | WANGARATTA                     |                      1159 |
+| Cyprus Airlines      | CY3304        | CAKOVEC                        | MERRILL                        |                      1126 |
+| Czech Airlines       | CZ1552        | BASE MARAMBIO                  | GIMO AB                        |                      1251 |
+| Czech Airlines       | CZ1106        | NUKU-HIVA                      | LAJES AB                       |                      1182 |
+| Czech Airlines       | CZ4539        | ARCHERFIELD                    | KOLTSOVO                       |                      1143 |
+| Czech Airlines       | CZ7441        | COLOGNE-BONN                   | WILLIAMSON                     |                      1132 |
+| Czech Airlines       | CZ1038        | ROBE                           | NEWPORT STATE                  |                      1126 |
+| Dakhla And Laayoune  | DA1070        | BOLILA                         | MONTE VISTA MUN                |                      1304 |
+| Dakhla And Laayoune  | DA7844        | COLUMBUS METRO                 | RAWALAKOT                      |                      1303 |
+| Dakhla And Laayoune  | DA3077        | GWADAR INTL                    | SPRINGFIELD-BECKLEY MUN        |                      1295 |
+| Dakhla And Laayoune  | DA1774        | TERRA NOVA BAY SKIWAY          | MAULEON                        |                      1257 |
+| Dakhla And Laayoune  | DA3452        | GURUPA                         | JODHPUR AB                     |                      1243 |
+| Denmark Airlines     | DE8685        | SOUTHERN CALIFORNIA LOGISTICS  | MARDIN                         |                      1266 |
+| Denmark Airlines     | DE3111        | FREIBURG/ BREISGAU             | WARRNAMBOOL                    |                      1214 |
+| Denmark Airlines     | DE4501        | DIPOLOG                        | BEVERLO                        |                      1209 |
+| Denmark Airlines     | DE1838        | BURLEY MUN                     | MAFIA                          |                      1205 |
+| Denmark Airlines     | DE1091        | CHIBOUGAMAU/ CHAPAIS           | ZHENGDING                      |                      1195 |
+| Djibouti Airlines    | DJ3699        | MAHSHAHR                       | POINTS NORTH LANDING           |                      1312 |
+| Djibouti Airlines    | DJ4166        | MUSHIE                         | TIKSI                          |                      1309 |
+| Djibouti Airlines    | DJ8904        | CUAUHTEMOC                     | IMI                            |                      1277 |
+| Djibouti Airlines    | DJ3786        | ZIRKU                          | PANGUILEMO                     |                      1247 |
+| Djibouti Airlines    | DJ8393        | JYVASKYLA                      | HASTINGS                       |                      1204 |
+| Dominica Airlines    | DO4909        | PORTLAND INTL                  | INHAMBANE                      |                      1271 |
+| Dominica Airlines    | DO2376        | SIIRT                          | MARGARET LAKE                  |                      1222 |
+| Dominica Airlines    | DO8623        | MC COMB-PIKE CO-LEWIS          | SAME                           |                      1121 |
+| Dominica Airlines    | DO3300        | LITTLE GOOSE LOCK &            | ISWAHYUDI                      |                      1087 |
+| Dominica Airlines    | DO5755        | TEHUACAN                       | LEGALA                         |                      1037 |
+| Ecuador Airlines     | EC1716        | MUKHINO                        | ELROSE                         |                      1297 |
+| Ecuador Airlines     | EC3551        | TAKORADI AB                    | MACKENZIE                      |                      1275 |
+| Ecuador Airlines     | EC9221        | WAUCHULA MUN                   | MAHANORO                       |                      1219 |
+| Ecuador Airlines     | EC1811        | LEGALA                         | PUEBLO MEML                    |                      1207 |
+| Ecuador Airlines     | EC4771        | MARECHAL CANDIDO RONDON        | SEHWAN SHARIF                  |                      1187 |
+| Egypt Airlines       | EG4093        | KALIBO                         | OURO SOGUI                     |                      1294 |
+| Egypt Airlines       | EG9761        | TESSERA                        | TUBUAI                         |                      1292 |
+| Egypt Airlines       | EG2587        | BO                             | FT WARE                        |                      1199 |
+| Egypt Airlines       | EG3241        | TOLIARY                        | PRINCETON MUN                  |                      1197 |
+| Egypt Airlines       | EG1200        | RAMSAR                         | IDA GROVE MUN                  |                      1138 |
+| El Salvador Airlines | EL8554        | GINGIN                         | BRAGA                          |                      1253 |
+| El Salvador Airlines | EL1203        | BEICA                          | SULLIVAN REGL                  |                      1239 |
+| El Salvador Airlines | EL2597        | LUBERO                         | GEN MITCHELL INTL              |                      1215 |
+| El Salvador Airlines | EL1459        | AMHEARST                       | SIMPANG                        |                      1200 |
+| El Salvador Airlines | EL9008        | HOGANAS                        | YARRAWONGA                     |                      1152 |
+| Equatorial Guinea Ai | EQ9946        | TRES ESQUINAS                  | AL SAQR FIELD                  |                      1300 |
+| Equatorial Guinea Ai | EQ6282        | JUANDA                         | WESTRAY                        |                      1292 |
+| Equatorial Guinea Ai | EQ5203        | DENDRON                        | FAIRBURY MUN                   |                      1288 |
+| Equatorial Guinea Ai | EQ2003        | KULLU MANALI                   | COVENAS                        |                      1282 |
+| Equatorial Guinea Ai | EQ1488        | LOON RIVER                     | BAIYUN                         |                      1250 |
+| Eritrea Airlines     | ER9385        | CAPE PALMAS                    | MUNGALALU-TRUSCOTT             |                      1314 |
+| Eritrea Airlines     | ER4096        | PRATT INDUSTRIAL               | KANDAHAR                       |                      1269 |
+| Eritrea Airlines     | ER1569        | CHACHAPOYAS                    | DARROS                         |                      1269 |
+| Eritrea Airlines     | ER2251        | HARAD                          | ROBINSON AAF                   |                      1262 |
+| Eritrea Airlines     | ER6050        | ZUEITINA                       | HIGH LEVEL                     |                      1178 |
+| Eritrea Airlines     | ER3634        | JANAUBA                        | RATMALANA                      |                      1175 |
+| Estonia Airlines     | ES5233        | TOUSSUS-LE-NOBLE               | PAGO PAGO INTL                 |                      1268 |
+| Estonia Airlines     | ES1766        | DARWIN INTL                    | PROSTEJOV                      |                      1237 |
+| Estonia Airlines     | ES9780        | PILANESBERG                    | COCHRANE                       |                      1196 |
+| Estonia Airlines     | ES1360        | DENDRON                        | BARRIE AIRPARK                 |                      1177 |
+| Estonia Airlines     | ES3004        | GIRONA                         | WARRABER ISLAND                |                      1134 |
+| Ethiopia Airlines    | ET3496        | CALAVERAS CO-RASMUSSEN         | CHIMOIO                        |                      1305 |
+| Ethiopia Airlines    | ET3656        | KLAMATH FALLS INTL             | BEIRA                          |                      1281 |
+| Ethiopia Airlines    | ET8331        | OSHOGBO                        | PEARSON                        |                      1280 |
+| Ethiopia Airlines    | ET6492        | BUNGOMA                        | MONROE REGL                    |                      1271 |
+| Ethiopia Airlines    | ET5601        | MATADI-TSHIMPI                 | SHERIDAN CO                    |                      1266 |
+| Falkland Is Airlines | FA6851        | ILOPANGO INTL                  | BURAO                          |                      1274 |
+| Falkland Is Airlines | FA4037        | MPOROKOSO                      | SPRINGFIELD-BRANSON REGL       |                      1270 |
+| Falkland Is Airlines | FA6135        | CARCROSS                       | NHATRANG                       |                      1270 |
+| Falkland Is Airlines | FA1994        | PIET RETIEF                    | CLARK MUN                      |                      1259 |
+| Falkland Is Airlines | FA1437        | RIO GRANDE                     | ILIGAN                         |                      1258 |
+| Falkland Is Airlines | FA3480        | SHAHID HASHEMI NEJAD INTL      | CLINTON MUN                    |                      1245 |
+| Fiji Is Airlines     | FI7983        | MIZAN TEFERI                   | ALGONA MUN                     |                      1302 |
+| Fiji Is Airlines     | FI5269        | RIYAN                          | MATAMATA                       |                      1295 |
+| Fiji Is Airlines     | FI8710        | NEWTOK                         | CAROLINA                       |                      1251 |
+| Fiji Is Airlines     | FI7396        | SKAGEN                         | TAIERI                         |                      1243 |
+| Fiji Is Airlines     | FI5310        | MOFFETT FEDERAL AFLD           | TSHIKAJI                       |                      1194 |
+| France Airlines      | FR5177        | NNAMDI AZIKIWE INTL            | BARKERVILLE                    |                      1310 |
+| France Airlines      | FR6821        | DEBRE MARCOS                   | MONROE REGL                    |                      1262 |
+| France Airlines      | FR2892        | ALTAI                          | GREATER ROCKFORD               |                      1245 |
+| France Airlines      | FR6591        | BIRGI MIL                      | COBAR                          |                      1227 |
+| France Airlines      | FR5321        | WADDINGTON AB                  | USHUAIA INTL MALVINE IS        |                      1123 |
+| Gabon Airlines       | GA4240        | PARANA                         | CHACKLALA INTL                 |                      1234 |
+| Gabon Airlines       | GA3714        | ABERPORTH                      | CASINO                         |                      1228 |
+| Gabon Airlines       | GA2044        | DERBY                          | IVALO                          |                      1225 |
+| Gabon Airlines       | GA6215        | VICTORIA REGL                  | HARMONY                        |                      1192 |
+| Gabon Airlines       | GA8167        | JOLO                           | PALMA DE MALLORCA              |                      1190 |
+| Georgia Airlines     | GE6923        | AMAKUSA                        | REYKJAVIK                      |                      1286 |
+| Georgia Airlines     | GE8474        | MENORCA                        | SAINT ARNAUD                   |                      1278 |
+| Georgia Airlines     | GE1871        | SANDAKAN                       | PERRANPORTH                    |                      1269 |
+| Georgia Airlines     | GE6600        | IWOJIMA AERO                   | LALOUBERE                      |                      1261 |
+| Georgia Airlines     | GE2923        | MANJA                          | JACKSONVILLE NAS               |                      1247 |
+| Ghana Airlines       | GH2778        | KENIEBA                        | ALBANY                         |                      1310 |
+| Ghana Airlines       | GH4372        | LOS ALAMOS                     | UFA                            |                      1292 |
+| Ghana Airlines       | GH5312        | MALLAM AMINU KANO              | DORE LAKE                      |                      1178 |
+| Ghana Airlines       | GH4879        | GAGE                           | IMI                            |                      1150 |
+| Ghana Airlines       | GH9151        | KING FAHD INTL                 | LAKE SIMCOE REGL               |                      1141 |
+| Gibraltar Airlines   | GI3524        | PORT AUGUSTA                   | SCHMIDGADEN/ OPF.              |                      1304 |
+| Gibraltar Airlines   | GI5738        | HERMISTON MUN                  | KUNDUZ                         |                      1279 |
+| Gibraltar Airlines   | GI7707        | SHEBERGHAN                     | HOUMA-TERREBONNE               |                      1224 |
+| Gibraltar Airlines   | GI9632        | OLIVE BRANCH                   | ZARANJ                         |                      1211 |
+| Gibraltar Airlines   | GI8460        | JI-PARANA                      | KUHMO                          |                      1137 |
+| Greece Airlines      | GR2103        | FORREST                        | TAUCHA                         |                      1254 |
+| Greece Airlines      | GR1115        | KAMALPUR                       | MONTE SANTO                    |                      1212 |
+| Greece Airlines      | GR1390        | FARO                           | MATSU                          |                      1202 |
+| Greece Airlines      | GR1103        | KIPNUK                         | CHITRAL                        |                      1174 |
+| Greece Airlines      | GR3604        | BONKITA                        | FILLMORE CO                    |                      1170 |
+| Guadeloupe Airlines  | GU4742        | KOTHEN                         | NEWCASTLE WESTPAC BASE         |                      1179 |
+| Guadeloupe Airlines  | GU7108        | GREYTOWN                       | CORNWALL REGL                  |                      1149 |
+| Guadeloupe Airlines  | GU3363        | SERENJE                        | CONWAY-HORRY CO                |                      1133 |
+| Guadeloupe Airlines  | GU8609        | VILLAROCHE                     | CENTURY MINE                   |                      1094 |
+| Guadeloupe Airlines  | GU5669        | WESTON                         | GERALDTON                      |                      1065 |
+| Haiti Airlines       | HA9148        | OLYMPIC DAM                    | ERPUZICE                       |                      1300 |
+| Haiti Airlines       | HA2977        | BOLILA                         | MOOSE LAKE/ CARLTON CO         |                      1208 |
+| Haiti Airlines       | HA3460        | AWASA                          | MYRTLE BEACH INTL              |                      1163 |
+| Haiti Airlines       | HA9413        | AMAPA                          | ORMARA                         |                      1145 |
+| Haiti Airlines       | HA6143        | NIIGATA                        | CHAVES                         |                      1125 |
+| Honduras Airlines    | HO6112        | NOUAKCHOTT                     | LANAI CITY                     |                      1305 |
+| Honduras Airlines    | HO8738        | DELINE                         | POHNPEI INTL                   |                      1282 |
+| Honduras Airlines    | HO7044        | ELROSE                         | ANISAKAN                       |                      1279 |
+| Honduras Airlines    | HO4405        | KARAWA                         | ULYSSES                        |                      1228 |
+| Honduras Airlines    | HO5964        | ARACUAI                        | DHANGADHI                      |                      1225 |
+| Hungary Airlines     | HU9080        | PLAINE CORAIL                  | ANTONIO NARINO                 |                      1305 |
+| Hungary Airlines     | HU1484        | CHITIPA                        | MARION MUN                     |                      1219 |
+| Hungary Airlines     | HU7175        | ROBINSON AB                    | GOLD COAST                     |                      1213 |
+| Hungary Airlines     | HU4081        | SOKODE                         | WOLTER MONGINSIDI              |                      1173 |
+| Hungary Airlines     | HU1667        | CHOIBALSAN                     | HALIFAX INTL                   |                      1158 |
+| Iceland Airlines     | IC6345        | TEJGAON                        | VARZEA DA PALMA                |                      1269 |
+| Iceland Airlines     | IC3861        | SALDANHA-VREDENBURG            | BLACK HILLS-ICE                |                      1248 |
+| Iceland Airlines     | IC6907        | WRANGELL                       | PARO                           |                      1225 |
+| Iceland Airlines     | IC7439        | ABDULRACHMAN SALEH AERO        | GHRISS                         |                      1163 |
+| Iceland Airlines     | IC6616        | MOKRAYA                        | CAMBRIDGE                      |                      1147 |
+| India Airlines       | IN8270        | EAST SEVEN                     | YORK MUN                       |                      1315 |
+| India Airlines       | IN3739        | GARDABIYA                      | SKAGWAY                        |                      1296 |
+| India Airlines       | IN5234        | STANSTED                       | STRAHAN                        |                      1264 |
+| India Airlines       | IN9679        | YOKANGASSI                     | HASTINGS MUN                   |                      1169 |
+| India Airlines       | IN1760        | HOXTER-HOLZMINDEN              | RIO GRANDE                     |                      1128 |
+| Iran Airlines        | IR2713        | BACON CO                       | AMRITSAR                       |                      1305 |
+| Iran Airlines        | IR7470        | CHIPPEWA VALLEY REGL           | MALDA                          |                      1254 |
+| Iran Airlines        | IR6331        | IDUMBE                         | MACKAY                         |                      1250 |
+| Iran Airlines        | IR9758        | HAMILTON                       | HAMADAN                        |                      1204 |
+| Iran Airlines        | IR6589        | MOOSE LAKE/ CARLTON CO         | JUMLA                          |                      1186 |
+| Isla De Pascua Airli | IS8235        | SIMISIMI                       | RENNER/ GOODLAND MUN           |                      1291 |
+| Isla De Pascua Airli | IS1806        | WAIKERIE                       | VYSKOV                         |                      1281 |
+| Isla De Pascua Airli | IS5250        | REDHILL                        | LAUNCESTON                     |                      1274 |
+| Isla De Pascua Airli | IS6709        | BALGO HILL                     | KOROGOUSSOU                    |                      1222 |
+| Isla De Pascua Airli | IS1384        | TANDAG                         | DRUTTE                         |                      1189 |
+| Italy Airlines       | IT8784        | PWETO                          | LARNED-PAWNEE CO               |                      1313 |
+| Italy Airlines       | IT3041        | ENTEBBE INTL                   | MARINGE                        |                      1240 |
+| Italy Airlines       | IT3950        | BOWERMAN                       | SIRJAN                         |                      1205 |
+| Italy Airlines       | IT1490        | SISHEN                         | DALLAS-FT WORTH INTL           |                      1191 |
+| Italy Airlines       | IT1586        | SIIRT                          | TWO HILLS                      |                      1188 |
+| Ivory Coast Airlines | IV3524        | MBUJI-MAYI                     | POPLAR RIVER                   |                      1303 |
+| Ivory Coast Airlines | IV7774        | ERIGAVO                        | OCALA INTL-TAYLOR              |                      1253 |
+| Ivory Coast Airlines | IV5965        | KIRYAT-SHMONA                  | BOISE AIR TERMINAL/ GOWEN      |                      1240 |
+| Ivory Coast Airlines | IV6266        | KASENGA                        | MOREE                          |                      1175 |
+| Ivory Coast Airlines | IV8388        | BILTINE                        | PINEY                          |                      1151 |
+| Jamaica Airlines     | JA9717        | COMANDANTE ESPORA NAS          | CHEBOKSARY                     |                      1242 |
+| Jamaica Airlines     | JA7050        | BREITSCHEID                    | TUMUT                          |                      1202 |
+| Jamaica Airlines     | JA6920        | LUKALA                         | GLENWOOD MUN                   |                      1175 |
+| Jamaica Airlines     | JA3682        | HUALIEN                        | CASEMENT AB                    |                      1174 |
+| Jamaica Airlines     | JA4719        | DOSHAN TAPPEH AB               | STILLWATER MUN                 |                      1174 |
+| Jamaica Airlines     | JA5899        | JAMSHEDPUR                     | PROPRIA                        |                      1150 |
+| Jerusalem Airlines   | JE4225        | AVALON                         | HRADEC KRALOVE                 |                      1308 |
+| Jerusalem Airlines   | JE1737        | BELGOROD                       | MANAPOURI                      |                      1237 |
+| Jerusalem Airlines   | JE1246        | QUEENSTOWN                     | JOLIET REGL                    |                      1189 |
+| Jerusalem Airlines   | JE2707        | ESPLANADA                      | SRI SATHYA SAI                 |                      1131 |
+| Jerusalem Airlines   | JE1214        | LUQA                           | PRAIRIE CREEK                  |                      1127 |
+| Johnston Atoll Airli | JO9381        | IGNATYEVO                      | VERO BEACH MUN                 |                      1308 |
+| Johnston Atoll Airli | JO7494        | POINT COOK                     | BANEASA                        |                      1214 |
+| Johnston Atoll Airli | JO3456        | RIDGELY AIRPARK                | SURKHET                        |                      1196 |
+| Johnston Atoll Airli | JO5430        | FAIRBANKS INTL                 | LIENKHOUNG                     |                      1180 |
+| Johnston Atoll Airli | JO8449        | KONDE                          | OENPELLI                       |                      1171 |
+| Kazakhstan Airlines  | KA1329        | SIDETRA                        | MADANG                         |                      1292 |
+| Kazakhstan Airlines  | KA6520        | CASA GRANDE MUN                | KANG                           |                      1230 |
+| Kazakhstan Airlines  | KA9347        | MUNGALALU-TRUSCOTT             | LINZ OST                       |                      1220 |
+| Kazakhstan Airlines  | KA3994        | WARBURTON                      | ZEMUNIK                        |                      1188 |
+| Kazakhstan Airlines  | KA9549        | MANGOCHI                       | WESTOVER ARB/ METRO            |                      1156 |
+| Kenya Airlines       | KE2226        | SATARTACIK                     | SANTANDER                      |                      1299 |
+| Kenya Airlines       | KE6207        | MERIMBULA                      | CAPE PALMAS                    |                      1291 |
+| Kenya Airlines       | KE3674        | COLONIA ANGAMOS                | QARNAYN                        |                      1253 |
+| Kenya Airlines       | KE3311        | GOMEL                          | WANGANUI                       |                      1240 |
+| Kenya Airlines       | KE4366        | MAKINDU                        | ASHEVILLE REGL                 |                      1227 |
+| Kiribati Airlines    | KI9509        | WUNSTORF AB                    | GREAT BARRIER                  |                      1310 |
+| Kiribati Airlines    | KI2252        | SANANDAJ                       | GULL LAKE                      |                      1244 |
+| Kiribati Airlines    | KI6007        | ARTHUR'S TOWN                  | AKTAU                          |                      1137 |
+| Kiribati Airlines    | KI6328        | MONTELIBANO                    | LOITOKITOK                     |                      1094 |
+| Kiribati Airlines    | KI6985        | LUENA                          | KITAKYUSHU                     |                      1094 |
+| Kiribati Airlines    | KI5175        | CERES                          | GOHLIS                         |                      1013 |
+| Korea Airlines       | KO3696        | SZYMANY                        | WAIMATE                        |                      1293 |
+| Korea Airlines       | KO3660        | SINDAL                         | WHAKATANE                      |                      1274 |
+| Korea Airlines       | KO1542        | BAGABAG                        | BOGUE                          |                      1263 |
+| Korea Airlines       | KO1287        | FERGUSON'S GULF                | SOUTHERN ILLINOIS              |                      1260 |
+| Korea Airlines       | KO2740        | HASTINGS                       | EL FASHER                      |                      1248 |
+| Kuwait Airlines      | KU9697        | HOPEWELL                       | A-511 AAF                      |                      1298 |
+| Kuwait Airlines      | KU4044        | SENTRAOES                      | BATTEN                         |                      1208 |
+| Kuwait Airlines      | KU8303        | HEIDENBERG                     | STAWELL                        |                      1186 |
+| Kuwait Airlines      | KU1307        | MOISSELLES                     | BELLONA                        |                      1164 |
+| Kuwait Airlines      | KU4448        | CURUZU CUATIA                  | KAADEDHDHOO                    |                      1145 |
+| Kyrgyzstan Airlines  | KY6758        | BEKILY                         | NORTH VERNON                   |                      1315 |
+| Kyrgyzstan Airlines  | KY5892        | MAKINDU                        | HENDERSON CITY-CO              |                      1282 |
+| Kyrgyzstan Airlines  | KY3900        | GAINESVILLE MUN                | LERIBE                         |                      1183 |
+| Kyrgyzstan Airlines  | KY7528        | VAMDRUP                        | BATHURST                       |                      1161 |
+| Kyrgyzstan Airlines  | KY1277        | GONZALO MEJIA                  | FORSSA                         |                      1095 |
+| Laos Airlines        | LA6868        | JOHNSON LAKE                   | KOTA KINABALU                  |                      1284 |
+| Laos Airlines        | LA6899        | OODNADATTA                     | LINZ                           |                      1280 |
+| Laos Airlines        | LA2337        | PARYS                          | EAST TEXAS RGNL                |                      1208 |
+| Laos Airlines        | LA3254        | ST LOUIS                       | NUKU-HIVA                      |                      1183 |
+| Laos Airlines        | LA1021        | MITIGA                         | DELINE                         |                      1161 |
+| Lebanon Airlines     | LE9303        | ANGEL FIRE                     | SIRJAN                         |                      1262 |
+| Lebanon Airlines     | LE8275        | LEWIS UNIVERSITY               | RAJAHMUNDRY                    |                      1259 |
+| Lebanon Airlines     | LE1160        | ENSENADA INTL                  | JERUSALEM                      |                      1256 |
+| Lebanon Airlines     | LE5052        | GBESSIA                        | PINE LAKE                      |                      1229 |
+| Lebanon Airlines     | LE1528        | CASTELLON DE LA PLANA          | PLATINUM                       |                      1221 |
+| Liberia Airlines     | LI4843        | SARH                           | NEILBURG                       |                      1302 |
+| Liberia Airlines     | LI5913        | WOODBOURNE (MILITARY)          | MINERALNYYE VODY               |                      1267 |
+| Liberia Airlines     | LI1345        | SECUNDA                        | PONCIANO ARRIAGA INTL          |                      1228 |
+| Liberia Airlines     | LI7987        | ALINDAO                        | TEXARKANA REGL-WEBB            |                      1151 |
+| Liberia Airlines     | LI9811        | EMANUEL CO                     | RAFSANJAN                      |                      1135 |
+| Luxembourg Airlines  | LU8172        | TABA INTL                      | RAMONA                         |                      1284 |
+| Luxembourg Airlines  | LU8984        | KINGSVILLE NAS                 | MANDERA                        |                      1227 |
+| Luxembourg Airlines  | LU2777        | GEORGE                         | SCOTT CITY MUN                 |                      1219 |
+| Luxembourg Airlines  | LU8238        | BUSHEHR                        | VANDALIA MUN                   |                      1196 |
+| Luxembourg Airlines  | LU5197        | NORTHEIM                       | CORRYONG                       |                      1193 |
+| Macau Airlines       | MA1476        | SKORPION MINE                  | NOWRA MILITARY                 |                      1154 |
+| Macau Airlines       | MA8885        | HAZLEHURST                     | LAVUMISA                       |                      1108 |
+| Macau Airlines       | MA5291        | LINKENHEIM                     | KUNAYE                         |                      1049 |
+| Macau Airlines       | MA3351        | MERCED MUN/ MACREADY           | HERNING                        |                      1020 |
+| Macau Airlines       | MA4810        | SOUTHEAST TEXAS REGL           | LIEPAJA INTL                   |                      1005 |
+| Melilla Airlines     | ME3354        | LIMNOS                         | FAIRBANKS INTL                 |                      1315 |
+| Melilla Airlines     | ME2917        | GUAM INTL                      | WATERKLOOF AB                  |                      1168 |
+| Melilla Airlines     | ME3943        | SHEPPARD AFB/ WICHITA FALLS MU | LIFUPA                         |                      1157 |
+| Melilla Airlines     | ME8263        | HAGSHULT AB                    | CAMDEN                         |                      1143 |
+| Melilla Airlines     | ME3116        | SAN RAFAEL                     | MINSK-1                        |                      1138 |
+| Micronesia Airlines  | MI1185        | KAPANGA                        | SOMERSET                       |                      1297 |
+| Micronesia Airlines  | MI6324        | HURON REGL                     | JUMLA                          |                      1264 |
+| Micronesia Airlines  | MI1020        | MOSHOESHOE I INTL              | CABANISS NOLF                  |                      1196 |
+| Micronesia Airlines  | MI7599        | PACIFIC CITY STATE             | PORTO AMBOIM                   |                      1090 |
+| Micronesia Airlines  | MI6087        | BROKEN BOW MUN                 | ROBE                           |                      1072 |
+| Moldova Airlines     | MO9489        | VOUVRAY                        | MAITLAND                       |                      1247 |
+| Moldova Airlines     | MO6192        | MOYOBAMBA                      | SAMBAVA SOUTH                  |                      1233 |
+| Moldova Airlines     | MO5571        | HECTOR INTL                    | BHOPAL                         |                      1180 |
+| Moldova Airlines     | MO4271        | ATSINANANA                     | NORTH SHORE                    |                      1166 |
+| Moldova Airlines     | MO9309        | SAN JAVIER                     | SEWARD                         |                      1164 |
+| Myanmar Airlines     | MY6819        | CATARMAN                       | SAN PABLO                      |                      1264 |
+| Myanmar Airlines     | MY7102        | FONTAS                         | LIUTING                        |                      1261 |
+| Myanmar Airlines     | MY1270        | CLEVE                          | SPRIGGS PAYNE                  |                      1254 |
+| Myanmar Airlines     | MY7946        | TABORA                         | HENDERSON                      |                      1234 |
+| Myanmar Airlines     | MY9703        | NARIYA                         | LOVELL                         |                      1157 |
+| Namibia Airlines     | NA9372        | WELLSVILLE MUN/ TARANTINE      | KAMPHAENG SAEN                 |                      1313 |
+| Namibia Airlines     | NA8261        | AL DHAFRA                      | J M VELASCO IBARRA             |                      1226 |
+| Namibia Airlines     | NA1686        | GLEN INNES                     | N'DJAMENA                      |                      1225 |
+| Namibia Airlines     | NA9248        | ESSEY                          | TAREE                          |                      1224 |
+| Namibia Airlines     | NA1186        | GEN ARMANDO REVOREDO IGLESIAS  | SANLIURFA                      |                      1212 |
+| Nepal Airlines       | NE1455        | HIDDEN LAKE APT                | BANNU                          |                      1314 |
+| Nepal Airlines       | NE1763        | MONGOWAKENDA                   | SHER-WOOD                      |                      1293 |
+| Nepal Airlines       | NE3356        | CORTEZ MUN                     | ERIGAVO                        |                      1235 |
+| Nepal Airlines       | NE2817        | OAKEY (MILITARY)               | ANTALYA                        |                      1218 |
+| Nepal Airlines       | NE9989        | CIUDAD VICTORIA                | LUXOR INTL                     |                      1173 |
+| Nicaragua Airlines   | NI4832        | GLENWOOD MUN                   | CHAKULIA                       |                      1259 |
+| Nicaragua Airlines   | NI1927        | PARKES                         | CHERTOVITSKOYE                 |                      1214 |
+| Nicaragua Airlines   | NI9998        | RAKOVNIK                       | SWAN HILL                      |                      1162 |
+| Nicaragua Airlines   | NI9825        | TE ANAU                        | BISHE KOLA AB                  |                      1122 |
+| Nicaragua Airlines   | NI5012        | SMITH                          | PAMANDZI                       |                      1080 |
+| Northern Mariana Is  | NO9509        | BLYTHE                         | UPINGTON                       |                      1257 |
+| Northern Mariana Is  | NO1545        | BILENE                         | G BUSH INTERCONTINENTAL/ HOUST |                      1253 |
+| Northern Mariana Is  | NO8265        | METTEL                         | KULLU MANALI                   |                      1218 |
+| Northern Mariana Is  | NO3475        | PORT AU CHOIX                  | HUALIEN                        |                      1133 |
+| Northern Mariana Is  | NO7217        | KATANNING                      | JASIONKA                       |                      1125 |
+| Oman Airlines        | OM1901        | GALCAIO                        | AUBURN-OPELIKA-PITTS           |                      1309 |
+| Oman Airlines        | OM7349        | SALINAS MUN                    | MOKRAYA                        |                      1230 |
+| Oman Airlines        | OM1326        | MARSA ALAM INTL                | LIMON MUN                      |                      1221 |
+| Oman Airlines        | OM1525        | ALFREDO VLADIMIR SARA BAVER    | ENONTEKIO                      |                      1193 |
+| Oman Airlines        | OM9091        | GOTTSCHIED                     | INVERELL                       |                      1191 |
+| Pakistan Airlines    | PA1931        | BUTARE                         | KEEWAYWIN                      |                      1309 |
+| Pakistan Airlines    | PA2318        | GREENSTONE REGL                | PATTANI                        |                      1254 |
+| Pakistan Airlines    | PA7397        | REIVILO                        | RICE LAKE REGL-CARL'S          |                      1227 |
+| Pakistan Airlines    | PA4899        | ARTIGAS INTL                   | BHUJ                           |                      1181 |
+| Pakistan Airlines    | PA5641        | GWADAR INTL                    | CAUSAPSCAL                     |                      1163 |
+| Peru Airlines        | PE1689        | BOUNDIALI                      | KALGOORLIE-BOULDER             |                      1289 |
+| Peru Airlines        | PE2019        | GUIMARAES                      | PLATINUM                       |                      1286 |
+| Peru Airlines        | PE8806        | LAGUNA AAF                     | VAALA                          |                      1194 |
+| Peru Airlines        | PE4493        | MINAMI TORISHIMA               | BOSONDJO                       |                      1193 |
+| Peru Airlines        | PE3605        | GEN MARIANO ESCOBEDO INTL      | MWADINGUSHA                    |                      1171 |
+| Philippines Airlines | PH3422        | POINT COOK                     | FANO                           |                      1287 |
+| Philippines Airlines | PH3011        | RIYAN                          | HOKITIKA                       |                      1274 |
+| Philippines Airlines | PH9621        | LE CHATEAU                     | MOUE                           |                      1259 |
+| Philippines Airlines | PH1356        | LAI                            | SCOBEY BORDER STATION          |                      1230 |
+| Philippines Airlines | PH9787        | BUSSELTON                      | BALEN-KEIHEUVEL                |                      1216 |
+| Poland Airlines      | PO1787        | KOPITNARI                      | BRONSON CREEK                  |                      1260 |
+| Poland Airlines      | PO5194        | BUYANT-UKHAA                   | MORGANTON-LENOIR               |                      1236 |
+| Poland Airlines      | PO6813        | SEPT-ILES                      | HSINCHU AERO                   |                      1192 |
+| Poland Airlines      | PO9871        | PHILIP                         | MHLUME                         |                      1156 |
+| Poland Airlines      | PO3814        | TAJIMA                         | ODIENNE                        |                      1156 |
+| Poland Airlines      | PO8585        | GLENWOOD SPRINGS MUN           | AL BAHA                        |                      1134 |
+| Puerto Rico Airlines | PU7091        | ATSINANANA                     | VALLEYFIELD                    |                      1292 |
+| Puerto Rico Airlines | PU5366        | ATAQ                           | ROBINSON MUN                   |                      1289 |
+| Puerto Rico Airlines | PU1732        | MPWAPWA                        | SCOTT MUN                      |                      1243 |
+| Puerto Rico Airlines | PU1488        | KELOWNA                        | MAPUTO                         |                      1204 |
+| Puerto Rico Airlines | PU7551        | ERDENET                        | BARIRI                         |                      1197 |
+| Qatar Airlines       | QA9708        | CHAKHCHARAN                    | GEN NAVAS PARDO                |                      1168 |
+| Qatar Airlines       | QA1233        | QACHA'S NEK                    | MOBILE DOWNTOWN                |                      1147 |
+| Qatar Airlines       | QA1926        | KEETMANSHOOP                   | DU PAGE                        |                      1141 |
+| Qatar Airlines       | QA3646        | PATRIA                         | NEJRAN                         |                      1137 |
+| Qatar Airlines       | QA8661        | MARUDI                         | FINTHEN                        |                      1123 |
+| Reunion Airlines     | RE5712        | CAYCUMA                        | WANAKA                         |                      1305 |
+| Reunion Airlines     | RE4113        | PARYS                          | WAIPUKURAU                     |                      1300 |
+| Reunion Airlines     | RE7920        | ANGEL S ADAMI INTL             | KASHI                          |                      1281 |
+| Reunion Airlines     | RE1387        | SHEPPARD AFB/ WICHITA FALLS MU | SEEB INTL                      |                      1269 |
+| Reunion Airlines     | RE3745        | NOUMBI                         | HANKSVILLE                     |                      1255 |
+| Romania Airlines     | RO6423        | MOENJODARO                     | SANTA ROSA                     |                      1303 |
+| Romania Airlines     | RO3928        | RONDONOPOLIS                   | SHEGHNAN                       |                      1290 |
+| Romania Airlines     | RO3660        | RALEIGH-DURHAM INTL            | MEGHAULI                       |                      1288 |
+| Romania Airlines     | RO6911        | SEWARD                         | ANKAZOABO                      |                      1236 |
+| Romania Airlines     | RO9517        | VADODARA                       | VIDEIRA                        |                      1218 |
+| Russia Airlines      | RU9121        | MZIMBA                         | MT VERNON                      |                      1264 |
+| Russia Airlines      | RU4788        | SAN PEDRO                      | CUE                            |                      1248 |
+| Russia Airlines      | RU7577        | PEARSON                        | WONDERBOOM                     |                      1239 |
+| Russia Airlines      | RU1751        | SEOUL / DOMESTIC               | FLORES                         |                      1223 |
+| Russia Airlines      | RU3846        | SALZBURG                       | BATHURST                       |                      1193 |
+| Rwanda Airlines      | RW5291        | KUMASI                         | GIMPO INTL                     |                      1277 |
+| Rwanda Airlines      | RW2753        | LA AURORA INTL                 | HOYBUKTMOEN                    |                      1255 |
+| Rwanda Airlines      | RW8821        | MAMFE                          | SALT LAKE CITY INTL            |                      1223 |
+| Rwanda Airlines      | RW7078        | LIC BENITO JUAREZ INTL         | KONGOLO                        |                      1182 |
+| Rwanda Airlines      | RW6680        | BARRHEAD                       | MALE INTL                      |                      1178 |
+| San Andres Airlines  | SA3766        | TESHIG                         | WEST WOODWARD                  |                      1273 |
+| San Andres Airlines  | SA2682        | CHARLES PRINCE                 | LORAIN CO REGL                 |                      1196 |
+| San Andres Airlines  | SA9105        | RUPPINER LAND                  | LATROBE VALLEY                 |                      1185 |
+| San Andres Airlines  | SA6015        | VICTORIA FALLS                 | EVANSVILLE REGL                |                      1183 |
+| San Andres Airlines  | SA3746        | DARGAVILLE                     | ABQAIQ                         |                      1150 |
+| Senegal Airlines     | SE8402        | MAIMANA                        | LAFAYETTE REGL                 |                      1236 |
+| Senegal Airlines     | SE4262        | MPWAPWA                        | CLEARFIELD-LAWRENCE            |                      1203 |
+| Senegal Airlines     | SE1891        | LONQUIMAY                      | ERZURUM                        |                      1147 |
+| Senegal Airlines     | SE2117        | ACADIANA REGL                  | VOI                            |                      1146 |
+| Senegal Airlines     | SE9011        | MARCILLAC                      | HOSKINS                        |                      1145 |
+| Sierra Leone Airline | SI2744        | INHACA                         | TEKAMAH                        |                      1308 |
+| Sierra Leone Airline | SI1486        | SCHMOLDOW                      | MOTUEKA                        |                      1301 |
+| Sierra Leone Airline | SI6465        | BINGA                          | SHER-WOOD                      |                      1297 |
+| Sierra Leone Airline | SI1699        | ODESSA-SCHLEMEYER              | SANANDAJ                       |                      1235 |
+| Sierra Leone Airline | SI7710        | FINSCH MINE                    | CUMBERLAND MUN                 |                      1222 |
+| Slovakia Airlines    | SL5300        | ROWAN CO                       | MYSORE                         |                      1264 |
+| Slovakia Airlines    | SL8806        | MUTENA                         | COONAMBLE                      |                      1252 |
+| Slovakia Airlines    | SL8689        | LA SARRE                       | ZHENGDING                      |                      1244 |
+| Slovakia Airlines    | SL1591        | FIANARANTSOA                   | STEPHENVILLE                   |                      1175 |
+| Slovakia Airlines    | SL5789        | SANAA INTL                     | CURTIS L BROWN JR FIELD        |                      1167 |
+| Solomon Is Airlines  | SO1619        | EASTLEIGH                      | HUNTINGTON MUN                 |                      1259 |
+| Solomon Is Airlines  | SO4482        | LORETO INTL                    | KEETMANSHOOP                   |                      1243 |
+| Solomon Is Airlines  | SO4186        | GIBB RIVER                     | DRESDEN                        |                      1241 |
+| Solomon Is Airlines  | SO9455        | SARH                           | SNOW LAKE                      |                      1220 |
+| Solomon Is Airlines  | SO2397        | VAERNES AB                     | STRAHAN                        |                      1182 |
+| Spain Airlines       | SP8897        | EMSDALE                        | SURAT THANI                    |                      1267 |
+| Spain Airlines       | SP2447        | ALERT BAY                      | UITENHAGE                      |                      1249 |
+| Spain Airlines       | SP8429        | CHEIKH LARBI TEBESSI           | PORT LINCOLN                   |                      1221 |
+| Spain Airlines       | SP9374        | CAYLEY/ A. J. FLYING RANCH     | AGATTI                         |                      1215 |
+| Spain Airlines       | SP9821        | MARSHALL MUN-RYAN              | DENIS ISLAND                   |                      1152 |
+| Sri Lanka Airlines   | SR9120        | KHUZDAR                        | SIMON BOLIVAR INTL             |                      1295 |
+| Sri Lanka Airlines   | SR4361        | FUTAYSI                        | KENNETT MEML                   |                      1285 |
+| Sri Lanka Airlines   | SR4184        | KRON MONJAN                    | ROLLA NATL                     |                      1277 |
+| Sri Lanka Airlines   | SR3356        | ALEXANDRA                      | KASTELI AB                     |                      1260 |
+| Sri Lanka Airlines   | SR4528        | DIFFA                          | DRUMHELLER MUN                 |                      1244 |
+| St Kitts Airlines    | ST6149        | WEST SALE                      | OLOMOUC                        |                      1310 |
+| St Kitts Airlines    | ST1236        | CHIMOIO                        | WILLOUGHBY LOST NATION MUN     |                      1210 |
+| St Kitts Airlines    | ST3312        | KAKLIC AB                      | CANTUNG                        |                      1203 |
+| St Kitts Airlines    | ST2675        | LUNDAZI                        | ANSON CO                       |                      1172 |
+| St Kitts Airlines    | ST7408        | SAC CITY MUN                   | ORMARA                         |                      1159 |
+| Sudan Airlines       | SU9525        | SPARREVOHN LRRS                | ANKAZOABO                      |                      1243 |
+| Sudan Airlines       | SU8392        | BOKORO                         | CANANEA                        |                      1224 |
+| Sudan Airlines       | SU8570        | CORVO                          | CATARMAN                       |                      1196 |
+| Sudan Airlines       | SU6625        | SOUTH ARKANSAS REGL AT GOODWIN | HARDING                        |                      1176 |
+| Sudan Airlines       | SU8341        | LUXOR INTL                     | ARCHERFIELD                    |                      1176 |
+| Sudan Airlines       | SU1008        | MAGADI                         | CHICOUTIMI/ ST-HONORE          |                      1154 |
+| Swaziland Airlines   | SW8179        | JEFMAN                         | LE PALYVESTRE NAVY             |                      1290 |
+| Swaziland Airlines   | SW1335        | SAARLOUIS-DUREN                | PROVIDENIYA BAY                |                      1151 |
+| Swaziland Airlines   | SW2254        | PUNTA RAISI                    | MAREEBA                        |                      1146 |
+| Swaziland Airlines   | SW5987        | MUREN                          | EDUARDO GOMES INTL             |                      1132 |
+| Swaziland Airlines   | SW1117        | KOKOMO MUN                     | DALBANDIN                      |                      1119 |
+| Syria Airlines       | SY1236        | SEHWAN SHARIF                  | CDTE.GUILLERMO D CASTILLO PAR. |                      1296 |
+| Syria Airlines       | SY6227        | ARACUAI                        | CHANDRAGADHI                   |                      1284 |
+| Syria Airlines       | SY7044        | IMELDA R MARCOS                | JEVER AB                       |                      1230 |
+| Syria Airlines       | SY8271        | SIERRA GRANDE                  | SKAGEN                         |                      1222 |
+| Syria Airlines       | SY1686        | KASENGA                        | FREEMAN MUN                    |                      1197 |
+| Taiwan Airlines      | TA8345        | NNAMDI AZIKIWE INTL            | TIPELLA                        |                      1306 |
+| Taiwan Airlines      | TA1622        | RIVERSIDE MUN                  | SAMFYA                         |                      1266 |
+| Taiwan Airlines      | TA2649        | FLABOB                         | KONYA AB                       |                      1211 |
+| Taiwan Airlines      | TA6792        | ST HELENS                      | EPITALION                      |                      1204 |
+| Taiwan Airlines      | TA1129        | LEZIGNAN-CORBIERES             | CHOISEUL                       |                      1194 |
+| Thailand Airlines    | TH5410        | PARANAIBA                      | BAJURA                         |                      1309 |
+| Thailand Airlines    | TH5857        | DON TORCUATO                   | GORKHA                         |                      1299 |
+| Thailand Airlines    | TH8825        | OTIS ANGB                      | NAKHON SI THAMMARAT            |                      1281 |
+| Thailand Airlines    | TH9468        | MAHLON SWEET                   | LERIBE                         |                      1273 |
+| Thailand Airlines    | TH1970        | MC DONALD'S FARM               | SIMARA                         |                      1255 |
+| Togo Airlines        | TO6002        | GUSTAVO ROJAS PINILLA          | AL DHAFRA                      |                      1299 |
+| Togo Airlines        | TO6525        | SWAN HILL                      | SPITZERBERG                    |                      1292 |
+| Togo Airlines        | TO2260        | RICHARDS BAY                   | SAN MARCOS MUN                 |                      1247 |
+| Togo Airlines        | TO6185        | ALLIANCE MUN                   | MANDABE                        |                      1232 |
+| Togo Airlines        | TO6452        | MIDDLETON                      | FARQUHAR                       |                      1217 |
+| Trinidad Airlines    | TR1305        | GOBERNADOR CASTELLO            | RUMJATAR                       |                      1285 |
+| Trinidad Airlines    | TR9554        | SHABUNDA                       | NOWRA MILITARY                 |                      1238 |
+| Trinidad Airlines    | TR5931        | CLOVER                         | STANDERTON                     |                      1189 |
+| Trinidad Airlines    | TR6260        | AXUM                           | DECATUR CO INDUSTRIAL          |                      1176 |
+| Trinidad Airlines    | TR6574        | TUDEVTAI                       | CORNELIO PROCOPIO              |                      1173 |
+| Tunisia Airlines     | TU8680        | BETARE-OYA                     | MUSKEG TOWER                   |                      1311 |
+| Tunisia Airlines     | TU5904        | SAO MIGUEL DO IGUACU           | KASHI                          |                      1308 |
+| Tunisia Airlines     | TU6506        | GRANDE                         | CHULMAN                        |                      1281 |
+| Tunisia Airlines     | TU4765        | EIL                            | LA GRANDE-4                    |                      1271 |
+| Tunisia Airlines     | TU9695        | TAOS REGL                      | AL SAQR FIELD                  |                      1270 |
+| Uganda Airlines      | UG1024        | RAFAEL PABON                   | SHEBERGHAN                     |                      1302 |
+| Uganda Airlines      | UG5477        | RATHCOOLE                      | ORBOST                         |                      1286 |
+| Uganda Airlines      | UG3315        | BANFORA                        | INGENIKA                       |                      1234 |
+| Uganda Airlines      | UG2924        | POPOKABAKA                     | TOTTORI                        |                      1207 |
+| Uganda Airlines      | UG2451        | GAROUA                         | WADENA                         |                      1200 |
+| Ukraine Airlines     | UK7300        | BOGUE MCALF                    | DOLPA                          |                      1280 |
+| Ukraine Airlines     | UK6935        | KAMISHLY                       | LILLOOET                       |                      1274 |
+| Ukraine Airlines     | UK9297        | MONTGOMERY CO                  | FUTAYSI                        |                      1259 |
+| Ukraine Airlines     | UK2132        | ALICANTE                       | TOWNSVILLE INTL                |                      1257 |
+| Ukraine Airlines     | UK1408        | IDIOFA                         | PECOS MUN                      |                      1245 |
+| United Arab Emirates | UN1158        | FUTALEUFU                      | DHANGADHI                      |                      1289 |
+| United Arab Emirates | UN9799        | SALAK                          | PINCHER CREEK                  |                      1285 |
+| United Arab Emirates | UN1679        | NANUQUE                        | THOISE                         |                      1204 |
+| United Arab Emirates | UN1553        | SCOTT MUN                      | ORMARA                         |                      1173 |
+| United Arab Emirates | UN1368        | KISSIDOUGOU                    | PORT ANGELES CGAS              |                      1153 |
+| Uruguay Airlines     | UR3145        | FIRQ AB                        | EL MANZANO                     |                      1283 |
+| Uruguay Airlines     | UR1895        | LETSENG                        | WAUSAU DOWNTOWN                |                      1239 |
+| Uruguay Airlines     | UR5410        | RAS TANURA                     | AUGUSTA REGL AT BUSH           |                      1149 |
+| Uruguay Airlines     | UR5843        | GYANDZHA                       | LEASK                          |                      1135 |
+| Uruguay Airlines     | UR2755        | LUOZI                          | BLACK RIVER FALLS AREA         |                      1125 |
+| Uzbekistan Airlines  | UZ1489        | KHARKHORIN                     | RUBEM BERTA INTL               |                      1295 |
+| Uzbekistan Airlines  | UZ8136        | RUFUNSA                        | CLARION MUN                    |                      1289 |
+| Uzbekistan Airlines  | UZ5340        | HILL CITY MUN                  | AMPANIHY                       |                      1254 |
+| Uzbekistan Airlines  | UZ2573        | MONZE                          | OUTAGAMIE CO REGL              |                      1234 |
+| Uzbekistan Airlines  | UZ9680        | SARAKHS                        | DANE CO REGL-TRUAX             |                      1179 |
+| Vanuatu Airlines     | VA1681        | DAWSON CREEK                   | GIALAM                         |                      1284 |
+| Vanuatu Airlines     | VA8671        | MARIBOR                        | UTUROA                         |                      1278 |
+| Vanuatu Airlines     | VA3184        | EAST LONDON                    | LAS VEGAS MUN                  |                      1274 |
+| Vanuatu Airlines     | VA1522        | FAHUD                          | WOODWARD                       |                      1239 |
+| Vanuatu Airlines     | VA1848        | MINACU                         | NENANA MUN                     |                      1220 |
+| Venezuela Airlines   | VE5960        | BANGOY INTL                    | LINGEN                         |                      1226 |
+| Venezuela Airlines   | VE7457        | QUELIMANE                      | SCHEFFERVILLE                  |                      1193 |
+| Venezuela Airlines   | VE8149        | PORTOROZ                       | EGEGIK                         |                      1174 |
+| Venezuela Airlines   | VE1399        | JASIONKA                       | GOLD COAST                     |                      1120 |
+| Venezuela Airlines   | VE2759        | JUIST                          | LEIGH CREEK                    |                      1116 |
+| Vietnam Airlines     | VI3253        | CARPIQUET                      | MARYBOROUGH                    |                      1243 |
+| Vietnam Airlines     | VI8418        | MANJA                          | PAGE                           |                      1235 |
+| Vietnam Airlines     | VI2936        | AKTAU                          | KELOWNA                        |                      1198 |
+| Vietnam Airlines     | VI1485        | KISUMU                         | EASTON/ NEWNAM                 |                      1143 |
+| Vietnam Airlines     | VI9636        | CORDOVA-SMITH                  | PUERTO DESEADO                 |                      1120 |
+| Wake I Airlines      | WA8980        | USIMINAS                       | COMILLA                        |                      1296 |
+| Wake I Airlines      | WA7511        | MC GRATH                       | SEOUL / DOMESTIC               |                      1276 |
+| Wake I Airlines      | WA1538        | GODS RIVER                     | BARIO                          |                      1275 |
+| Wake I Airlines      | WA4213        | CACADOR                        | JYVASKYLA                      |                      1094 |
+| Wake I Airlines      | WA5066        | EPITALION                      | CAP. D. JOSE D. VASQUEZ        |                      1091 |
+| Western Samoa Airlin | WE4176        | SAURIMO                        | MERIMBULA                      |                      1270 |
+| Western Samoa Airlin | WE1187        | THE PAS                        | KAMPHAENG SAEN                 |                      1214 |
+| Western Samoa Airlin | WE5423        | ISIRO-MATARI                   | HEBER SPRINGS MUN              |                      1205 |
+| Western Samoa Airlin | WE6392        | MASASI                         | SAMPSON CO                     |                      1205 |
+| Western Samoa Airlin | WE6955        | OTROKOVICE                     | HAY                            |                      1149 |
+| Western Samoa Airlin | WE9264        | AGHAJARI                       | EAGLE CREEK                    |                      1141 |
+| Yemen Airlines       | YE7830        | HAMEENKYRO                     | BASE MARAMBIO                  |                      1280 |
+| Yemen Airlines       | YE8510        | ORMARA                         | DON TORCUATO                   |                      1230 |
+| Yemen Airlines       | YE6607        | KALAFO EAST                    | DIGBY                          |                      1132 |
+| Yemen Airlines       | YE9761        | GRAND TURK INTL                | MIANDRIVAZO                    |                      1129 |
+| Yemen Airlines       | YE5359        | MOISSELLES                     | TATAKOTO                       |                      1107 |
+| Yugoslavia Airlines  | YU6901        | NOUAKCHOTT                     | HUALIEN                        |                      1274 |
+| Yugoslavia Airlines  | YU3217        | MEHRABAD INTL                  | OHAKEA (MILITARY)              |                      1228 |
+| Yugoslavia Airlines  | YU6843        | MOJAVE                         | LIEKSA-NURMES                  |                      1210 |
+| Yugoslavia Airlines  | YU9577        | ST SAUVEUR AB                  | ROBINVALE                      |                      1200 |
+| Yugoslavia Airlines  | YU7039        | AMBOULI                        | DAVISON AAF                    |                      1178 |
+| Zambia Airlines      | ZA4577        | MAHAGI                         | KERRVILLE MUN-SCHREINER        |                      1295 |
+| Zambia Airlines      | ZA7663        | CUMMINS                        | DVUR KRALOVE                   |                      1268 |
+| Zambia Airlines      | ZA5308        | DIRKOU                         | MOMOTE                         |                      1255 |
+| Zambia Airlines      | ZA1238        | LOS ALAMOS                     | INHACA                         |                      1252 |
+| Zambia Airlines      | ZA3488        | FAYENCE                        | MAROOCHYDORE/ SUNSHINE COAST   |                      1237 |
+| Zimbabwe Airlines    | ZI3103        | LE POYET                       | LA ROCHE AERO                  |                      1296 |
+| Zimbabwe Airlines    | ZI3596        | DELTA MUN                      | DIKHIL                         |                      1197 |
+| Zimbabwe Airlines    | ZI7987        | UA-HUKA                        | QAARSUT                        |                      1140 |
+| Zimbabwe Airlines    | ZI4563        | VENETIA                        | COVEY HILL                     |                      1136 |
+| Zimbabwe Airlines    | ZI8240        | TARAPOA                        | INHAMBANE                      |                      1112 |
++----------------------+---------------+--------------------------------+--------------------------------+---------------------------+
+575 rows in set (8.66 sec)

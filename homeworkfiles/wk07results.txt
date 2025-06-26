@@ -1,0 +1,371 @@
+Query 1
+      What are the unique last names of our employees?
+      List them in alphabetical order.
+      Columns will look like the following:
+      | Last Name |
++---------------+
+| Last Name     |
++---------------+
+| Aaron         |
+| Adams         |
+| Adler         |
+| Aikman        |
+| Akey          |
+| Alan          |
+| Aldred        |
+| Alexander     |
+| Allen         |
+| Allman        |
+| Alvarado      |
+| Alworth       |
+| Anastasio     |
+| Anders        |
+| Anderson      |
+| Arango        |
+| ...           |
+| Bare          |
+| Barker        |
+| Barlow        |
+| Barr          |
+| Bartel        |
+| ...           |
+| Yamaoka       |
+| Yates         |
+| Zandt         |
+| Zarchen       |
+| Zegers        |
+| Zelenka       |
+| Zellner       |
+| Zettler       |
+| Zima          |
+| Zomer         |
+| Zonca         |
+| Zucker        |
+| Zwick-Nash    |
++---------------+
+857 rows in set (0.00 sec)
+Query 2
+      What are the airlines and which airports are they based in?
+      List the airlines in alphabetical order.
+      Columns will look like the following:
+      | Airline | Airport |
++----------------------+--------------------------+
+| Airline              | Airport                  |
++----------------------+--------------------------+
+| Afghanistan Airlines | BAMYAN                   |
+| Albania Airlines     | RINAS                    |
+| American Samoa Airli | PAGO PAGO INTL           |
+| Angola Airlines      | ALBANO MACHADO           |
+| Argentina Airlines   | ALMIRANTE ZAR            |
+| Australia Airlines   | ADELAIDE INTL            |
+| Azerbaijan Airlines  | BINA                     |
+| Bahamas Airlines     | ANDROS TOWN INTL         |
+| Belarus Airlines     | BREST                    |
+| Bhutan Airlines      | PARO                     |
+| Bolivia Airlines     | APOLO                    |
+| Brazil Airlines      | AEROCLUB                 |
+| Bulgaria Airlines    | BURGAS                   |
+| Caicos Is Airlines   | CONCH BAR                |
+| Central African Rep  | M'POKO                   |
+| Chad Airlines        | ABECHE                   |
+| Colombia Airlines    | AGUAS CLARAS             |
+| Croatia Airlines     | CILIPI                   |
+| Cuba Airlines        | ABEL SANTA MARIA         |
+| Cyprus Airlines      | AKROTIRI AB              |
+| Czech Airlines       | HOLESOV                  |
+| Dakhla And Laayoune  | DAKHLA                   |
+| Denmark Airlines     | AALBORG                  |
+| Djibouti Airlines    | AMBOULI                  |
+| Dominica Airlines    | CANEFIELD INTL           |
+| Ecuador Airlines     | CHACHOAN                 |
+| Egypt Airlines       | ABU SIMBEL               |
+| El Salvador Airlines | EL SALVADOR INTL         |
+| Equatorial Guinea Ai | BATA                     |
+| Eritrea Airlines     | ASMARA INTL              |
+| Estonia Airlines     | KARDLA                   |
+| Ethiopia Airlines    | A.T.D. YILMA INTL        |
+| Falkland Is Airlines | MOUNT PLEASANT           |
+| Fiji Is Airlines     | LABASA                   |
+| France Airlines      | AIX-LES-BAINS            |
+| Gabon Airlines       | BITAM                    |
+| Georgia Airlines     | KOPITNARI                |
+| Ghana Airlines       | KOTOKA INTL              |
+| Gibraltar Airlines   | GIBRALTAR AB             |
+| Greece Airlines      | AGRINION AB              |
+| Guadeloupe Airlines  | BAILLIF                  |
+| Haiti Airlines       | CAP HAITIEN INTL         |
+| Honduras Airlines    | CATACAMAS                |
+| Hungary Airlines     | FERIHEGY                 |
+| Iceland Airlines     | AKUREYRI                 |
+| India Airlines       | AGARTALA                 |
+| Iran Airlines        | ABADAN                   |
+| Isla De Pascua Airli | MATAVERI INTL            |
+| Italy Airlines       | ALBENGA                  |
+| Ivory Coast Airlines | ABENGOUROU               |
+| Jamaica Airlines     | NORMAN MANLEY INTL       |
+| Jerusalem Airlines   | JERUSALEM                |
+| Johnston Atoll Airli | JOHNSTON ATOLL           |
+| Kazakhstan Airlines  | AKTAU                    |
+| Kenya Airlines       | AMBOSELI                 |
+| Kiribati Airlines    | BONRIKI INTL             |
+| Korea Airlines       | A-306                    |
+| Kuwait Airlines      | KUWAIT INTL              |
+| Kyrgyzstan Airlines  | MANAS                    |
+| Laos Airlines        | ATTOPEU                  |
+| Lebanon Airlines     | BEIRUT INTL              |
+| Liberia Airlines     | BUCKANAN                 |
+| Luxembourg Airlines  | LUXEMBOURG               |
+| Macau Airlines       | MACAU INTL               |
+| Melilla Airlines     | MELILLA                  |
+| Micronesia Airlines  | BABELTHUAP/ KOROR        |
+| Moldova Airlines     | CHISINAU                 |
+| Myanmar Airlines     | BAGAN                    |
+| Namibia Airlines     | ARANDIS                  |
+| Nepal Airlines       | BAGLUNG                  |
+| Nicaragua Airlines   | BLUEFIELDS               |
+| Northern Mariana Is  | ROTA I INTL              |
+| Oman Airlines        | KHASAB AB                |
+| Pakistan Airlines    | ALLAMA IQBAL INTL        |
+| Peru Airlines        | ALEJANDRO VELAZCO ASTETE |
+| Philippines Airlines | BACOLOD                  |
+| Poland Airlines      | BABIMOST                 |
+| Puerto Rico Airlines | LUIS MUNOZ MARIN INTL    |
+| Qatar Airlines       | DOHA INTL                |
+| Reunion Airlines     | GILLOT                   |
+| Romania Airlines     | ARAD                     |
+| Russia Airlines      | ABAKAN                   |
+| Rwanda Airlines      | BUTARE                   |
+| San Andres Airlines  | GUSTAVO ROJAS PINILLA    |
+| Senegal Airlines     | BAKEL                    |
+| Sierra Leone Airline | BO                       |
+| Slovakia Airlines    | KOSICE                   |
+| Solomon Is Airlines  | GIZO                     |
+| Spain Airlines       | A CORUNA                 |
+| Sri Lanka Airlines   | AMPARAI                  |
+| St Kitts Airlines    | NEWCASTLE                |
+| Sudan Airlines       | ATBARA                   |
+| Swaziland Airlines   | MATSAPHA INTL            |
+| Syria Airlines       | ALEPPO INTL              |
+| Taiwan Airlines      | CHIANG KAI SHEK INTL     |
+| Thailand Airlines    | BANGKOK INTL             |
+| Togo Airlines        | NIAMTOUGOU               |
+| Trinidad Airlines    | CROWN POINT              |
+| Tunisia Airlines     | CARTHAGE                 |
+| Uganda Airlines      | ARUA                     |
+| Ukraine Airlines     | BORYSPIL'                |
+| United Arab Emirates | ABU DHABI INTL           |
+| Uruguay Airlines     | ARTIGAS INTL             |
+| Uzbekistan Airlines  | BUKHARA                  |
+| Vanuatu Airlines     | BAUERFIELD               |
+| Venezuela Airlines   | ALBERTO CARNEVALLI       |
+| Vietnam Airlines     | BUONMATHUOT              |
+| Wake I Airlines      | WAKE I AAF               |
+| Western Samoa Airlin | FAGALI                   |
+| Yemen Airlines       | ABBS                     |
+| Yugoslavia Airlines  | BELGRADE                 |
+| Zambia Airlines      | CHIPATA                  |
+| Zimbabwe Airlines    | BUFFALO RANGE            |
++----------------------+--------------------------+
+113 rows in set (0.02 sec)
+Query 3
+      What are the first 20 airports that are based in the United States?
+      Display the airport name and country.
+      Columns will look like the following:
+      | Airport | Country |
++--------------------+---------------+
+| Airport            | Country       |
++--------------------+---------------+
+| A R S SPORT STRIP  | UNITED STATES |
+| ABERDEEN REGL      | UNITED STATES |
+| ABERNATHY          | UNITED STATES |
+| ABILENE REGL       | UNITED STATES |
+| ACADIANA REGL      | UNITED STATES |
+| ACCOMACK CO        | UNITED STATES |
+| ADA MUN            | UNITED STATES |
+| ADAK               | UNITED STATES |
+| ADAMS              | UNITED STATES |
+| ADDINGTON          | UNITED STATES |
+| ADDISON            | UNITED STATES |
+| ADIRONDACK REGL    | UNITED STATES |
+| AFTON MUN          | UNITED STATES |
+| AIKEN MUN          | UNITED STATES |
+| AINSWORTH MUN      | UNITED STATES |
+| AIRBORNE           | UNITED STATES |
+| AIRLAKE            | UNITED STATES |
+| AITKIN MUN - KURTZ | UNITED STATES |
+| AKRON FULTON INTL  | UNITED STATES |
+| AKRON-CANTON REGL  | UNITED STATES |
++--------------------+---------------+
+20 rows in set (0.00 sec)
+Query 4
+      What are the top 10 airports without an IATA code?
+      Display the airport name, IATA code, and ICAO code.
+      Columns will look like the following:
+      | Airport | IATA | ICAO |
++-------------------+------+------+
+| Airport           | IATA | ICAO |
++-------------------+------+------+
+| A R S SPORT STRIP | NULL | 7Y7  |
+| A-511 AAF         | NULL | RKSG |
+| AARS              | NULL | EKVH |
+| AAVAHELUKKA       | NULL | EFAA |
+| ABA               | NULL | FZJF |
+| ABARE             | NULL | SDLI |
+| ABBEVILLE         | NULL | LFOI |
+| ABBEYSHRULE       | NULL | EIAB |
+| ABERNATHY         | NULL | KGZS |
+| ABERPORTH         | NULL | EGFA |
++-------------------+------+------+
+10 rows in set (0.00 sec)
+Query 5
+      What are the flights that depart between 10:00 and 10:15 on Monday?
+      Check the flightschedule table for the column Monday.
+      Sort the results by departure time.
+      List the following columns:
+      | Flight Number | Departure Time | Arrival Time | Airline | Monday |
++---------------+----------------+--------------+----------------------+--------+
+| Flight Number | Departure Time | Arrival Time | Airline              | Monday |
++---------------+----------------+--------------+----------------------+--------+
+| LU8903        | 10:00:00       | 00:51:00     | Luxembourg Airlines  |      1 |
+| TH1768        | 10:00:00       | 19:29:00     | Thailand Airlines    |      1 |
+| BU3447        | 10:01:00       | 19:07:00     | Bulgaria Airlines    |      1 |
+| BU9691        | 10:01:00       | 23:37:00     | Bulgaria Airlines    |      1 |
+| CY2779        | 10:01:00       | 00:39:00     | Cyprus Airlines      |      1 |
+| JO7310        | 10:01:00       | 15:25:00     | Johnston Atoll Airli |      1 |
+| KI9721        | 10:02:00       | 20:26:00     | Kiribati Airlines    |      1 |
+| DE4644        | 10:02:00       | 22:26:00     | Denmark Airlines     |      1 |
+| ST6158        | 10:02:00       | 22:44:00     | St Kitts Airlines    |      1 |
+| AZ7862        | 10:03:00       | 06:09:00     | Azerbaijan Airlines  |      1 |
+| IC8570        | 10:03:00       | 15:31:00     | Iceland Airlines     |      1 |
+| SY1381        | 10:03:00       | 15:10:00     | Syria Airlines       |      1 |
+| AM9153        | 10:04:00       | 11:59:00     | American Samoa Airli |      1 |
+| EL9828        | 10:04:00       | 18:14:00     | El Salvador Airlines |      1 |
+| YU9092        | 10:04:00       | 14:38:00     | Yugoslavia Airlines  |      1 |
+| CE3838        | 10:05:00       | 18:52:00     | Central African Rep  |      1 |
+| DJ1287        | 10:05:00       | 17:51:00     | Djibouti Airlines    |      1 |
+| GU5693        | 10:05:00       | 15:16:00     | Guadeloupe Airlines  |      1 |
+| RU3079        | 10:05:00       | 00:41:00     | Russia Airlines      |      1 |
+| RU5633        | 10:05:00       | 20:50:00     | Russia Airlines      |      1 |
+| BE9463        | 10:06:00       | 22:54:00     | Belarus Airlines     |      1 |
+| EG9300        | 10:06:00       | 14:49:00     | Egypt Airlines       |      1 |
+| JO2925        | 10:06:00       | 02:39:00     | Johnston Atoll Airli |      1 |
+| EL1731        | 10:06:00       | 12:11:00     | El Salvador Airlines |      1 |
+| IR2446        | 10:06:00       | 22:58:00     | Iran Airlines        |      1 |
+| HA8726        | 10:06:00       | 15:20:00     | Haiti Airlines       |      1 |
+| MI3892        | 10:06:00       | 20:09:00     | Micronesia Airlines  |      1 |
+| FR1844        | 10:07:00       | 21:47:00     | France Airlines      |      1 |
+| KI2109        | 10:08:00       | 02:12:00     | Kiribati Airlines    |      1 |
+| SP3612        | 10:08:00       | 19:03:00     | Spain Airlines       |      1 |
+| FI4432        | 10:09:00       | 11:29:00     | Fiji Is Airlines     |      1 |
+| KY3522        | 10:09:00       | 21:42:00     | Kyrgyzstan Airlines  |      1 |
+| FR3107        | 10:09:00       | 23:30:00     | France Airlines      |      1 |
+| HO2781        | 10:10:00       | 01:06:00     | Honduras Airlines    |      1 |
+| IN7951        | 10:10:00       | 10:57:00     | India Airlines       |      1 |
+| UG4340        | 10:10:00       | 14:45:00     | Uganda Airlines      |      1 |
+| VI9496        | 10:10:00       | 02:45:00     | Vietnam Airlines     |      1 |
+| GH4696        | 10:11:00       | 12:10:00     | Ghana Airlines       |      1 |
+| MY8586        | 10:11:00       | 15:24:00     | Myanmar Airlines     |      1 |
+| NE9403        | 10:11:00       | 14:09:00     | Nepal Airlines       |      1 |
+| JE5131        | 10:11:00       | 04:25:00     | Jerusalem Airlines   |      1 |
+| LI7287        | 10:11:00       | 04:12:00     | Liberia Airlines     |      1 |
+| LU7823        | 10:11:00       | 21:14:00     | Luxembourg Airlines  |      1 |
+| TR4045        | 10:12:00       | 12:50:00     | Trinidad Airlines    |      1 |
+| LE1737        | 10:12:00       | 19:41:00     | Lebanon Airlines     |      1 |
+| FA3272        | 10:13:00       | 20:54:00     | Falkland Is Airlines |      1 |
+| AZ1009        | 10:13:00       | 11:12:00     | Azerbaijan Airlines  |      1 |
+| CY1407        | 10:13:00       | 21:08:00     | Cyprus Airlines      |      1 |
+| YU8939        | 10:13:00       | 23:55:00     | Yugoslavia Airlines  |      1 |
+| NO7733        | 10:14:00       | 04:13:00     | Northern Mariana Is  |      1 |
+| CR5382        | 10:14:00       | 04:31:00     | Croatia Airlines     |      1 |
+| OM2166        | 10:14:00       | 23:28:00     | Oman Airlines        |      1 |
+| SW1352        | 10:14:00       | 18:34:00     | Swaziland Airlines   |      1 |
+| AF1078        | 10:15:00       | 20:46:00     | Afghanistan Airlines |      1 |
+| SL5832        | 10:15:00       | 14:25:00     | Slovakia Airlines    |      1 |
+| CO2518        | 10:15:00       | 02:05:00     | Colombia Airlines    |      1 |
++---------------+----------------+--------------+----------------------+--------+
+56 rows in set (0.02 sec)
+Query 6
+      What are the flights that arrive between 20:00 and 20:15 and are not
+      flown on Monday?
+      Sort the results by departure time.
+      List the following columns:
+      | Flight Number | Departure Time | Arrival Time | Airline | Monday |
++---------------+----------------+--------------+----------------------+--------+
+| Flight Number | Departure Time | Arrival Time | Airline              | Monday |
++---------------+----------------+--------------+----------------------+--------+
+| FA8332        | 00:58:00       | 20:08:00     | Falkland Is Airlines |      0 |
+| SE2117        | 01:03:00       | 20:09:00     | Senegal Airlines     |      0 |
+| UR2755        | 01:21:00       | 20:06:00     | Uruguay Airlines     |      0 |
+| SR1045        | 01:31:00       | 20:01:00     | Sri Lanka Airlines   |      0 |
+| AR8167        | 03:30:00       | 20:09:00     | Argentina Airlines   |      0 |
+| NO3458        | 03:47:00       | 20:01:00     | Northern Mariana Is  |      0 |
+| CZ7153        | 03:53:00       | 20:02:00     | Czech Airlines       |      0 |
+| SU1022        | 04:12:00       | 20:03:00     | Sudan Airlines       |      0 |
+| OM2391        | 04:27:00       | 20:03:00     | Oman Airlines        |      0 |
+| CU5194        | 04:55:00       | 20:10:00     | Cuba Airlines        |      0 |
+| PU7766        | 05:01:00       | 20:03:00     | Puerto Rico Airlines |      0 |
+| ZI4380        | 05:28:00       | 20:09:00     | Zimbabwe Airlines    |      0 |
+| CZ1298        | 05:55:00       | 20:14:00     | Czech Airlines       |      0 |
+| TA1388        | 07:03:00       | 20:09:00     | Taiwan Airlines      |      0 |
+| RE3644        | 07:14:00       | 20:08:00     | Reunion Airlines     |      0 |
+| IN1796        | 07:21:00       | 20:05:00     | India Airlines       |      0 |
+| TH1744        | 07:23:00       | 20:13:00     | Thailand Airlines    |      0 |
+| EQ7736        | 07:24:00       | 20:14:00     | Equatorial Guinea Ai |      0 |
+| GE9982        | 07:27:00       | 20:06:00     | Georgia Airlines     |      0 |
+| IS8837        | 08:17:00       | 20:13:00     | Isla De Pascua Airli |      0 |
+| RU1252        | 08:22:00       | 20:11:00     | Russia Airlines      |      0 |
+| SP8138        | 09:05:00       | 20:08:00     | Spain Airlines       |      0 |
+| BH7756        | 09:21:00       | 20:14:00     | Bhutan Airlines      |      0 |
+| LI4160        | 10:13:00       | 20:02:00     | Liberia Airlines     |      0 |
+| HO1609        | 10:27:00       | 20:09:00     | Honduras Airlines    |      0 |
+| VI8019        | 10:46:00       | 20:08:00     | Vietnam Airlines     |      0 |
+| BA4101        | 10:54:00       | 20:08:00     | Bahamas Airlines     |      0 |
+| SI5464        | 11:26:00       | 20:06:00     | Sierra Leone Airline |      0 |
+| SR9097        | 11:39:00       | 20:06:00     | Sri Lanka Airlines   |      0 |
+| WE9274        | 11:39:00       | 20:09:00     | Western Samoa Airlin |      0 |
+| DJ8420        | 12:19:00       | 20:14:00     | Djibouti Airlines    |      0 |
+| CU2063        | 12:40:00       | 20:06:00     | Cuba Airlines        |      0 |
+| LI3003        | 13:03:00       | 20:10:00     | Liberia Airlines     |      0 |
+| RU3168        | 13:16:00       | 20:02:00     | Russia Airlines      |      0 |
+| NO1349        | 14:03:00       | 20:11:00     | Northern Mariana Is  |      0 |
+| ET6479        | 14:49:00       | 20:13:00     | Ethiopia Airlines    |      0 |
+| DJ1651        | 15:28:00       | 20:02:00     | Djibouti Airlines    |      0 |
+| SY2783        | 15:57:00       | 20:12:00     | Syria Airlines       |      0 |
+| TO5049        | 16:05:00       | 20:14:00     | Togo Airlines        |      0 |
+| AZ1856        | 17:09:00       | 20:11:00     | Azerbaijan Airlines  |      0 |
+| WE7788        | 17:17:00       | 20:12:00     | Western Samoa Airlin |      0 |
+| YU1921        | 17:18:00       | 20:10:00     | Yugoslavia Airlines  |      0 |
+| KO9219        | 17:29:00       | 20:04:00     | Korea Airlines       |      0 |
+| AZ5851        | 17:33:00       | 20:07:00     | Azerbaijan Airlines  |      0 |
+| PE1857        | 17:37:00       | 20:01:00     | Peru Airlines        |      0 |
+| SL9463        | 18:21:00       | 20:12:00     | Slovakia Airlines    |      0 |
+| TO6072        | 18:43:00       | 20:01:00     | Togo Airlines        |      0 |
+| UG5477        | 22:36:00       | 20:02:00     | Uganda Airlines      |      0 |
+| YE8510        | 23:39:00       | 20:09:00     | Yemen Airlines       |      0 |
++---------------+----------------+--------------+----------------------+--------+
+49 rows in set (0.00 sec)
+Query 7
+      Marilyn is trying to schedule a flight that departs sometime between
+      3PM and 4PM and arrives between 6PM and 7PM on Wednesday or Thursday.
+      She also wants to avoid flights that are operated by Cyprus Airlines.
+      Can you help her?
+      Sort the results by departure time.
+       List the following columns:
+      | Flight Number | Departure Time | Arrival Time | Airline | Wednesday | Thursday |
++---------------+----------------+--------------+----------------------+-----------+----------+
+| Flight Number | Departure Time | Arrival Time | Airline              | Wednesday | Thursday |
++---------------+----------------+--------------+----------------------+-----------+----------+
+| HO7035        | 15:02:00       | 18:34:00     | Honduras Airlines    |         1 |        0 |
+| DO3636        | 15:10:00       | 18:42:00     | Dominica Airlines    |         1 |        1 |
+| SE9865        | 15:15:00       | 18:11:00     | Senegal Airlines     |         0 |        1 |
+| GE3128        | 15:18:00       | 18:32:00     | Georgia Airlines     |         0 |        1 |
+| GI1994        | 15:21:00       | 18:39:00     | Gibraltar Airlines   |         1 |        0 |
+| EC5799        | 15:22:00       | 18:45:00     | Ecuador Airlines     |         1 |        0 |
+| PU6775        | 15:22:00       | 18:06:00     | Puerto Rico Airlines |         1 |        1 |
+| FI9015        | 15:25:00       | 18:30:00     | Fiji Is Airlines     |         1 |        0 |
+| SU7567        | 15:29:00       | 18:47:00     | Sudan Airlines       |         1 |        0 |
+| KE7024        | 15:42:00       | 18:06:00     | Kenya Airlines       |         0 |        1 |
+| SP3786        | 15:50:00       | 18:42:00     | Spain Airlines       |         1 |        1 |
+| TR3884        | 15:51:00       | 18:06:00     | Trinidad Airlines    |         1 |        1 |
++---------------+----------------+--------------+----------------------+-----------+----------+
+12 rows in set (0.00 sec)

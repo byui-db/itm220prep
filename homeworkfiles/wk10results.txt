@@ -1,0 +1,124 @@
+Query 1
+      Who are our frequent fliers that reside in the U.K. and have flown somewhere in the world from the U.K.?
+      a. Create a CASE statement with the following conditions:
+
+          Show passenger's status as 'Platinum', 'Gold', 'Silver', or 'No Status' based on the number of flights they have taken.
+
+          The conditions are as follows:
+
+          - Platinum: 30 or more flights
+
+          - Gold: 20 or more flights
+
+          - Silver: 10 or more flights
+
+          - No Status: Less than 10 flights
+
+ 
+
+       b. Next, Count how many flights a passenger has flown and add that to your query.
+
+ 
+
+       c. Show the first and last name of the passenger in separate columns
+
+ 
+
+       d. Create one final CASE statement to display the name of the Departure Month.
+
+           - The months that exist in this dataset are: June, July, August, and September
+
+ 
+
+       e. Filter your query to only show passengers that fall under these conditions:
+
+           - They are from the U.K. and their flight departs from the U.K.
+
+           - They have never flown but are from the U.K.
+
+           - They have never flown and their information is incomplete
+
+ 
+
+        f. Sort by the number of flights from greatest to least
+
+ 
+
+        g. Group by the last 3 columns in your SELECT statement.
+
+            The CASE statement can be referenced by its position in the SELECT statement.
+
+            In this case it would be 5.
+
++-----------+-------------------+----------------------------------+-----------------+-----------------+
+| Status    | Number of Flights | First Name                       | Last Name       | Departure Month |
++-----------+-------------------+----------------------------------+-----------------+-----------------+
+| Platinum  |                37 | Johnny                           | Eaton           | August          |
+| Gold      |                27 | Kosuke                           | Fukudome        | July            |
+| Gold      |                26 | Mark                             | Prior           | August          |
+| Gold      |                24 | Stefanie                         | Powers          | August          |
+| Gold      |                24 | Lennie                           | Moore           | June            |
+| ...       |               ... | ...                              | ...             | ...             |
+| Gold      |                20 | Thomas                           | Parris          | July            |
+| Gold      |                20 | Mark                             | Calderon        | June            |
+| Gold      |                20 | Dan                              | Lucas           | June            |
+| Gold      |                20 | Vince Di                         | Meglio          | July            |
+| Gold      |                20 | Chris                            | Pronger         | August          |
+| Gold      |                20 | Shammond                         | Williams        | August          |
+| Gold      |                20 | Kevin                            | Johnson         | August          |
+| Gold      |                20 | Darrick                          | Vaughn          | August          |
+| Gold      |                20 | Andy                             | Pratt           | June            |
+| Gold      |                20 | Joel                             | Przybilla       | July            |
+| Gold      |                20 | Val                              | Majewski        | August          |
+| Gold      |                20 | Chris                            | Roberson        | June            |
+| Silver    |                19 | Don                              | Haskins         | July            |
+| Silver    |                19 | Robert                           | Morse           | July            |
+| Silver    |                19 | Johnny                           | Morris          | July            |
+| Silver    |                19 | Dick                             | LeBeau          | August          |
+| ...       |               ... | ...                              | ...             | ...             |
+| Silver    |                10 | Tyler                            | Seguin          | July            |
+| Silver    |                10 | Tyler                            | Seguin          | June            |
+| Silver    |                10 | Danny                            | Biega           | August          |
+| Silver    |                10 | Steven                           | Cavarno         | June            |
+| No Status |                 9 | John                             | Considine       | July            |
+| No Status |                 9 | Alice                            | Coltrane        | June            |
+| No Status |                 9 | Billy                            | Shaw            | August          |
+| ...       | ...               | ...                              | ...             | ...             |
+| No Status |                 1 | Karla                            | Garcia          | September       |
+| No Status |                 1 | Kyle                             | Wilson          | September       |
+| No Status |                 1 | William                          | Quist           | September       |
+| No Status |                 1 | Gunner                           | Sixx            | September       |
+| No Status |                 1 | Devon                            | Werkheiser      | September       |
+| No Status |                 1 | Danny                            | Biega           | September       |
+| No Status |                 0 | Emma                             | Wright          | N/A             |
+| No Status |                 0 | Liam                             | Carter          | N/A             |
+| No Status |                 0 | Sophie                           | Adams           | N/A             |
+| No Status |                 0 | James                            | Thompson        | N/A             |
+| No Status |                 0 | Olivia                           | Harris          | N/A             |
++-----------+-------------------+----------------------------------+-----------------+-----------------+
+1913 rows in set (22.35 sec)
+Query 2
+      Who in the 'no status' section from the previous query
+      have never flown?
+      Columns will look like the following:
+      | Status | Number of Flights | First Name | Last Name | Departure Month |
++-----------+-------------------+------------+-----------+-----------------+
+| Status    | Number of Flights | First Name | Last Name | Departure Month |
++-----------+-------------------+------------+-----------+-----------------+
+| No Status |                 0 | Emma       | Wright    | N/A             |
+| No Status |                 0 | Liam       | Carter    | N/A             |
+| No Status |                 0 | Sophie     | Adams     | N/A             |
+| No Status |                 0 | James      | Thompson  | N/A             |
+| No Status |                 0 | Olivia     | Harris    | N/A             |
++-----------+-------------------+------------+-----------+-----------------+
+5 rows in set (15.56 sec)
+Query 3
+      Who has never flown and doesn't have any records in our
+      passenger details table?
+      | Status | Number of Flights | First Name | Last Name | Departure Month | Passenger Country |
++-----------+-------------------+------------+-----------+-----------------+-------------------+
+| Status    | Number of Flights | First Name | Last Name | Departure Month | Passenger Country |
++-----------+-------------------+------------+-----------+-----------------+-------------------+
+| No Status |                 0 | Sophie     | Adams     | N/A             | NULL              |
++-----------+-------------------+------------+-----------+-----------------+-------------------+
+1 row in set (0.08 sec)

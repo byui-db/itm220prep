@@ -1,0 +1,110 @@
+Query 1
+      What are the flight details for flight AL9073 (flight id #93)?
+      Format the dates to look like: Jun 01, 2015 07:56 AM
+      The From and To columns should display the city and country together.
+      The columns should look like the following:
+      | Flight Number | From | To | Departure Date | Arrival Date |
++---------------+-------------------+----------------+-----------------------+-----------------------+
+| Flight Number | From              | To             | Departure Date        | Arrival Date          |
++---------------+-------------------+----------------+-----------------------+-----------------------+
+| AL9073        | LAUPHEIM, GERMANY | PENEDO, BRAZIL | Jun 01, 2015 07:56 AM | Jun 01, 2015 06:40 PM |
++---------------+-------------------+----------------+-----------------------+-----------------------+
+1 row in set (0.01 sec) 
+Query 2
+      How many passengers are on flight AL9073 (flight id #93)?
+      Tell me whether or not the flight is full.
+      Code an example with seats available and when it is full
+      This should be done in one query.
+      A `group by` clause shouldn't be used.
+      The columns should look like the following:
+      | Flight Number | From | To | Plane Capacity | Original # of Passengers | Seats Remaining | Full Flight # of Passengers | Seats Remaining |
++---------------+-------------------+----------------+----------------+-----------------+-----------------+--------------------+-----------------+
+| Flight Number | From              | To             | Plane Capacity | Original # of.. | Seats remaining | Full Flight # of.. | Seats remaining |
++---------------+-------------------+----------------+----------------+-----------------+-----------------+--------------------+-----------------+
+| AL9073        | LAUPHEIM, GERMANY | PENEDO, BRAZIL |             50 |              25 | 25 seats left   |                 50 | Flight Full     |
++---------------+-------------------+----------------+----------------+-----------------+-----------------+--------------------+-----------------+ 
+Query 3
+      How many flights are on each day that are contained within the U.S.?
+      These flights depart from a city in the U.S. and arrives at a U.S. city
+      Also display the total amount of flights at the end
+      The columns should look like the following:
+      | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday | Total |
++--------+---------+-----------+----------+--------+----------+--------+-------+
+| Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday | Total |
++--------+---------+-----------+----------+--------+----------+--------+-------+
+|    295 |     288 |       296 |      278 |    295 |      291 |    265 |  2008 |
++--------+---------+-----------+----------+--------+----------+--------+-------+
+1 row in set (0.06 sec) 
+Query 4
+      THIS QUERY MAY TAKE UP TO 2 MINUTES TO RUN
+      List the number of passengers each flight serviced within the U.S.
+      Sort by total number of passengers from greatest to least
+      The activity column consists of a case statement with the
+      following conditions:
+      - If 10,000 or more, state "High Activity"
+      - If between 5,000 and 10,000, state "Moderate Activity"
+      - If between 1,000 and 5,000, state "Low Activity"
+      - If less than 1,000, state "Very Low Activity"
+      The columns should look like the following:
+      | Flight Number | From | To | Activity | Number of Passengers |
++---------------+-----------------------------------------------+-----------------------------------------------+-----------------+----------------------+
+| Flight Number | From                                          | To                                            | Activity        | Number of Passengers |
++---------------+-----------------------------------------------+-----------------------------------------------+-----------------+----------------------+
+| KI2173        | DETROIT, UNITED STATES                        | SANTA MONICA, UNITED STATES                   | High Activity   |                13787 |
+| SE9793        | WILLOWS, UNITED STATES                        | TRENTON, UNITED STATES                        | High Activity   |                13681 |
+| HU1379        | MILLEDGEVILLE, UNITED STATES                  | NORTH EAST, UNITED STATES                     | High Activity   |                12812 |
+| HA4967        | JACKSON, UNITED STATES                        | PHILADELPHIA, UNITED STATES                   | High Activity   |                12742 |
+| PO1627        | MUSKOGEE, UNITED STATES                       | BURLINGTON, UNITED STATES                     | High Activity   |                12585 |
+| SE2863        | TRAVERSE CITY, UNITED STATES                  | STAUNTON-WAYNESBORO-HARRISONB*, UNITED STATES | High Activity   |                12486 |
+| MA1915        | BLACKSTONE, UNITED STATES                     | ORANGE CITY, UNITED STATES                    | High Activity   |                12294 |
+| YU9000        | MERRILL, UNITED STATES                        | WESTERLY, UNITED STATES                       | High Activity   |                12016 |
+| YU7366        | FLORA, UNITED STATES                          | MOLINE, UNITED STATES                         | High Activity   |                11879 |
+| FA2773        | CHOTEAU, UNITED STATES                        | ROUNDUP, UNITED STATES                        | High Activity   |                11850 |
+| YU6410        | MENOMINEE, UNITED STATES                      | INDIANOLA, UNITED STATES                      | High Activity   |                11702 |
+| VA8541        | MARYSVILLE, UNITED STATES                     | TAMPA, UNITED STATES                          | High Activity   |                11395 |
+| ER8710        | WARREN, UNITED STATES                         | WARROAD, UNITED STATES                        | High Activity   |                11039 |
+| FA2056        | VINCENNES, UNITED STATES                      | JACKSON, UNITED STATES                        | High Activity   |                10773 |
+| PO1509        | UTICA, UNITED STATES                          | IDAHO FALLS, UNITED STATES                    | High Activity   |                10740 |
+| YU5775        | CHARLOTTE, UNITED STATES                      | ANIAK, UNITED STATES                          | High Activity   |                10691 |
+| CZ8966        | CORONA, UNITED STATES                         | MANNING, UNITED STATES                        | High Activity   |                10582 |
+| ET5618        | FALLON, UNITED STATES                         | DAYTONA BEACH, UNITED STATES                  | High Activity   |                10563 |
+| HU4662        | EASTMAN, UNITED STATES                        | CAMP RIPLEY, UNITED STATES                    | High Activity   |                10549 |
+| LU5617        | CHAPPELL, UNITED STATES                       | WEST PLAINS, UNITED STATES                    | High Activity   |                10537 |
+| MI2776        | MOBILE, UNITED STATES                         | RED WING, UNITED STATES                       | High Activity   |                10423 |
+| YU4735        | ST MARY'S, UNITED STATES                      | HARRISBURG, UNITED STATES                     | High Activity   |                10038 |
+| NI3099        | CAMP RIPLEY, UNITED STATES                    | SALT LAKE CITY, UNITED STATES                 | Medium Activity |                 9907 |
+| ...           | ...                                           | ...                                           | ...             |                  ... |
+| UZ1553        | TUSCALOOSA, UNITED STATES                     | LOUISBURG, UNITED STATES                      | Medium Activity |                 5142 |
+| EL1896        | HOBART, UNITED STATES                         | FT BELVOIR, UNITED STATES                     | Medium Activity |                 5137 |
+| UR7539        | TETERBORO, UNITED STATES                      | CARIBOU, UNITED STATES                        | Medium Activity |                 5120 |
+| GE9943        | PALM SPRINGS, UNITED STATES                   | FRIENDLY, UNITED STATES                       | Medium Activity |                 5111 |
+| UN1252        | SIOUX CENTER, UNITED STATES                   | BRUNSWICK, UNITED STATES                      | Medium Activity |                 5103 |
+| AF5511        | MOAB, UNITED STATES                           | DUNCAN, UNITED STATES                         | Medium Activity |                 5101 |
+| TR5561        | YAKIMA, UNITED STATES                         | LEMMON, UNITED STATES                         | Medium Activity |                 5096 |
+| RE2124        | PASCAGOULA, UNITED STATES                     | COLUMBIA, UNITED STATES                       | Medium Activity |                 5091 |
+| RU8104        | LADYSMITH, UNITED STATES                      | ALAMOGORDO, UNITED STATES                     | Medium Activity |                 5081 |
+| IN5659        | WESTFIELD/ SPRINGFIELD, UNITED STATES         | NEW ORLEANS, UNITED STATES                    | Medium Activity |                 5076 |
+| ZA4906        | RAPID CITY, UNITED STATES                     | VACAVILLE, UNITED STATES                      | Medium Activity |                 5051 |
+| CR1704        | SANDERSVILLE, UNITED STATES                   | DWIGHT, UNITED STATES                         | Medium Activity |                 5041 |
+| MA1579        | FAREWELL LAKE, UNITED STATES                  | MORGANTON, UNITED STATES                      | Medium Activity |                 5036 |
+| BR4248        | SAFFORD, UNITED STATES                        | LITTLE ROCK, UNITED STATES                    | Medium Activity |                 5034 |
+| IT8955        | INYOKERN, UNITED STATES                       | KERRVILLE, UNITED STATES                      | Low Activity    |                 4999 |
+| ...           | ...                                           | ...                                           | ...             |                  ... |
+| PH6652        | ELIZABETHTOWN, UNITED STATES                  | OMAHA, UNITED STATES                          | Low Activity    |                 1518 |
+| ME2896        | OLNEY-NOBLE, UNITED STATES                    | ROME, UNITED STATES                           | Low Activity    |                 1517 |
+| KA7447        | ARTESIA, UNITED STATES                        | SPRINGFIELD, UNITED STATES                    | Low Activity    |                 1463 |
+| UZ4793        | SELMER, UNITED STATES                         | NUIQSUT, UNITED STATES                        | Low Activity    |                 1355 |
+| LI6241        | MONTROSE, UNITED STATES                       | WACO, UNITED STATES                           | Low Activity    |                 1260 |
+| TO8949        | SPRINGFIELD/ CHICOPEE, UNITED STATES          | BURLINGTON, UNITED STATES                     | Low Activity    |                 1194 |
+| KU2440        | KENNETT, UNITED STATES                        | LIVERMORE, UNITED STATES                      | Low Activity    |                 1169 |
+| AF6210        | ADA, UNITED STATES                            | CORDELE, UNITED STATES                        | Low Activity    |                 1130 |
+| JO1351        | BARTLESVILLE, UNITED STATES                   | EGEGIK, UNITED STATES                         | Low Activity    |                 1125 |
+| SL4313        | POTTSVILLE, UNITED STATES                     | GLENDALE, UNITED STATES                       | Low Activity    |                 1082 |
+| BU3152        | VICTORIA, UNITED STATES                       | SAFFORD, UNITED STATES                        | Low Activity    |                 1053 |
+| CU1931        | RALEIGH/ DURHAM, UNITED STATES                | SAFFORD, UNITED STATES                        | Low Activity    |                 1044 |
+| HO1523        | WINCHESTER, UNITED STATES                     | ARDMORE, UNITED STATES                        | Low Activity    |                 1041 |
+| NA3042        | SANTA PAULA, UNITED STATES                    | KONGIGANAK, UNITED STATES                     |Very Low Activity|                  954 |
+| EL4980        | WATERVILLE, UNITED STATES                     | HOQUIAM, UNITED STATES                        |Very Low Activity|                  921 |
+| PH9706        | GREEN BAY, UNITED STATES                      | DANVILLE, UNITED STATES                       |Very Low Activity|                  479 |
++---------------+-----------------------------------------------+-----------------------------------------------+-----------------+----------------------+
+554 rows in set (1 min 45.66 sec)
