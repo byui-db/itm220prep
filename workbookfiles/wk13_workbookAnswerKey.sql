@@ -54,6 +54,41 @@
 
 USE sakila;
 
+-- -- uncomment the following lines to create the sales_fact table and insert data
+-- -- if you are using a local MySQL server
+-- DROP TABLE IF EXISTS sales_fact;
+-- CREATE TABLE sales_fact (
+--     year_no  INT,
+--     month_no INT,
+--     tot_sales INT
+-- );
+
+-- INSERT INTO sales_fact (year_no, month_no, tot_sales)
+-- VALUES
+--     (2019,  1,  19228),
+--     (2019,  2,  18554),
+--     (2019,  3,  17325),
+--     (2019,  4,  13221),
+--     (2019,  5,   9964),
+--     (2019,  6,  12658),
+--     (2019,  7,  14233),
+--     (2019,  8,  17342),
+--     (2019,  9,  16853),
+--     (2019, 10,  17121),
+--     (2019, 11,  19095),
+--     (2019, 12,  21436),
+--     (2020,  1,  20347),
+--     (2020,  2,  17434),
+--     (2020,  3,  16225),
+--     (2020,  4,  13853),
+--     (2020,  5,  14589),
+--     (2020,  6,  13248),
+--     (2020,  7,   8728),
+--     (2020,  8,   9378),
+--     (2020,  9,  11467),
+--     (2020, 10,  13842),
+--     (2020, 11,  15742),
+--     (2020, 12,  18636);
 -- --------------------------------------------------------------------------
 -- 1. Write a query that retrieves every row from sales_fact
 --    and add a column to generate a ranking based on the 
@@ -103,7 +138,7 @@ FROM   sales_fact;
 --    of rankings from 1 to 12
 --    One for 2019 data
 --    One for 2020 data
---   (Use RANK() and PARTITION BY)
+--    (USE RANK() and PARTITION BY)
 --    Example Output:
 --    +---------+----------+-----------+------------+
 --    | year_no | month_no | tot_sales | sales_rank |
