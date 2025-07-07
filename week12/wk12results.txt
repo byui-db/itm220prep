@@ -12,24 +12,77 @@ USE airportdb;
 -- ---------------------------------------------------------------------------------
 -- 1. What are the top 10 airlines by customer activity? (number of customers served)
 -- ---------------------------------------------------------------------------------
+| airline_name           | customers_served | airline_rank |
+| Vanuatu Airlines       | 743353           | 1            |
+| Peru Airlines          | 703840           | 2            |
+| Micronesia Airlines    | 700704           | 3            |
+| Yugoslavia Airlines    | 697159           | 4            |
+| Hungary Airlines       | 693488           | 5            |
+| Falkland Is Airlines   | 666531           | 6            |
+| Ethiopia Airlines      | 660362           | 7            |
+| Tunisia Airlines       | 638740           | 8            |
+| Swaziland Airlines     | 602344           | 9            |
+| Puerto Rico Airlines   | 602130           | 10           |
 
 
 -- --------------------------------------------------------------------------------------------------------
 -- 2. What are the top 10 airlines by revenue?
 -- --------------------------------------------------------------------------------------------------------
-
+| airline_name           | revenue        | airline_rank |
+| Vanuatu Airlines       | $186,500,605   | 1            |
+| Peru Airlines          | $176,842,893   | 2            |
+| Micronesia Airlines    | $176,068,564   | 3            |
+| Yugoslavia Airlines    | $174,960,067   | 4            |
+| Hungary Airlines       | $174,053,899   | 5            |
+| Falkland Is Airlines   | $167,390,905   | 6            |
+| Ethiopia Airlines      | $165,680,148   | 7            |
+| Tunisia Airlines       | $160,359,282   | 8            |
+| Swaziland Airlines     | $151,318,261   | 9            |
+| Puerto Rico Airlines   | $150,947,015   | 10           |
 
 -- --------------------------------------------------------------------------------------------------------
 -- 3. Which airlines are on both lists?
 -- --------------------------------------------------------------------------------------------------------
-
+| airline_name           | customers_served | revenue        | customer_rank | revenue_rank|
+| Vanuatu Airlines       | 743353           | $186,500,605   | 1             | 1           |
+| Peru Airlines          | 703840           | $176,842,893   | 2             | 2           |
+| Micronesia Airlines    | 700704           | $176,068,564   | 3             | 3           |
+| Yugoslavia Airlines    | 697159           | $174,960,067   | 4             | 4           |
+| Hungary Airlines       | 693488           | $174,053,899   | 5             | 5           |
+| Falkland Is Airlines   | 666531           | $167,390,905   | 6             | 6           |
+| Ethiopia Airlines      | 660362           | $165,680,148   | 7             | 7           |
+| Tunisia Airlines       | 638740           | $160,359,282   | 8             | 8           |
+| Swaziland Airlines     | 602344           | $151,318,261   | 9             | 9           |
+| Puerto Rico Airlines   | 602130           | $150,947,015   | 10            | 10          |
 
 -- --------------------------------------------------------------------------------------------------------
 -- 4. Compare the top 10 airlines by revenue vs the 11 – 20 airlines by revenue. How big of a gap is there?
 -- --------------------------------------------------------------------------------------------------------
-
+| top_10_revenue   | next_10_revenue   | revenue_gap      |
+| $1,684,121,639   | $1,437,835,709    | $246,285,930     |
 
 -- --------------------------------------------------------------------------------------------------------
 -- 5. Compare the top 20 airlines by revenue. Compare the 1st to the  2nd, the 2nd to the 3rd, and so on.
 -- How big of a gap is there?
 -- --------------------------------------------------------------------------------------------------------
+| revenue_rank | airline_name           | total_revenue   | next_airline_name      | next_revenue     | revenue_gap   |
+| 1            | Vanuatu Airlines       | $186,500,605    | Peru Airlines          | $176,842,893     | $9,657,712    |
+| 2            | Peru Airlines          | $176,842,893    | Micronesia Airlines    | $176,068,564     | $774,329      |
+| 3            | Micronesia Airlines    | $176,068,564    | Yugoslavia Airlines    | $174,960,067     | $1,108,497    |
+| 4            | Yugoslavia Airlines    | $174,960,067    | Hungary Airlines       | $174,053,899     | $906,167      |
+| 5            | Hungary Airlines       | $174,053,899    | Falkland Is Airlines   | $167,390,905     | $6,662,994    |
+| 6            | Falkland Is Airlines   | $167,390,905    | Ethiopia Airlines      | $165,680,148     | $1,710,757    |
+| 7            | Ethiopia Airlines      | $165,680,148    | Tunisia Airlines       | $160,359,282     | $5,320,865    |
+| 8            | Tunisia Airlines       | $160,359,282    | Swaziland Airlines     | $151,318,261     | $9,041,021    |
+| 9            | Swaziland Airlines     | $151,318,261    | Puerto Rico Airlines   | $150,947,015     | $371,247      |
+| 10           | Puerto Rico Airlines   | $150,947,015    | Russia Airlines        | $150,279,680     | $667,335      |
+| 11           | Russia Airlines        | $150,279,680    | Cyprus Airlines        | $146,508,966     | $3,770,714    |
+| 12           | Cyprus Airlines        | $146,508,966    | India Airlines         | $146,416,628     | $92,338       |
+| 13           | India Airlines         | $146,416,628    | Oman Airlines          | $145,843,754     | $572,874      |
+| 14           | Oman Airlines          | $145,843,754    | Togo Airlines          | $143,349,695     | $2,494,058    |
+| 15           | Togo Airlines          | $143,349,695    | Brazil Airlines        | $141,773,200     | $1,576,495    |
+| 16           | Brazil Airlines        | $141,773,200    | Croatia Airlines       | $141,003,939     | $769,261      |
+| 17           | Croatia Airlines       | $141,003,939    | Namibia Airlines       | $140,973,701     | $30,238       |
+| 18           | Namibia Airlines       | $140,973,701    | Yemen Airlines         | $140,860,452     | $113,249      |
+| 19           | Yemen Airlines         | $140,860,452    | Western Samoa Airlin   | $140,825,694     | $34,758       |
+| 20           | Western Samoa Airlin   | $140,825,694    | Melilla Airlines       | $140,028,435     | $797,259      |
