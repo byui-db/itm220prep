@@ -72,19 +72,37 @@ FROM   passengerrewards pr;
 --    Columns will look like the following:
 --    | Airport | Flight Count |
 -- --------------------------------------------------------------------------------------------------------
+Option 1:
 WITH flight_counts AS (
-    SELECT a.name AS airport
-	,      COUNT(f.flight_id) AS flight_count
+    SELECT a.airport_id
+    ,      a.name AS airport
+    ,      COUNT(f.flight_id) AS flight_count
     FROM   airport a
-	INNER JOIN flight f
-    ON     a.airport_id = f.from
+    INNER JOIN flight f
+           ON a.airport_id = f.from
     WHERE  MONTH(f.departure) = 8
-    GROUP BY a.name
+    GROUP BY a.airport_id, a.name
 )
 SELECT fc.airport AS 'Airport'
 ,      fc.flight_count AS 'Flight Count'
 FROM   flight_counts fc
 ORDER BY fc.flight_count DESC
+LIMIT 10;
+
+Option 2:
+WITH flight_counts AS (     
+SELECT `from` AS 'airport_id'     
+, COUNT(flight_id) AS 'num_of_flights'     
+FROM flight     
+WHERE MONTH(departure) = 8     
+GROUP BY `from` 
+)     
+SELECT a.name AS 'Airport'     
+, fc.num_of_flights AS 'Flight Count'     
+FROM airport a     
+INNER JOIN flight_counts fc         
+      ON a.airport_id = fc.airport_id     
+ORDER BY fc.num_of_flights DESC     
 LIMIT 10;
 
 -- --------------------------------------------------------------------------------------------------------

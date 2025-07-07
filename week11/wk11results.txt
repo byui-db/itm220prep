@@ -57,20 +57,20 @@ Query 2
       Write a CTE statement called `flight_counts` to find the answer.
       Columns will look like the following:
       | Airport | Flight Count |
-+------------+--------------+
-| Airport    | Flight Count |
-+------------+--------------+
-| AEROCLUB   |          144 |
-| NIAFUNKE   |          121 |
-| ES SENIA   |          117 |
-| SMITH      |          115 |
-| TABORA     |          107 |
-| NAPA CO    |          102 |
-| HAMEENKYRO |          101 |
-| ARMOR      |          101 |
-| STAUNING   |           98 |
-| ALBION MUN |           98 |
-+------------+--------------+
++-----------------+--------------+
+| Airport          | Flight Count |
++-----------------+--------------+
+| NIAFUNKE         |          121 |
+| ES SENIA         |          117 |
+| AEROCLUB         |          109 |
+| TABORA           |          107 |
+| NAPA CO          |          102 |
+| HAMEENKYRO       |          101 |
+| ARMOR            |          101 |
+| ALBION MUN       |           98 |
+| RIVNE            |           98 |
+| BUTARE           |           98 |
++----------------+--------------+
 10 rows in set (0.33 sec)
 Query 3
       What are the top 5 longest flights by duration for each airline?
